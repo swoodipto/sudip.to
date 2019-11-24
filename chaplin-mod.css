@@ -6,6 +6,12 @@
     outline: none;
 }
 
+body {
+  background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-12.png);
+	min-width: 340px;
+	overflow-x: hidden;
+}
+
 .header-inner.is-sticky {
 		box-shadow: 0px 13px 40px -5px rgba(0,0,0,0.18);
 }
@@ -18,7 +24,7 @@
 /* CONTENT AREA
    — remove overflow cut */
 #site-content {
-    overflow: inherit;
+    overflow: visible;
 }
 
 .error404 .section-inner.thin {
@@ -610,10 +616,6 @@ body:not(.home) .intro-text,
 
 
 /*NEW LAYOUT TEST*/
-#site-content {
-    overflow: visible;
-}
-
 .home .entry-header {
     display: none;
 }
@@ -655,7 +657,7 @@ body:not(.home) .intro-text,
   font-style: italic;
   line-height: 1;
   letter-spacing: 18px;
-  text-shadow: 35px 30px rgba(0,0,0,0.1);
+  text-shadow: 30px 25px rgba(0,0,0,0.1);
   color: #5900ff;
   cursor: default;
   -webkit-text-fill-color: transparent;
@@ -702,7 +704,7 @@ body:not(.home) .intro-text,
 	height: 204px;
   position: absolute;
   top: -15px;
-  left: 890px;
+  left: 885px;
   filter: hue-rotate(175deg) saturate(3);
 }
 
@@ -724,4 +726,160 @@ body:not(.home) .intro-text,
   top: 460px;
   left: 700px;
   transform: rotate(-20deg);
+}
+
+@media screen and (max-width: 1280px) {
+
+    .hero-fancy-text {
+        font-size: 15rem;
+				text-shadow: 20px 18px rgba(0,0,0,0.1);
+    }
+
+    .hero-fancy-container {
+        grid-template-columns: 450px auto;
+    }
+
+    .sprite-arrow {
+        top: -80px;
+        left: 370px;
+        transform: scale(0.8);
+    }
+
+    .sprite-circle {
+        top: -30px;
+        left: 540px;
+        transform: scale(0.8);
+    }
+
+    .sprite-zigzag {
+        top: -50px;
+        left: 620px;
+        filter: hue-rotate(175deg) saturate(3);
+        transform: scale(0.8);
+    }
+
+    .sprite-square {
+        top: 360px;
+        left: 300px;
+        transform: rotate(-20deg) scale(0.8);
+    }
+
+    .sprite-cross {
+        top: 320px;
+        left: 800px;
+        transform: rotate(20deg) scale(0.8);
+    }
+
+}
+
+@media screen and (max-width: 840px) {
+    .hero-intro {
+        font-size: 3.2rem;
+        margin-left: 0;
+    }
+
+    .hero-fancy-text {
+        font-size: 12rem;
+		text-shadow: 16px 14px rgba(0,0,0,0.1);
+		letter-spacing: 14px;
+		line-height: 0.9;
+    }
+
+    .hero-fancy-container {
+        grid-template-columns: 360px 130px;
+    }
+
+    .hero-description {
+        margin-top: 250px;
+        margin-left: -360px;
+        max-width: 350px;
+    }
+
+    .sprite-arrow {
+        top: -70px;
+        left: 295px;
+        transform: scale(0.6);
+    }
+
+    .sprite-circle {
+        top: -40px;
+        left: 430px;
+        transform: scale(0.6);
+    }
+
+    .sprite-zigzag {
+        top: 180px;
+        left: 70px;
+        filter: hue-rotate(175deg) saturate(3);
+        transform: scale(0.55);
+    }
+
+    .sprite-square {
+        top: 250px;
+        left: 50px;
+        transform: rotate(-30deg) scale(0.6);
+    }
+
+    .sprite-cross {
+        top: 120px;
+        left: 350px;
+        transform: rotate(20deg) scale(0.6);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .home .entry-content {
+        margin-top: -20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .hero-intro {
+        font-size: 2.8rem;
+    }
+
+    .hero-fancy-text {
+        font-size: 8rem;
+		text-shadow: 12px 8px rgba(0,0,0,0.1);
+		letter-spacing: 8px;
+    }
+
+    .hero-fancy-container {
+        grid-template-columns: 230px 100px;
+    }
+
+    .hero-description {
+        margin-top: 180px;
+        margin-left: -230px;
+    }
+
+    .sprite-arrow {
+        top: -72px;
+        left: 185px;
+        transform: scale(0.5);
+    }
+
+    .sprite-circle {
+        top: -45px;
+        left: 265px;
+        transform: scale(0.5);
+    }
+
+    .sprite-zigzag {
+        top: 95px;
+        left: 0px;
+        transform: scale(0.4);
+    }
+
+    .sprite-square {
+        top: 165px;
+        left: 30px;
+        transform: rotate(-30deg) scale(0.5);
+    }
+
+    .sprite-cross {
+        top: 70px;
+        left: 250px;
+        transform: rotate(20deg) scale(0.5);
+    }
 }
