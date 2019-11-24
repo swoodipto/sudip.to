@@ -6,6 +6,12 @@
     outline: none;
 }
 
+body {
+  background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-12.png) repeat;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
 .header-inner.is-sticky {
 		box-shadow: 0px 13px 40px -5px rgba(0,0,0,0.18);
 }
@@ -277,6 +283,178 @@ input[type="submit"]:active {
 	font-size: 3.5rem;
 }
 
+
+/* FRONT PAGE DESIGN */
+.hero-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: -70px;
+  min-height: 520px;
+  height: calc( 100vh - 180px );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-wrapper * {
+  transition: all .2s ease;
+}
+
+.hero-intro {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-left: 20px;
+}
+
+.hero-description {
+  position: absolute;
+  max-width: 400px;
+  bottom: 25px;
+  left: 51.5rem;
+  line-height: 1.8;
+}
+
+.hero-fancy-text * {
+  font-size: 16rem;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: 1.8rem;
+  text-shadow: 35px 30px rgba(0,0,0,0.1);
+  color: #5900ff;
+  cursor: default;
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(transparent, transparent),
+             url(https://sudipto.xyz/wp-content/uploads/2019/11/noisey-test-text-1.png) repeat;
+  background: -o-linear-gradient(transparent, transparent);
+  -webkit-background-clip: text;
+}
+
+.hero-first-line span {
+  font-style: normal;
+}
+
+.hero-decor {
+  position: absolute;
+  max-width: 112rem;
+  width: calc( 100% - 10rem );
+  height: 100%;
+  top: 0;
+  z-index: 0;
+}
+
+.hero-decor * {
+  transition: all .25s ease;
+}
+
+.hero-sprite {
+  background: url('https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-14.png') no-repeat;
+}
+
+.hero-decor-arrow {
+	background-position: -21px -19px;
+	width: 61px;
+	height: 61px;
+  position: absolute;
+  top: 110px;
+  left: 46rem;
+}
+
+.hero-decor-square {
+	background-position: -150px -18px;
+	width: 63px;
+	height: 62px;
+  position: absolute;
+  top: 690px;
+  left: 76rem;
+  transform: rotate(-20deg);
+}
+
+.hero-decor-cross {
+	background-position: -295px -21px;
+	width: 60px;
+	height: 60px;
+  position: absolute;
+  top: 500px;
+  left: 82rem;
+  transform: rotate(20deg);
+}
+
+.hero-decor-circle {
+	background-position: -415px -17px;
+	width: 69px;
+	height: 69px;
+  position: absolute;
+  top: 160px;
+  left: 62rem;
+}
+
+.hero-decor-zigzag {
+	background-position: -24px -160px;
+	width: 445px;
+	height: 204px;
+  position: absolute;
+  top: 200px;
+  left: 72.5rem;
+  filter: hue-rotate(175deg) saturate(3);
+}
+
+@media (max-width: 1450px) {  
+  .hero-wrapper {
+    margin-top: -80px;
+  }
+  
+  .hero-description {
+    max-width: 360px;
+    bottom: 45px;
+    left: 37.8rem;
+    line-height: 1.5;
+  }
+  
+  .hero-fancy-text * {
+    font-size: 12rem;
+    letter-spacing: 1.2rem;
+    text-shadow: 30px 20px rgba(0,0,0,0.1);
+  }
+  
+  .hero-decor {
+    width: calc( 100% - 8rem );
+  }
+  
+  .hero-decor-arrow {
+    top: 180px;
+    left: 33rem;
+    transform: scale(0.85);
+  }
+
+  .hero-decor-square {
+    top: 690px;
+    left: 55rem;
+    transform: rotate(-20deg) scale(0.85);
+  }
+
+  .hero-decor-cross {
+    top: 500px;
+    left: 68rem;
+    transform: rotate(20deg) scale(0.85);
+  }
+
+  .hero-decor-circle {
+    top: 220px;
+    left: 45.5rem;
+    transform: scale(0.85);
+  }
+
+  .hero-decor-zigzag {
+    top: 230px;
+    left: 52.5rem;
+    transform: scale(0.85);
+  }
+}
+
+/* FRONT PAGE DESIGN */
+
+
 @media (min-width: 1220px) {
 	.alignwide, .alignfull {
 			margin-bottom: 6rem;
@@ -389,9 +567,71 @@ input[type="submit"]:active {
 			margin-bottom: 5rem;
 			margin-top: 5rem;
 	}
-
 }
 /* end STYLES ABOVE 1000px */
+
+/* FRONT PAGE BELOW 1000px*/
+@media (max-width: 1000px) {
+  .hero-wrapper {
+    display: block;
+    height: auto;
+    padding-bottom: 50px;
+  }
+  
+  .hero-intro {
+    font-size: 2.2rem;
+    margin-left: 15px;
+  }
+  
+  .hero-description {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-top: 140px;
+    margin-left: 15px;
+    line-height: 1.8;
+  }
+  
+  .hero-fancy-text * {
+    font-size: 9rem;
+    letter-spacing: 0.8rem;
+    text-shadow: 20px 12px rgba(0,0,0,0.1);
+  }
+  
+  .hero-first-line span {
+    margin-left: -30px;
+  }
+  
+  .hero-decor-arrow {
+    top: 88px;
+    left: 12rem;
+    transform: scale(0.6);
+  }
+
+  .hero-decor-square {
+    top: 120px;
+    left: 30rem;
+    transform: rotate(60deg) scale(0.6);
+  }
+
+  .hero-decor-cross {
+    top: 500px;
+    left: 6rem;
+    transform: rotate(30deg) scale(0.6);
+  }
+
+  .hero-decor-circle {
+    top: 320px;
+    left: 28rem;
+    transform: scale(0.6);
+  }
+
+  .hero-decor-zigzag {
+    top: 435px;
+    left: 10rem;
+    transform: scale(0.55);
+  }
+}
 
 /* MOBILE MENU
    — remove underline */
@@ -478,8 +718,82 @@ button.sub-menu-toggle {
 	.wp-block-image {
 			margin-bottom: 5rem;
 			margin-top: 5rem;
-	}
-	
+	}	
+}
+/* END 700PX */
+
+@media (max-width: 700px) {
+
+/* FRONT PAGE DESIGN BELOW 700PX */	
+
+  .hero-fancy-text * {
+    font-size: 8rem;
+    letter-spacing: 0.6rem;
+    text-shadow: 14px 10px rgba(0,0,0,0.1);
+  }
+
+  .hero-decor-square {
+    top: 110px;
+    left: 24rem;
+  }
+
+  .hero-decor-cross {
+    top: 430px;
+    left: 4rem;
+  }
+
+  .hero-decor-circle {
+    top: 280px;
+    left: 22rem;
+  }
+
+  .hero-decor-zigzag {
+    top: 370px;
+    left: 8rem;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .hero-fancy-text * {
+    font-size: 6rem;
+  }
+  
+  .hero-decor-arrow {
+    top: 92px;
+    left: 11.5rem;
+    transform: scale(0.5);
+  }
+  
+  .hero-decor-square {
+    top: 110px;
+    left: 18rem;
+    transform: rotate(60deg) scale(0.5);
+  }
+
+  .hero-decor-cross {
+    top: 360px;
+    left: 4rem;
+    transform: rotate(30deg) scale(0.5);
+  }
+
+  .hero-decor-circle {
+    top: 240px;
+    left: 16rem;
+    transform: scale(0.5);
+  }
+
+  .hero-decor-zigzag {
+    top: 310px;
+    left: 3.5rem;
+    transform: scale(0.45);
+  }
+}
+
+@media (max-width: 350px) {
+  body {
+    overflow-x: inherit;
+  }
 }
 
 /* TITLE
