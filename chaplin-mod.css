@@ -845,18 +845,18 @@ body:not(.home) .intro-text,
     }
 
     .hero-fancy-text {
-        font-size: 20vw;
+        font-size: 10rem;
     text-shadow: 12px 8px rgba(0,0,0,0.1);
     letter-spacing: 8px;
     }
 
     .hero-fancy-container {
-        grid-template-columns: calc( 100vw - 200px ) auto;
+        grid-template-columns: 275px auto;
     }
 
     .hero-description {
-        margin-top: 45vw;
-        margin-left: calc( -100vw + 200px );
+        margin-top: 200px;
+        margin-left: -275px;
     }
 
     .sprite-arrow {
