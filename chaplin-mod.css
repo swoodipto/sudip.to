@@ -66,7 +66,6 @@ body:not(.home) .intro-text .sharedaddy,
 }
 
 
-
 /* FORM
    — global input fields */
 input[type="text"],
@@ -488,6 +487,12 @@ button.sub-menu-toggle {
 
 }
 
+@media (max-width: 700px) {
+  h3, .heading-size-3 {
+    font-size: 3.2rem;
+  }
+}
+
 /* TITLE
    — add "." */
 body:not(.home):not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio) .entry-title:after,
@@ -793,7 +798,7 @@ body:not(.home) .intro-text,
     .hero-description {
         margin-top: 250px;
         margin-left: -360px;
-        max-width: 350px;
+        max-width: 58rem;
     }
 
     .sprite-arrow {
@@ -840,18 +845,18 @@ body:not(.home) .intro-text,
     }
 
     .hero-fancy-text {
-        font-size: 8rem;
+        font-size: 20vw;
     text-shadow: 12px 8px rgba(0,0,0,0.1);
     letter-spacing: 8px;
     }
 
     .hero-fancy-container {
-        grid-template-columns: 230px 100px;
+        grid-template-columns: calc( 100vw - 200px ) auto;
     }
 
     .hero-description {
-        margin-top: 180px;
-        margin-left: -230px;
+        margin-top: 45vw;
+        margin-left: calc( -100vw + 200px );
     }
 
     .sprite-arrow {
