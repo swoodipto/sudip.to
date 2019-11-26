@@ -861,31 +861,69 @@ body:not(.home) .intro-text,
 
     .sprite-arrow {
         top: -72px;
-        left: 185px;
+        left: 228px;
         transform: scale(0.5);
     }
 
     .sprite-circle {
         top: -45px;
-        left: 265px;
+        left: 325px;
         transform: scale(0.5);
     }
 
     .sprite-zigzag {
-        top: 95px;
-        left: 0px;
+        top: 130px;
+        left: 12px;
         transform: scale(0.4);
     }
 
     .sprite-square {
-        top: 165px;
+        top: 203px;
         left: 30px;
         transform: rotate(-30deg) scale(0.5);
     }
 
     .sprite-cross {
-        top: 70px;
-        left: 250px;
+        top: 86px;
+        left: 262px;
         transform: rotate(20deg) scale(0.5);
     }
+}
+
+@media screen and (max-width: 420px) {
+  .hero-fancy-container {
+    grid-template-columns: 230px auto;
+  }
+
+  .hero-fancy-text {
+    font-size: 8rem;
+  }
+
+  .hero-description {
+    margin-top: 180px;
+    margin-left: -230px;
+  }
+
+  .sprite-arrow {
+    left: 185px;
+}
+
+  .sprite-circle {
+      left: 265px;
+  }
+
+  .sprite-zigzag {
+      top: 95px;
+      left: 0px;
+  }
+
+  .sprite-square {
+      top: 165px;
+  }
+
+  .sprite-cross {
+      top: 70px;
+      left: 250px;
+  }
+
 }
