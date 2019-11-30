@@ -474,7 +474,7 @@ button.sub-menu-toggle {
    — current item */
 .main-menu li.current-menu-item > .ancestor-wrapper > a {
     text-decoration: none;
-    background: #790aff;
+    background: #5900ff;
     color: #ffffd2;
     padding: 2.5rem;
 }
@@ -754,7 +754,7 @@ body:not(.home) .intro-text,
   height: 62px;
   position: absolute;
   top: 460px;
-  left: 700px;
+  left: 380px;
   transform: rotate(-20deg);
 }
 
@@ -954,4 +954,77 @@ body:not(.home) .intro-text,
       left: 250px;
   }
 
+}
+
+
+
+.widget_eu_cookie_law_widget {
+    border: none;
+    right: 5rem;
+    bottom: 5rem;
+    left: inherit;
+}
+
+#eu-cookie-law {
+		border: none;
+    max-width: 38rem;
+    background-color: #5900ff;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 22px 22px 144px 22px;
+    box-shadow: 0px 13px 47px -15px rgb(116, 69, 254);
+}
+
+#eu-cookie-law input, #eu-cookie-law input:focus, #eu-cookie-law input:hover {
+float: none;
+    margin: 0;
+    position: absolute;
+    bottom: 80px;
+    background-color: #fff;
+    padding: 9px 12px;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    border: none;
+    box-shadow: none;
+    transform: none;
+    width: calc(100% - 44px);
+}
+
+#eu-cookie-law a, #eu-cookie-law a:active, #eu-cookie-law a:visited {
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 22px;
+    width: calc(100% - 44px);
+    left: 22px;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+
+}
+
+@media (max-width: 600px) {
+    #eu-cookie-law input.accept {
+        bottom: 80px;
+        right: inherit;
+    }
+}
+
+@media (max-width: 700px) {
+    .widget_eu_cookie_law_widget {
+        right: 2.5rem;
+        bottom: 2.5rem;
+        left: 2.5rem;
+    }
+
+    #eu-cookie-law {
+        width: 100%;
+        max-width: none;
+
+    }
 }
