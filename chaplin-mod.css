@@ -7,7 +7,7 @@
 }
 
 body {
-  background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-12.png);
+  background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-21.png);
   min-width: 340px;
   overflow-x: hidden;
 }
@@ -376,7 +376,7 @@ input[type="submit"]:active {
   body.page.has-post-thumbnail:not(.home):not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio) .has-post-thumbnail .entry-title {
       position: relative;
       z-index: 9;
-      background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-12.png);
+      background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-21.png);
       display: inline-block;
       padding: 0 10px 0 0;
   }
@@ -637,6 +637,15 @@ body:not(.home) .intro-text,
     padding-bottom: 140px;
 }
 
+.home #site-footer {
+  margin-top: 0; 
+  margin-bottom: 5rem;  
+}
+
+.home .footer-inner {
+  padding: 0;
+}
+
 .home .entry-header {
     display: none;
 }
@@ -678,7 +687,7 @@ body:not(.home) .intro-text,
   cursor: default;
   -webkit-text-fill-color: transparent;
   background: -webkit-linear-gradient(transparent, transparent),
-             url(https://sudipto.xyz/wp-content/uploads/2019/11/noisey-test-text-1.png) repeat;
+             url(https://sudipto.xyz/wp-content/uploads/2019/11/text-noise-11.png) repeat;
   background: -o-linear-gradient(transparent, transparent);
   -webkit-background-clip: text;
 }
