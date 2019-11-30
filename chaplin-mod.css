@@ -118,7 +118,7 @@ input[type='submit'] {
     border-radius: 10px;
     margin-top: 15px;
     color: #fff;
-    box-shadow: 0px 13px 47px -15px rgba(0,0,0,0.6);
+    box-shadow: 0px 13px 47px -15px rgb(54, 204, 206);
     transition: all .25s ease;
 }
 
@@ -184,7 +184,7 @@ input[type="button"]:focus,
 input[type="reset"]:focus,
 input[type="submit"]:focus {
     text-decoration: none !important;
-    box-shadow: 0px 20px 50px -14px rgba(0,0,0,0.65);
+    box-shadow: 0px 20px 50px -14px rgb(54, 204, 206);
     transform: translateY(-2px);
 }
 
@@ -198,7 +198,7 @@ button:active,
 input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
-    box-shadow: 0px 8px 10px -6px rgba(0,0,0,0.3);
+    box-shadow: 0px 8px 10px -6px rgb(54, 204, 206);
     transform: none;
 }
 
@@ -687,7 +687,7 @@ body:not(.home) .intro-text,
   cursor: default;
   -webkit-text-fill-color: transparent;
   background: -webkit-linear-gradient(transparent, transparent),
-             url(https://sudipto.xyz/wp-content/uploads/2019/11/text-noise-11.png) repeat;
+             url(https://sudipto.xyz/wp-content/uploads/2019/11/text-noise-12.png) repeat;
   background: -o-linear-gradient(transparent, transparent);
   -webkit-background-clip: text;
 }
@@ -931,7 +931,6 @@ body:not(.home) .intro-text,
   .sprite-arrow {
     left: 185px;
 }
-
   .sprite-circle {
       left: 265px;
   }
