@@ -514,6 +514,11 @@ body:not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio)
   content: " —";
 }
 
+#post-168 .entry-title:after,
+#post-168 .preview-title:after {
+  display: none;
+}
+
 /* TITLE
    — blog posts serif */
 .blog .preview-title,
