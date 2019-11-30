@@ -367,7 +367,7 @@ input[type="submit"]:active {
   .category .preview-title,
   .type-post .preview-title,
   .type-page .preview-title {
-      font-size: 4rem;
+      font-size: 4.5rem;
       letter-spacing: -0.06rem;
   }
 
