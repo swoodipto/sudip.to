@@ -699,7 +699,7 @@ body:not(.home) .intro-text,
   font-style: italic;
   line-height: 1;
   letter-spacing: 18px;
-  text-shadow: 30px 25px rgba(0,0,0,0.1);
+  text-shadow: 25px 22px rgba(0,0,0,0.1);
   color: #5900ff;
   cursor: default;
   -webkit-text-fill-color: transparent;
