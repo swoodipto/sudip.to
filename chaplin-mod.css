@@ -250,6 +250,13 @@ input[type="submit"]:active {
   margin: 3rem 0 0 0;
 }
 
+.hero-more-icon {
+    font-size: 2.5rem;
+    font-weight: 100;
+    vertical-align: middle;
+    line-height: 0;
+}
+
 .custom-intro-cool-text {
   font-style: italic;
   font-weight: 600;
