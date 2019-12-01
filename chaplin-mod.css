@@ -491,6 +491,14 @@ button.sub-menu-toggle {
     padding: 2.5rem;
 }
 
+.home #site-footer {
+  margin-top: -12rem;
+}
+
+.home .footer-inner {
+  padding: 0;
+}
+
 /* MOBILE MENU
    — padding above 700px */
 @media (min-width: 700px) {
@@ -803,6 +811,10 @@ body:not(.home) .intro-text,
         transform: rotate(20deg) scale(0.8);
     }
 
+    .home #site-footer {
+      margin-top: -8rem;
+    }
+
 }
 
 @media screen and (max-width: 840px) {
@@ -858,15 +870,6 @@ body:not(.home) .intro-text,
         left: 350px;
         transform: rotate(20deg) scale(0.6);
     }
-}
-
-.home #site-footer {
-    margin-top: 0;
-    margin-top: -12rem;
-}
-
-.home .footer-inner {
-    padding: 0;
 }
 
 @media screen and (max-width: 700px) {
