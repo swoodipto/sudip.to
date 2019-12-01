@@ -866,7 +866,11 @@ body:not(.home) .intro-text,
   }
 
   .footer-credits {
-    margin-top: -8rem;
+    margin-top: -6rem;
+  }
+	
+  .home .footer-credits {
+    margin-top: -14rem;
   }
 
 }
