@@ -424,6 +424,10 @@ input[type="submit"]:active {
 }
 /* end STYLES ABOVE 1000px */
 
+.wp-block-pullquote p {
+  line-height: 1.5;
+} 
+
 /* MOBILE MENU
    — remove underline */
 .sub-menu a,
