@@ -79,6 +79,7 @@ body {
 .tax-jetpack-portfolio-type .post-date,
 .featured-media .wp-caption-text,
 body:not(.home) .intro-text .sharedaddy,
+.page .intro-text,
 .preview-excerpt .sharedaddy {
   display: none;
 }
