@@ -334,10 +334,10 @@ input[type="submit"]:active {
   /* MAIN MENU
      — menu links */
   .main-menu-alt a {
-      padding: 1px 0;
+    padding: 0 0 1px 0;
     transition: none;
     line-height: inherit;
-    border-bottom: 3px solid transparent;
+    border-bottom: 1px solid transparent;
   }
 
   /* MAIN MENU
