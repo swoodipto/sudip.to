@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Abhaya+Libre:800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800&display=swap');
 
 
 /* remove outline form all elements */
@@ -23,6 +23,18 @@ body {
 
 .entry-content a:hover {
   text-decoration: none;
+}
+
+.single-post .entry-content > p {
+  font-family: 'Abhaya Libre', serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  letter-spacing: -0.015em;
+  text-align: justify;
+}
+
+.single-post .entry-content > p:not(.has-drop-cap) {
+  text-indent: 6rem;
 }
 
 .widget p a {
@@ -320,7 +332,7 @@ input[type="submit"]:active {
 @media (min-width: 1000px) {
 
   .entry-content p, .entry-content li {
-      line-height: 2;
+      line-height: 1.65;
   }
 
   /* MAIN MENU
