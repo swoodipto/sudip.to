@@ -16,6 +16,10 @@ body {
   line-height: 1.65;
 }
 
+.single-post .entry-content p, .single-post .entry-content li {
+  line-height: 1.5;
+}
+
 .entry-content a {
   text-decoration: none;
   border-bottom: 1px solid;
@@ -27,14 +31,18 @@ body {
 
 .single-post .entry-content > p {
   font-family: 'Abhaya Libre', serif;
-  font-weight: 600;
-  font-size: 2.2rem;
-  letter-spacing: -0.015em;
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: -0.025em;
   text-align: justify;
 }
 
 .single-post .entry-content > p:not(.has-drop-cap) {
-  text-indent: 6rem;
+  text-indent: 4rem;
+}
+
+.single-post strong {
+  font-weight: 800;
 }
 
 .widget p a {
@@ -332,7 +340,20 @@ input[type="submit"]:active {
 @media (min-width: 1000px) {
 
   .entry-content p, .entry-content li {
-      line-height: 1.65;
+      line-height: 2;
+  }
+
+  .single-post .entry-content p, .single-post .entry-content li {
+    line-height: 1.65;
+}
+
+  .single-post .entry-content > p {
+    font-size: 2.4rem;
+    letter-spacing: -0.015em;
+  }
+
+  .single-post .entry-content > p:not(.has-drop-cap) {
+    text-indent: 6rem;
   }
 
   /* MAIN MENU
