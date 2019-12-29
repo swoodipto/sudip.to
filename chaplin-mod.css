@@ -12,6 +12,11 @@ body {
   overflow-x: hidden;
 }
 
+blockquote {
+  border-width: 0 0 0 .45rem;
+  border-color: #4c4c4c;
+}
+
 .entry-content p, .entry-content li {
   line-height: 1.65;
 }
