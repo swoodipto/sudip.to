@@ -17,10 +17,6 @@ blockquote {
   border-color: #4c4c4c;
 }
 
-h1.entry-title {
-  font-size: 4.5rem;
-}
-
 .entry-content p, .entry-content li {
   line-height: 1.8;
 }
@@ -568,9 +564,12 @@ button.sub-menu-toggle {
 
 }
 
-@media (max-width: 700px) {
+@media (max-width: 699px) {
   h3, .heading-size-3 {
     font-size: 3.2rem;
+  }
+  .entry-title, .archive-title {
+    font-size: 4.5rem;
   }
 }
 
