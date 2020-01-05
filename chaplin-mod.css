@@ -17,6 +17,10 @@ blockquote {
   border-color: #4c4c4c;
 }
 
+h1.entry-title {
+  font-size: 4.5rem;
+}
+
 .entry-content p, .entry-content li {
   line-height: 1.8;
 }
