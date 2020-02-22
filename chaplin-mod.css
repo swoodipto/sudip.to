@@ -360,6 +360,10 @@ input[type="submit"]:active {
   .single-post .entry-content > p:not(.has-drop-cap) {
     text-indent: 6rem;
   }
+	
+	.single-post .entry-content .wp-block-pullquote.alignleft + p, .single-post .entry-content .wp-block-pullquote.alignright + p {
+			text-indent: 0;
+	}
 
   /* MAIN MENU
      — menu "li" items */
