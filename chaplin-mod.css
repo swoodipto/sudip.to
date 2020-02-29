@@ -12,6 +12,30 @@ body {
   overflow-x: hidden;
 }
 
+h1, .heading-size-1 {
+    font-size: 4.5rem;
+}
+
+h2, .heading-size-2 {
+    font-size: 4rem;
+}
+
+h3, .heading-size-3 {
+    font-size: 3.4rem;
+}
+
+h4, .heading-size-4 {
+    font-size: 3rem;
+}
+
+h5, .heading-size-5 {
+    font-size: 2.2rem;
+}
+
+h6, .heading-size-6 {
+    font-size: 1.8rem;
+}
+
 blockquote {
   border-width: 0 0 0 .45rem;
   border-color: #4c4c4c;
@@ -360,10 +384,6 @@ input[type="submit"]:active {
   .single-post .entry-content > p:not(.has-drop-cap) {
     text-indent: 6rem;
   }
-	
-	.single-post .entry-content .wp-block-pullquote.alignleft + p, .single-post .entry-content .wp-block-pullquote.alignright + p {
-			text-indent: 0;
-	}
 
   /* MAIN MENU
      — menu "li" items */
@@ -467,6 +487,10 @@ input[type="submit"]:active {
 }
 /* end STYLES ABOVE 1000px */
 
+	.single-post .entry-content .wp-block-pullquote.alignleft + p, .single-post .entry-content .wp-block-pullquote.alignright + p {
+			text-indent: 0;
+	}
+
 .wp-block-pullquote p {
   line-height: 1.5;
 } 
@@ -554,24 +578,45 @@ button.sub-menu-toggle {
         padding: 2.5rem;
     }
 
-  h1, .heading-size-1 { font-size: 6.2rem; }
-  h2, .heading-size-2 { font-size: 5rem; }
-  h3, .heading-size-3:not(.preview-title) { font-size: 4rem; }
-  h4, .heading-size-4 { font-size: 3.2rem; }
-  h5, .heading-size-5 { font-size: 2.5rem; }
-  h6, .heading-size-6 { font-size: 2rem; }
-
   .wp-block-image {
       margin-bottom: 5rem;
       margin-top: 5rem;
   }
+	
+	h1, .heading-size-1 {
+		font-size: 9rem;
+	}
+	h2, .heading-size-2 {
+		font-size: 7.5rem;
+	}
+	h3, .heading-size-3 {
+		font-size: 6rem;
+	}
+	h4, .heading-size-4 {
+		font-size: 5rem;
+	}
+	h5, .heading-size-5 {
+		font-size: 4.2rem;
+	}
+	h6, .heading-size-6 {
+		font-size: 3.2rem;
+	}
+
+}
+
+/* aligned floating items below 700px */
+@media screen and (max-width: 700px) {
+
+	.alignleft,
+	.alignright {
+		float: none;
+		max-width: 100%;
+		margin: 3.5rem 1rem;
+	}
 
 }
 
 @media (max-width: 699px) {
-  h3, .heading-size-3 {
-    font-size: 3.2rem;
-  }
   .entry-title, .archive-title {
     font-size: 4.5rem;
   }
