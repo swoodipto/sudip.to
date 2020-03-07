@@ -58,11 +58,19 @@ blockquote {
   text-decoration: none;
 }
 
-.single-post .entry-content > p {
+.entry-content .wp-block-button a {
+    border: 0;
+}
+
+.single-post .entry-content > p,
+.single-post .entry-content li {
   font-family: 'Abhaya Libre', serif;
   font-weight: 500;
   font-size: 2rem;
   letter-spacing: -0.025em;
+}
+
+.single-post .entry-content > p {
   text-align: justify;
 }
 
@@ -376,7 +384,8 @@ input[type="submit"]:active {
     line-height: 1.65;
 }
 
-  .single-post .entry-content > p {
+  .single-post .entry-content > p,
+	.single-post .entry-content li {
     font-size: 2.4rem;
     letter-spacing: -0.015em;
   }
@@ -455,6 +464,7 @@ input[type="submit"]:active {
       background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-21.png);
       display: inline-block;
       padding: 0 10px 0 0;
+			border-radius: 20px;
   }
 
   /* PAGE FEATURED MEDIA
@@ -483,6 +493,20 @@ input[type="submit"]:active {
       margin-bottom: 5rem;
       margin-top: 5rem;
   }
+	
+	.post-template-default.single-post .post.has-post-thumbnail .entry-content {
+		position: relative;
+		z-index: 1;
+		padding: 40px 50px 0 0;
+		border-radius: 0 20px 0 0;
+		max-width: calc( 58rem + 50px );
+		background: url(https://sudipto.xyz/wp-content/uploads/2019/11/bg-noise-21.png);
+	}
+
+	.post-template-default.single-post .post.has-post-thumbnail .featured-media img {
+		border-radius: 20px;
+		margin-bottom: -200px;
+	}
 
 }
 /* end STYLES ABOVE 1000px */
@@ -613,6 +637,14 @@ button.sub-menu-toggle {
 		max-width: 100%;
 		margin: 3.5rem 1rem;
 	}
+	
+	.wp-block-column {
+		flex-basis: 100% !important;
+	}
+	
+.blog .grid .grid-item {
+    margin-bottom: 5.5rem;
+}
 
 }
 
@@ -620,6 +652,12 @@ button.sub-menu-toggle {
   .entry-title, .archive-title {
     font-size: 4.5rem;
   }
+}
+
+@media screen and (max-width: 640px) {
+    button, .button, .faux-button, .wp-block-button__link, .wp-block-file__button, input[type='button'], input[type='reset'], input[type='submit'], #subscribe-email input {
+        width: 100%;
+    }
 }
 
 /* TITLE
