@@ -725,6 +725,7 @@ body:not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio)
   visibility: visible;
   position: absolute;
   left: 0;
+  top: 0;
 }
 
 /* TITLE
@@ -786,7 +787,8 @@ body:not(.home) .intro-text,
 /* SEARCH
    — entry kind label style */
 .search .type-post .preview-title:before,
-.search .type-page .preview-title:before {
+.search .type-page .preview-title:before,
+.search .type-jetpack-portfolio .preview-title:before {
   display: block;
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
     Helvetica, sans-serif;
@@ -1200,4 +1202,148 @@ body:not(.home) .intro-text,
     width: 100%;
     max-width: none;
   }
+}
+
+.post-type-archive-jetpack-portfolio #site-content .archive-title,
+.tax-jetpack-portfolio-type #site-content .archive-title {
+    font-size: 8rem;
+}
+
+.post-type-archive-jetpack-portfolio #site-content .archive-title:after,
+.tax-jetpack-portfolio-type #site-content .archive-title:after {
+    font-size: 10rem;
+}
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid {
+    margin-left: -5rem;
+}
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item  {
+    width: calc( 33.33% - 5rem );
+    margin-left: 5rem;
+}
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-media a,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-media a  {
+    border: 1px solid rgba(0,0,0,0.18);
+    height: 340px;
+}
+
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-title,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-title  {
+    font-size: 2rem;
+    letter-spacing: -0.005em;
+}
+
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-title a,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-title a {
+    color: #fff;
+    background-color: #c3c3a2;
+    padding: 4px 8px;
+    line-height: 1.5em;
+    border-radius: 5px;
+    -webkit-box-decoration-break: clone;
+    -o-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-title a:hover,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-title a:hover {
+    text-decoration: none;
+}
+
+.post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-jetpack-portfolio:hover .preview-title a,
+.tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-jetpack-portfolio:hover .preview-title a {
+    color: #fff;
+    background-color: #5900ff;
+}
+
+@media (max-width: 1110px) {
+    .post-type-archive-jetpack-portfolio #site-content .archive-title,
+    .tax-jetpack-portfolio-type #site-content .archive-title {
+        font-size: 5rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .archive-title:after,
+    .tax-jetpack-portfolio-type #site-content .archive-title:after {
+        font-size: 8rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid {
+        margin-left: -4rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item  {
+        width: calc( 50% - 4rem );
+        margin-left: 4rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-media a,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-media a  {
+        height: 260px;
+    }
+}
+
+@media (max-width: 700px) {
+    .post-type-archive-jetpack-portfolio #site-content .archive-title,
+    .tax-jetpack-portfolio-type #site-content .archive-title {
+        font-size: 2.5rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .archive-title:after,
+    .tax-jetpack-portfolio-type #site-content .archive-title:after {
+        font-size: 4.5rem;
+    }
+    
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid {
+        margin-left: -1.8rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item  {
+        width: calc( 50% - 1.8rem );
+        margin-left: 1.8rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-media a,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-media a  {
+        height: 150px;
+        border-radius: 12px;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-title,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-title  {
+        font-size: 1.2rem;
+        letter-spacing: 0em;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-title a,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-title a {
+        padding: 2px 4px;
+        line-height: 1em;
+        border-radius: 4px;
+        background-color: #5900ff;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .post-meta-wrapper ul,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .post-meta-wrapper ul {
+        font-size: 1.1rem;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .post-meta-wrapper .meta-icon,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .post-meta-wrapper .meta-icon {
+        margin-right: 0.4em;
+    }
+
+    .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .post-meta-wrapper .meta-icon svg,
+    .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .post-meta-wrapper .meta-icon svg {
+        max-width: 85%;
+    }
 }
