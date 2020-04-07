@@ -526,6 +526,11 @@ input[type="submit"]:active {
 .sub-menu li.current-menu-item > a {
   text-decoration: none;
   border: none;
+  transition: all .25s ease;
+}
+
+.sub-menu li a:hover {
+  color: #5900ff;
 }
 
 /* MOBILE MENU
@@ -672,7 +677,7 @@ button.sub-menu-toggle {
 }
 
 @media screen and (max-width: 640px) {
-  button,
+  button:not(.sub-menu-toggle),
   .button,
   .faux-button,
   .wp-block-button__link,
