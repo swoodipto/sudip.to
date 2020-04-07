@@ -132,6 +132,10 @@ blockquote {
   color: #ec426a;
 }
 
+.search-modal {
+  background: linear-gradient(to bottom, rgba(29, 0, 185, 0.9), rgba(144, 16, 57, 0.5));
+}
+
 /* HIDDEN ITEMS */
 .to-the-content-wrapper,
 /* .home .post-inner, */
