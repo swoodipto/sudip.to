@@ -140,8 +140,8 @@ blockquote {
 .post-type-archive-jetpack-portfolio .post-date,
 .single-jetpack-portfolio .post-date,
 .single-jetpack-portfolio .related-posts,
-.tax-jetpack-portfolio-type .preview-excerpt,
-.tax-jetpack-portfolio-type .post-date,
+.type-jetpack-portfolio .post-date,
+.type-jetpack-portfolio .preview-excerpt,
 .featured-media .wp-caption-text,
 body:not(.home) .intro-text .sharedaddy,
 .page .intro-text,
@@ -454,17 +454,6 @@ input[type="submit"]:active {
     letter-spacing: -0.1rem;
   }
 
-  /* TITLE
-     — preview titles */
-  .blog .preview-title,
-  .related-posts .preview-title,
-  .category .preview-title,
-  .type-post .preview-title,
-  .type-page .preview-title {
-    font-size: 4.5rem;
-    letter-spacing: -0.06rem;
-  }
-
   /* PAGE FEATURED MEDIA
      — title */
   body.page.has-post-thumbnail:not(.home):not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio)
@@ -642,6 +631,18 @@ button.sub-menu-toggle {
   h6,
   .heading-size-6 {
     font-size: 3.2rem;
+  }
+
+/* TITLE
+  — preview titles */
+  .blog .preview-title,
+  .related-posts .preview-title,
+  .category .preview-title,
+  .type-post .preview-title,
+  .type-page .preview-title,
+  .type-jetpack-portfolio .preview-title {
+    font-size: 4rem;
+    letter-spacing: -0.06rem;
   }
 }
 
@@ -1242,7 +1243,7 @@ body:not(.home) .intro-text,
 .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-title a,
 .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-title a {
     color: #fff;
-    background-color: #c3c3a2;
+    background-color: #bcc488;
     padding: 4px 8px;
     line-height: 1.5em;
     border-radius: 5px;
@@ -1260,6 +1261,10 @@ body:not(.home) .intro-text,
 .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-jetpack-portfolio:hover .preview-title a {
     color: #fff;
     background-color: #5900ff;
+}
+
+.single-jetpack-portfolio .pagination-single {
+  display: none;
 }
 
 @media (max-width: 1110px) {
