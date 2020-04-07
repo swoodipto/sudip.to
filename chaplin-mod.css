@@ -704,8 +704,6 @@ body:not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio)
    — blog posts serif */
 .blog .preview-title,
 .related-posts .preview-title,
-.category .preview-title,
-.category .archive-title,
 .single-post .entry-title,
 .type-post .preview-title {
   font-family: "Abhaya Libre", serif;
