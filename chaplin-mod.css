@@ -712,20 +712,20 @@ body:not(.archive):not(.search):not(.single-post):not(.single-jetpack-portfolio)
 
 /* TITLE
    — PORTFOLIO hide default title */
-.post-type-archive-jetpack-portfolio .archive-title {
+/* .post-type-archive-jetpack-portfolio .archive-title {
   position: relative;
   visibility: hidden;
-}
+} */
 
 /* TITLE
    — PORTFOLIO custom title */
-.post-type-archive-jetpack-portfolio .archive-title:after {
+/* .post-type-archive-jetpack-portfolio .archive-title:after {
   content: "Projects —";
   visibility: visible;
   position: absolute;
   left: 0;
   top: 0;
-}
+} */
 
 /* TITLE
    — preview titles */
