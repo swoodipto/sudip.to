@@ -73,6 +73,10 @@ pre code {
     color: rgba(0, 0, 0, 0.9);
 }
 
+.has-background {
+  border-radius: 7px;
+}
+
 .syntaxhighlighter {
     border: 1px solid rgba(0, 0, 0, 0.32);
     padding: 10px 0;
