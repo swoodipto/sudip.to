@@ -89,7 +89,7 @@ pre code {
   text-decoration: none;
 }
 
-.entry-content .wp-block-button a {
+.entry-content .wp-block-button:not(.is-style-outline) a {
   border: 0;
 }
 
@@ -97,8 +97,20 @@ pre code {
 .single-post .entry-content li {
   font-family: "Abhaya Libre", serif;
   font-weight: 500;
-  font-size: 2rem;
   letter-spacing: -0.025em;
+}
+
+.single-post .entry-content > p:not([class*="font-size"]),
+.single-post .entry-content li:not([class*="font-size"]) {
+    font-size: 2rem;
+}
+
+.single-post .entry-content .has-large-font-size {
+	font-size: 2.6rem;
+}
+
+.single-post .entry-content .has-larger-font-size {
+	font-size: 3.2rem;
 }
 
 .single-post .entry-content > p {
@@ -106,7 +118,7 @@ pre code {
 }
 
 .single-post .entry-content > p:not(.has-drop-cap) {
-  text-indent: 4rem;
+  text-indent: 3rem;
 }
 
 .single-post strong {
@@ -423,12 +435,24 @@ input[type="submit"]:active {
 
   .single-post .entry-content > p,
   .single-post .entry-content li {
-    font-size: 2.4rem;
     letter-spacing: -0.015em;
   }
+	
+	.single-post .entry-content > p:not([class*="font-size"]),
+	.single-post .entry-content li:not([class*="font-size"]) {
+    font-size: 2.4rem;
+	}
+	
+	.single-post .entry-content .has-large-font-size {
+		font-size: 3rem;
+	}
+	
+	.single-post .entry-content .has-larger-font-size {
+		font-size: 3.6rem;
+	}
 
   .single-post .entry-content > p:not(.has-drop-cap) {
-    text-indent: 6rem;
+    text-indent: 4rem;
   }
 
   /* MAIN MENU
@@ -1382,4 +1406,47 @@ body:not(.home) .intro-text,
     .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .post-meta-wrapper .meta-icon svg {
         max-width: 85%;
     }
+}
+
+/*CUSTOM TITLES TEST*/
+.archive.tax-jetpack-portfolio-type #site-content .archive-header .archive-title {
+    visibility: hidden;
+    position: relative;
+}
+
+.archive.tax-jetpack-portfolio-type.term-drawings-by-sudipto #site-content .archive-header .archive-title:after {
+    content: '';
+    display: block;
+    visibility: visible;
+    background: url("https://apaprapp.files.wordpress.com/2020/05/drawings-site-title-square-06.png") no-repeat;
+    background-size: contain;
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    top: -60px;
+		left: 0;
+}
+
+@media only screen and (max-width: 1110px) {
+    .archive.tax-jetpack-portfolio-type.term-drawings-by-sudipto #site-content .archive-header .archive-title:after {
+        width: 350px;
+        height: 175px;
+        top: -90px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .archive.tax-jetpack-portfolio-type.term-drawings-by-sudipto #site-content .archive-header .archive-title:after {
+        width: 220px;
+        height: 110px;
+        top: -45px;
+    }
+}
+
+.archive.tax-jetpack-portfolio-type.term-apapr #site-content .archive-header .archive-title:after {
+		content: 'apapr.';
+    visibility: visible;
+    position: absolute;
+    top: 0;
+		left: 0;
 }
