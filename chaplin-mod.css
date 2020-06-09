@@ -782,6 +782,9 @@
     .wp-block-button:not(.alignleft):not(.alignright):last-child {
         margin-bottom: 1.5rem;
     }
+		.wp-block-button:not(.alignleft):not(.alignright):first-child {
+			margin-top: 1.5rem;
+		}
  }
  
  /* TITLE
