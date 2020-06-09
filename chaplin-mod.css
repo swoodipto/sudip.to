@@ -1306,7 +1306,7 @@
  
  .post-type-archive-jetpack-portfolio #site-content .grid.posts-grid .grid-item .preview-media a,
  .tax-jetpack-portfolio-type #site-content .grid.posts-grid .grid-item .preview-media a  {
-     border: 1px solid rgba(0,0,0,0.18);
+     /* border: 1px solid rgba(0,0,0,0.18); */
      height: 340px;
  }
  
