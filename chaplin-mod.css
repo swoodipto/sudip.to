@@ -1922,16 +1922,6 @@
    font-size: 3.5rem;
  }
  
- .blog article:not(.has-post-thumbnail) .preview-title:before {
-     content: "";
-     display: block;
-     background: #00bfc2;
-     max-width: 20%;
-     min-width: 60px;
-     height: 4px;
-     margin: 5px 0 10px 0;
- }
- 
  @media (min-width: 1220px) {
    .alignwide,
    .alignfull {
