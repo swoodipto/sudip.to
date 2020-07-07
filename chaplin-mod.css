@@ -225,8 +225,12 @@
  }
  
  .grunion-field-wrap {
-   margin: 2.5rem 0;
+    margin: 2.5rem 0;
  }
+
+ .contact-form .grunion-field-wrap {
+    margin: 0.5rem 0;
+  }
  
  /* BUTTON
     — global style */
