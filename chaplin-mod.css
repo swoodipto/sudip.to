@@ -289,7 +289,7 @@
  .related-posts,
  .widget,
  .select2-container .select2-selection--single {
-   border-color: rgba(0, 0, 0, 0.25);
+   /*border-color: rgba(0, 0, 0, 0.25);*/
  }
  
  /* BUTTON
@@ -685,7 +685,7 @@
  /* MOBILE MENU
     — border */
  .main-menu li {
-   border-color: #cecece;
+   /*border-color: #cecece;*/
  }
  
  /* MOBILE MENU
@@ -699,10 +699,14 @@
     — current item */
  .main-menu li.current-menu-item > .ancestor-wrapper > a {
    text-decoration: none;
-   background: #5900ff;
-   color: #ffffd2;
+   background: #00bfc2;
+   color: #fff;
    padding: 2.5rem;
  }
+
+.main-menu li > .ancestor-wrapper > a {
+    font-size: inherit;
+}
  
  .home #site-footer {
    margin-top: -12rem;
