@@ -608,15 +608,45 @@
    transition: all .25s ease;
  }
  
- .sub-menu li a:hover {
-   color: #5900ff;
- }
- 
- /* MOBILE MENU
-    — sub-menu-shadow */
- .main-menu-alt li.menu-item-has-children:hover > ul {
-   box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.25);
- }
+.main-menu-alt ul.sub-menu {
+    top: calc( 100% + 1.2rem );
+}
+
+.main-menu-alt li.menu-item-has-children:hover > ul {
+    background: #fffef9;
+    box-shadow: 0 0 55px -5px rgba(0, 0, 0, 0.25);
+}
+
+.main-menu-alt .sub-menu li:hover {
+    background: #00bfc2;
+}
+
+.main-menu-alt .sub-menu li a {
+    transition: none;
+}
+
+.main-menu-alt .sub-menu li:hover a {
+    color: #fff;
+}
+
+.main-menu-alt .sub-menu li {
+    margin: 0;
+}
+
+.main-menu a:hover {
+    text-decoration: none;
+    background: rgba(0,0,0,0.08);
+}
+
+.main-menu-alt li:hover a {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+.main-menu-alt li:hover .sub-menu li a {
+    text-decoration: none;
+    border-bottom: 0;
+}
  
  /* MOBILE MENU
     — rotate arrow */
@@ -628,6 +658,10 @@
     — remove shadow from arrow */
  button.sub-menu-toggle {
    box-shadow: none;
+ }
+
+ a.sub-menu-toggle {
+   margin: 0;
  }
  
  /* MOBILE MENU
@@ -658,8 +692,7 @@
     — menu items hover */
  .main-menu a:hover {
    text-decoration: none;
-   background: #989898;
-   color: #efefe7;
+   background: rgba(0,0,0,0.08);
  }
  
  /* MOBILE MENU
@@ -1255,9 +1288,9 @@
    box-shadow: 0px 13px 47px -15px rgb(116, 69, 254);
  }
 
- #eu-cookie-law form {
-    margin-bottom: -25px;
- }
+	#eu-cookie-law form {
+		margin-bottom: -25px;
+	}
  
  #eu-cookie-law input,
  #eu-cookie-law input:focus,
