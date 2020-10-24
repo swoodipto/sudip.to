@@ -106,16 +106,15 @@
    border: 0;
  }
  
- .single-post .entry-content p:not(.has-background),
+ .single-post .entry-content > p,
  .single-post .entry-content li {
    font-family: "Abhaya Libre", serif;
    font-weight: 500;
    letter-spacing: -0.025em;
  }
  
- .single-post .entry-content p:not([class*="font-size"]),
- .single-post .entry-content li:not([class*="font-size"]),
- .single-post .entry-content p:not([class*="font-size"]).has-background {
+ .single-post .entry-content > p:not([class*="font-size"]),
+ .single-post .entry-content li:not([class*="font-size"]) {
      font-size: 2rem;
  }
  
@@ -131,7 +130,7 @@
    text-align: justify;
  }
  
- .single-post .entry-content > p:not(.has-drop-cap):not(.has-background) {
+ .single-post .entry-content > p:not(.has-drop-cap) {
    text-indent: 3rem;
  }
  
@@ -473,12 +472,12 @@
      line-height: 1.65;
    }
  
-   .single-post .entry-content p,
+   .single-post .entry-content > p,
    .single-post .entry-content li {
      letter-spacing: -0.015em;
    }
    
-   .single-post .entry-content p:not([class*="font-size"]),
+   .single-post .entry-content > p:not([class*="font-size"]),
    .single-post .entry-content li:not([class*="font-size"]) {
      font-size: 2.4rem;
    }
@@ -491,7 +490,7 @@
      font-size: 3.6rem;
    }
  
-   .single-post .entry-content > p:not(.has-drop-cap):not(.has-background) {
+   .single-post .entry-content > p:not(.has-drop-cap) {
      text-indent: 4rem;
    }
  
