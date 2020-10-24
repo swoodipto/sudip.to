@@ -127,7 +127,7 @@
    font-size: 3.2rem;
  }
  
- .single-post .entry-content > p {
+ .single-post .entry-content p {
    text-align: justify;
  }
  
@@ -461,12 +461,12 @@
      line-height: 1.65;
    }
  
-   .single-post .entry-content > p,
+   .single-post .entry-content p,
    .single-post .entry-content li {
      letter-spacing: -0.015em;
    }
    
-   .single-post .entry-content > p:not([class*="font-size"]),
+   .single-post .entry-content p:not([class*="font-size"]),
    .single-post .entry-content li:not([class*="font-size"]) {
      font-size: 2.4rem;
    }
