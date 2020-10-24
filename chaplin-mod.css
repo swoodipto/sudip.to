@@ -440,6 +440,18 @@
      height: 4px;
      margin: 5px 0 10px 0;
  }
+
+.single-post .entry-content p.has-background {
+    text-indent: 0 !important;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Helvetica Neue";
+    font-size: 1.66rem;
+    line-height: 1.85;
+}
+
+.single-post .entry-content blockquote.wp-block-quote p {
+    font-size: 1.66rem;
+    line-height: 1.85;
+}
  
  @media (min-width: 1220px) {
    .alignwide,
@@ -587,6 +599,16 @@
      img {
      border-radius: 20px;
    }
+
+    .single-post .entry-content p.has-background {
+        font-size: 2rem;
+        line-height: 1.85;
+    }
+
+    .single-post .entry-content blockquote.wp-block-quote p:not([class*="font-size"]) {
+        font-size: 1.95rem;
+        line-height: 2;
+    }
  }
  /* end STYLES ABOVE 1000px */
  
