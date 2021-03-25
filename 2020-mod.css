@@ -1,0 +1,584 @@
+:root {
+  --accent1: #f69cad;
+  --accent1alpha: rgb(246 156 173 / 60%);
+  --accent2: #f8cfbb;
+  --accent2alpha: rgb(248 207 187 / 60%);
+}
+
+/* ----------------------------- */
+
+/*	1. TYPOGRAPHY
+/* ----------------------------- */
+
+/* 
+ * dropcaps
+ */
+.has-drop-cap:not(:focus):first-letter {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* 
+ * paragraph
+ */
+p {
+  letter-spacing: -0.05rem;
+  line-height: 1.65;
+}
+
+p.has-background {
+  border-radius: 6px;
+}
+
+/* 
+ * title
+ */
+#site-title,
+.site-title,
+#site-title a,
+.site-title a,
+.entry-title,
+.entry-title a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.widget-title {
+  color: var(--accent2);
+}
+.page header h1,
+.blog header h1 {
+  font-size: 13vw;
+  hyphens: auto;
+}
+
+.single-post header h1 {
+  font-size: 7vw;
+}
+
+.archive header h1 span.color-accent {
+  font-weight: 200;
+  font-size: 5vw;
+}
+
+.category-1486.archive header h1 span.color-accent,
+.category-1485.archive header h1 span.color-accent,
+.category-1484.archive header h1 span.color-accent,
+.category-1449.archive header h1 span.color-accent {
+  display: none;
+}
+
+.archive header h1 span {
+  display: block;
+  font-weight: 900;
+  font-size: 10vw;
+  hyphens: auto;
+}
+
+header h1 {
+  text-align: center;
+  line-height: 1.1;
+}
+
+.singular .intro-text p {
+  letter-spacing: -0.05em;
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 1400px) {
+  .page header h1,
+  .blog header h1,
+  .archive header h1 span {
+    font-size: 18rem;
+  }
+  .single-post header h1 {
+    font-size: 9.5rem;
+  }
+  .archive header h1 span.color-accent {
+    font-size: 7rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .page header h1,
+  .blog header h1,
+  .archive header h1 span {
+    font-size: 6rem;
+  }
+  .single-post header h1 {
+    font-size: 4.5rem;
+  }
+  .archive header h1 span.color-accent {
+    font-weight: 400;
+    font-size: 2.5rem;
+  }
+}
+
+.page header h1:after,
+.archive.category-blog header h1 span:not(.color-accent):after,
+.archive.category-book-notes header h1 span:not(.color-accent):after,
+.archive.category-microblog header h1 span:not(.color-accent):after,
+.archive.category-asides header h1 span:not(.color-accent):after {
+  content: '.';
+}
+
+.fancy-letter-spacer {
+  letter-spacing: 1rem;
+}
+
+.branding-name {
+  letter-spacing: 1.8rem;
+  font-style: italic;
+  color: var(--accent1);
+  hyphens: auto;
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6,
+.entry-content cite,
+.entry-content figcaption,
+.entry-content table,
+.entry-content address,
+.entry-content .wp-caption-text,
+.entry-content .wp-block-file,
+blockquote *,
+.vp-filter__item,
+.vp-sort__item,
+.vp-sort select,
+.vp-portfolio__item-meta-category,
+.vp-pagination__item,
+.vp-filter__item,
+.vp-sort__item,
+.vp-sort select,
+.vp-portfolio__item-meta-category,
+.vp-pagination__item,
+.pagination-single a {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* ----------------------------- */
+
+/*	2. LINKS & MENU
+/* ----------------------------- */
+
+body:not(.overlay-header) .primary-menu > li > a,
+body:not(.overlay-header) .primary-menu > li > .icon,
+.modal-menu a,
+.footer-menu a,
+.footer-widgets a,
+#site-footer .wp-block-button.is-style-outline,
+.wp-block-pullquote:before,
+.singular:not(.overlay-header) .entry-header a,
+.archive-header a,
+.header-footer-group .color-accent,
+.header-footer-group .color-accent-hover:hover {
+  color: var(--accent1);
+}
+
+.color-accent,
+.color-accent-hover:hover,
+.color-accent-hover:focus,
+:root .has-accent-color,
+.has-drop-cap:not(:focus):first-letter,
+.wp-block-button.is-style-outline,
+a {
+  color: var(--accent1);
+}
+
+/* ----------------------------- */
+
+/*	3. INPUTS & BUTTONS
+/* ----------------------------- */
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='url'],
+input[type='date'],
+input[type='month'],
+input[type='time'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='week'],
+input[type='number'],
+input[type='search'],
+input[type='tel'],
+input[type='color'],
+textarea {
+  border-radius: 6px;
+}
+
+button,
+#site-content #infinite-handle span button {
+  font-family: 'Poppins', sans-serif;
+  background: var(--accent1);
+  border-radius: 6px;
+  box-shadow: 0px 13px 25px -15px var(--accent1);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+button:hover,
+#site-content #infinite-handle span button:hover {
+  background: var(--accent1);
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0px 20px 35px -18px var(--accent1alpha);
+  transform: translateY(-2px);
+  transition: all 0.25s ease;
+}
+
+button:active,
+#site-content #infinite-handle span button:active {
+  background: var(--accent1);
+  border-radius: 6px;
+  box-shadow: 0px 8px 10px -6px var(--accent1alpha);
+  transform: none;
+}
+
+.wp-block-button.accent-btn {
+  --color-accent-btn-1: var(--accent1);
+  --color-accent-btn-1-faded: var(--accent1alpha);
+  --color-accent-btn-2: var(--accent2);
+  --color-accent-btn-2-faded: var(--accent2alpha);
+  transition: all 0.25s ease;
+}
+
+.wp-block-button.accent-btn a {
+  border-radius: 6px;
+}
+
+.wp-block-button.accent-btn.is-style-circular {
+  border-radius: 100px;
+}
+
+.wp-block-button.accent-btn.is-style-outline,
+.wp-block-button.accent-btn.is-style-outline:hover,
+.wp-block-button.accent-btn.is-style-outline:active {
+  box-shadow: none;
+}
+
+.wp-block-button.accent-btn.is-style-outline.accent-btn-1 {
+  color: var(--color-accent-btn-1);
+}
+
+.wp-block-button.accent-btn.is-style-outline.accent-btn-2 {
+  color: var(--color-accent-btn-2);
+}
+
+.wp-block-button.accent-btn:hover {
+  transform: translateY(-2px);
+}
+
+.wp-block-button.accent-btn:active {
+  transform: none;
+}
+
+.wp-block-button.accent-btn a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wp-block-button.accent-btn-1 a {
+  background: var(--color-accent-btn-1);
+}
+
+.wp-block-button.accent-btn-1 {
+  box-shadow: 0px 13px 25px -15px var(--color-accent-btn-1);
+}
+
+.wp-block-button.accent-btn-1:hover {
+  box-shadow: 0px 20px 35px -18px var(--color-accent-btn-1-faded);
+}
+
+.wp-block-button.accent-btn-1:active {
+  box-shadow: 0px 8px 10px -6px var(--color-accent-btn-1-faded);
+}
+
+.wp-block-button.accent-btn-2 a {
+  background: var(--color-accent-btn-2);
+}
+
+.wp-block-button.accent-btn-2 {
+  box-shadow: 0px 13px 25px -15px var(--color-accent-btn-2);
+}
+
+.wp-block-button.accent-btn-2:hover {
+  box-shadow: 0px 20px 35px -18px var(--color-accent-btn-2-faded);
+}
+
+.wp-block-button.accent-btn-2:active {
+  box-shadow: 0px 8px 10px -6px var(--color-accent-btn-2-faded);
+}
+
+button.toggle {
+  background: none;
+  box-shadow: none;
+  transform: none;
+}
+
+button.toggle .toggle-text {
+  display: none;
+}
+
+/* ----------------------------- */
+
+/*	4. FEATURED MEDIA
+/* ----------------------------- */
+
+/* 
+ * featured media inner
+ */
+.post .featured-media-inner {
+  position: relative;
+}
+
+.post .featured-media-inner:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 85%;
+  background: rgb(0 0 0 / 35%);
+  position: absolute;
+  right: -6%;
+  bottom: -10%;
+  z-index: 0;
+  border-radius: 25px;
+}
+
+/* 
+ * featured image
+ */
+.post .featured-media img {
+  position: relative;
+  border-radius: 25px;
+  z-index: 1;
+}
+
+@media (max-width: 1400px) {
+  .post .featured-media-inner:after {
+    width: 90%;
+    height: 50%;
+    left: 5%;
+    bottom: -10%;
+    border-radius: 25px;
+  }
+
+  .post .featured-media img {
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .single-post .post .featured-media img {
+    border-radius: 0;
+  }
+
+  .single-post .post .featured-media-inner:after {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .post .featured-media-inner:after {
+    bottom: -12%;
+    border-radius: 12px;
+  }
+
+  .post .featured-media img {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 460px) {
+  .post .featured-media-inner:after {
+    bottom: -16%;
+  }
+
+  .post .featured-media img {
+  }
+}
+
+/* 
+ * single post content
+ */
+@media (min-width: 700px) {
+  .single-post .post-inner {
+    padding-top: 10rem;
+  }
+}
+
+/* ----------------------------- */
+
+/*	5. SEARCH
+/* ----------------------------- */
+.search-modal {
+  background: linear-gradient(
+    to bottom,
+    rgb(28 33 54),
+    rgb(28 33 54 / 60%) 60%,
+    rgb(130 67 78 / 40%)
+  );
+}
+
+input[type='search']:focus {
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+body:not(.single-post) .post.category-thoughts .post-inner .entry-content p,
+body:not(.single-post) .post.category-quotes .post-inner .entry-content p {
+  text-align: center;
+  font: normal 600 3rem/1.3 'Poppins', sans-serif;
+}
+
+body:not(.single-post)
+  .post.category-thoughts
+  .post-inner
+  .entry-content
+  p:before,
+body:not(.single-post)
+  .post.category-quotes
+  .post-inner
+  .entry-content
+  p:before {
+  content: '”';
+  border: 0.1rem solid var(--accent1);
+  color: var(--accent1);
+  font-family: 'Inter Var', sans-serif;
+  font-size: 5.9rem;
+  border-radius: 50%;
+  display: block;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 auto 1.5rem auto;
+  text-align: center;
+  height: 4.4rem;
+  width: 4.4rem;
+}
+
+.post.category-microblog .entry-categories-inner a[href*='microblog'],
+.post.category-blog .entry-categories-inner a[href*='blog'],
+.post.category-asides .entry-categories-inner a[href*='asides'],
+.post.category-book-notes .entry-categories-inner a[href*='book-notes'] {
+  display: none;
+}
+
+.comment-likes-widget {
+  background: rgb(255 255 255 / 30%);
+  padding: 0.4rem 0.5rem 0.8rem;
+}
+
+.comment-reply-link,
+.comment-likes-widget {
+  border-radius: 4px;
+}
+
+.comment-author .fn {
+  font-family: 'Poppins', sans-serif;
+}
+
+.vp-pagination__style-minimal .vp-pagination__item > * {
+  color: var(--accent1);
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 6px 15px;
+  margin-top: 30px;
+}
+
+.vp-pagination__style-minimal .vp-pagination__item > a:hover,
+.vp-pagination__style-minimal .vp-pagination__item > a:focus {
+  color: inherit;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .vp-portfolio__item .vp-portfolio__item-img,
+  .vp-portfolio__item .vp-portfolio__item-overlay {
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+  }
+}
+
+.vp-portfolio__item .vp-portfolio__item-overlay {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.vp-notice {
+  background-color: #454d6f;
+  border-color: #454d6f;
+  color: #a1a8c8;
+  border-left-width: 0;
+  text-align: center;
+}
+
+.vp-pagination__style-minimal.vp-pagination__no-more
+  .vp-pagination__load-more
+  > .vp-pagination__load-more-no-more {
+  display: none;
+}
+
+.wp-block-media-text.wp-block-media-text__feaproj {
+  border-radius: 8px;
+}
+
+.wp-block-media-text.wp-block-media-text__feaproj .wp-block-media-text__media {
+  border-radius: 8px 0 0 8px;
+}
+
+.wp-block-media-text.wp-block-media-text__feaproj.has-media-on-the-right
+  .wp-block-media-text__media {
+  border-radius: 0 8px 8px 0;
+}
+
+.wp-block-media-text.wp-block-media-text__feaproj
+  .wp-block-media-text__content {
+  position: relative;
+}
+
+.wp-block-media-text.wp-block-media-text__feaproj
+  .wp-block-media-text__content
+  p:nth-last-child(2) {
+  margin-bottom: 60px;
+}
+
+.wp-block-media-text.wp-block-media-text__feaproj .media-text--full-btn a {
+  position: absolute;
+  font: normal 600 2rem/1.4 'Poppins', sans-serif;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-decoration: none;
+  background: rgb(255 255 255 / 40%);
+  padding: 15px 0;
+  border-radius: 0 0 8px 0;
+}
+
+@media (max-width: 600px) {
+  .wp-block-media-text.wp-block-media-text__feaproj .wp-block-media-text__media,
+  .wp-block-media-text.wp-block-media-text__feaproj.has-media-on-the-right
+    .wp-block-media-text__media {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .wp-block-media-text.wp-block-media-text__feaproj .media-text--full-btn a {
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.wp-block-coblocks-dynamic-separator:not(.has-background)::before {
+  color: rgba(255, 255, 255, 0.6);
+}
