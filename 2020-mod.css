@@ -378,9 +378,9 @@ button.toggle .toggle-text {
 @media (max-width: 1400px) {
   .post .featured-media-inner:before {
     width: 91%;
-    height: 50%;
+    height: 80px;
     left: 5%;
-    top: -10%;
+    top: -40px;
   }
 
   .post .featured-media-inner:after {
@@ -409,7 +409,8 @@ button.toggle .toggle-text {
 
 @media (max-width: 700px) {
   .post .featured-media-inner:before {
-    top: -14%;
+    top: -50px;
+    max-height: 100px;
   }
 
   .post .featured-media-inner:after {
@@ -423,17 +424,16 @@ button.toggle .toggle-text {
 }
 
 @media (max-width: 460px) {
+  .post .featured-media-inner:before {
+    top: -40px;
+    max-height: 80px;
+  }
+
   .post .featured-media-inner:after {
     bottom: -16%;
   }
 
   .post .featured-media img {
-  }
-}
-
-@media (max-width: 440px) {
-  .post .featured-media-inner:before {
-    top: -24%;
   }
 }
 
