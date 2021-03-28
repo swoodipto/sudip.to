@@ -10,6 +10,16 @@
 /*	1. TYPOGRAPHY
 /* ----------------------------- */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.faux-heading {
+  hyphens: auto;
+}
+
 /* 
  * dropcaps
  */
@@ -588,7 +598,7 @@ body:not(.single-post)
 
 .wp-block-media-text.wp-block-media-text__feaproj .media-text--full-btn a {
   position: absolute;
-  font: normal 600 2rem/1.4 'Poppins', sans-serif;
+  font: normal 600 2.2rem/1.4 'Poppins', sans-serif;
   bottom: 0;
   left: 0;
   right: 0;
@@ -613,4 +623,11 @@ body:not(.single-post)
 
 .wp-block-coblocks-dynamic-separator:not(.has-background)::before {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.primary-menu li.current-menu-item > a:hover,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:hover,
+.primary-menu li.current-menu-item > a:focus,
+.primary-menu li.current-menu-item > .link-icon-wrapper > a:focus {
+  text-decoration: underline;
 }
