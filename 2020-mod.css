@@ -170,6 +170,12 @@ blockquote *,
 /*	2. LINKS & MENU
 /* ----------------------------- */
 
+@media (min-width: 1220px) {
+  .primary-menu > li {
+    margin-left: 6rem;
+  }
+}
+
 body:not(.overlay-header) .primary-menu > li > a,
 body:not(.overlay-header) .primary-menu > li > .icon,
 .modal-menu a,
@@ -250,7 +256,7 @@ button:active,
   --color-accent-btn-1-faded: var(--accent1alpha);
   --color-accent-btn-2: var(--accent2);
   --color-accent-btn-2-faded: var(--accent2alpha);
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .wp-block-button.accent-btn a {
@@ -651,19 +657,50 @@ body:not(.single-post)
 }
 
 .wp-block-columns.col-clients.col-clients-home .wp-block-column:nth-child(1) {
-  border-left: 2px solid;
+  border-left: 2px solid #bbc1d5;
 }
 
 @media (max-width: 781px) {
   .wp-block-columns.col-clients.col-clients-home .wp-block-column:nth-child(3) {
-    border-left: 2px solid;
+    border-left: 2px solid #bbc1d5;
     border-top: 0;
   }
 }
 
 @media (max-width: 600px) {
   .wp-block-columns.col-clients.col-clients-home .wp-block-column:nth-child(2) {
-    border-left: 2px solid;
+    border-left: 2px solid #bbc1d5;
     border-top: 0;
+  }
+}
+
+.wpnbha.is-style-borders article {
+  border: solid rgb(187, 193, 213) !important;
+  border-width: 0 0 2px !important;
+}
+
+.wpnbha.is-style-borders article:last-of-type:not(:first-of-type) {
+  border-bottom: 0 !important;
+}
+
+.has-radius-s {
+  border-radius: 4px;
+}
+
+.has-radius-m {
+  border-radius: 6px;
+}
+
+.has-radius-l {
+  border-radius: 10px;
+}
+
+.has-radius-xl {
+  border-radius: 14px;
+}
+
+@media (max-width: 699px) {
+  .wp-block-button.home-journal-btn-mar {
+    margin-top: 0;
   }
 }
