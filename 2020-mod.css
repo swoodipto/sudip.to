@@ -33,6 +33,15 @@ p {
   line-height: 1.65;
 }
 
+.entry-content p,
+.entry-content li {
+  line-height: 1.65;
+}
+
+.entry-content > * {
+  margin-bottom: 1.8em;
+}
+
 p.has-background {
   border-radius: 6px;
 }
