@@ -788,12 +788,13 @@ body:not(.single-post)
 }
 
 section.wp-block-group.skewed {
-  transform: skew(0, -14deg);
+  transform: skew(0, var(--skew-angle));
   z-index: 9;
 }
 
-section.wp-block-group.skewed .wp-block-group__inner-container {
-  transform: skew(0, 14deg);
+section.wp-block-group.skewed .wp-block-group__inner-container,
+section.wp-block-group.skewed > * {
+  transform: skew(0, var(--skew-content-angle));
   padding-bottom: 30px;
 }
 
