@@ -945,3 +945,27 @@ section.wp-block-group.skewed .wp-block-group__inner-container {
     background-size: 400px;
   }
 }
+
+footer#site-footer {
+  font-family: 'Poppins', sans-serif;
+}
+
+footer#site-footer .footer-copyright {
+  font-weight: 400;
+}
+
+footer#site-footer .footer-copyright a {
+  margin-left: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.35em;
+}
+
+footer#site-footer .footer-copyright a:after {
+  content: '.';
+}
+
+footer#site-footer .footer-copyright a:hover {
+  text-decoration: none;
+}
