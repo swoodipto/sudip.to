@@ -969,3 +969,65 @@ footer#site-footer .footer-copyright a:after {
 footer#site-footer .footer-copyright a:hover {
   text-decoration: none;
 }
+
+.subs-footer-header {
+  display: block;
+  font: 700 7rem 'Poppins', sans-serif;
+  line-height: 1.2;
+  padding-top: 18px;
+  color: var(--accent2);
+}
+
+@media (max-width: 1000px) {
+  .subs-footer-header {
+    font-size: 5rem;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .subs-footer-header {
+    font-size: 3.2rem;
+    padding-top: 10px;
+  }
+  .subs-footer-header div {
+    display: none;
+  }
+}
+
+.page .footer-widgets-outer-wrapper {
+  display: none;
+}
+
+#eu-cookie-law {
+  background-color: #f59cac !important;
+  border-radius: 10px;
+  color: #212842 !important;
+  font-weight: 600 !important;
+}
+
+.widget_eu_cookie_law_widget #eu-cookie-law .accept {
+  background-color: #212842;
+  outline: 0;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.widget_eu_cookie_law_widget #eu-cookie-law .accept:hover,
+.widget_eu_cookie_law_widget #eu-cookie-law .accept:active,
+.widget_eu_cookie_law_widget #eu-cookie-law .accept:focus {
+  background-color: #212842;
+}
+
+.social-icons a,
+#site-footer button:not(.toggle),
+#site-footer .button,
+#site-footer .faux-button,
+#site-footer .wp-block-button__link,
+#site-footer .wp-block-file__button,
+#site-footer input[type='button'],
+#site-footer input[type='reset'],
+#site-footer input[type='submit'] {
+  background-color: var(--accent1);
+}
