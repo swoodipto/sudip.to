@@ -65,6 +65,16 @@ h6,
   color: var(--accent2);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.faux-heading {
+  letter-spacing: -0.03em;
+}
+
 .page header h1,
 .blog header h1,
 .entry-content .hero-greet {
@@ -442,7 +452,7 @@ button.toggle .toggle-text {
  */
 .post .featured-media img {
   position: relative;
-  border-radius: 25px;
+  border-radius: 80px;
   z-index: 1;
 }
 
@@ -469,7 +479,7 @@ button.toggle .toggle-text {
   } */
 
   .post .featured-media img {
-    border-radius: 25px;
+    border-radius: 60px;
   }
 }
 
@@ -496,7 +506,7 @@ button.toggle .toggle-text {
   } */
 
   .post .featured-media img {
-    border-radius: 12px;
+    border-radius: 25px;
   }
 
   /* 	.wp-block-cover.hero-pattern {
@@ -847,7 +857,7 @@ section.wp-block-group.skewed > * {
 /*	PAGES
 /* ----------------------------- */
 /* pages skew */
-.singular .entry-header,
+/* .singular .entry-header, */
 .archive .archive-header {
   transform: skew(0, var(--skew-angle));
   padding: 1000px 0 150px 0;
@@ -857,7 +867,7 @@ section.wp-block-group.skewed > * {
   z-index: 1;
 }
 
-.singular .entry-header-inner,
+/* .singular .entry-header-inner, */
 .archive .archive-header-inner,
 .wp-block-cover.hero-pattern:after {
   transform: skew(0, var(--skew-content-angle));
@@ -867,11 +877,11 @@ section.wp-block-group.skewed > * {
 /*	PAGES WITH FEATURED MEDIA
 /* ----------------------------- */
 /* featured media skew */
-.singular .featured-media:before {
-  transform: skew(0, var(--skew-angle));
-  top: -600px;
-  z-index: 0;
-}
+/* .singular .featured-media:before {
+    transform: skew(0,var(--skew-angle));
+    top: -600px;
+    z-index: 0;
+} */
 
 .singular.has-post-thumbnail .entry-header {
   margin-bottom: initial;
@@ -1031,4 +1041,13 @@ footer#site-footer .footer-copyright a:hover {
 #site-footer input[type='reset'],
 #site-footer input[type='submit'] {
   background-color: var(--accent1);
+}
+
+/* group width fix */
+.wp-block-group.skewed
+  > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+  max-width: 58rem;
+  width: calc(100% - 4rem);
+  margin-left: auto;
+  margin-right: auto;
 }
