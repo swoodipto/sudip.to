@@ -75,6 +75,11 @@ h6,
   letter-spacing: -0.03em;
 }
 
+.entry-content hr:not(.has-background),
+hr.styled-separator {
+  color: #60698a;
+}
+
 .page header h1,
 .blog header h1,
 .entry-content .hero-greet {
