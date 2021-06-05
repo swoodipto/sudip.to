@@ -863,6 +863,7 @@ section.wp-block-group.skewed > * {
 /* ----------------------------- */
 /* pages skew */
 /* .singular .entry-header, */
+.page .entry-header,
 .archive .archive-header {
   transform: skew(0, var(--skew-angle));
   padding: 1000px 0 150px 0;
@@ -873,6 +874,7 @@ section.wp-block-group.skewed > * {
 }
 
 /* .singular .entry-header-inner, */
+.page .entry-header-inner,
 .archive .archive-header-inner,
 .wp-block-cover.hero-pattern:after {
   transform: skew(0, var(--skew-content-angle));
