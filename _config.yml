@@ -1,0 +1,34 @@
+title: My Personal Website
+description: Personal website and blog
+url: https://username.github.io
+baseurl: ""
+author: Your Name
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Permalink structure for blog posts
+permalink: /blog/:title/
+
+# Exclude files from being processed
+exclude:
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Default front matter for posts
+defaults:
+  -
+    scope:
+      path: "posts"
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /blog/:title/ 
