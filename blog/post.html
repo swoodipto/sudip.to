@@ -58,19 +58,37 @@
             const postContent = document.getElementById('post-content');
             
             try {
-                // Fetch posts from posts.json
-                const indexResponse = await fetch('../posts.json');
-                if (!indexResponse.ok) {
-                    throw new Error('Failed to load posts index');
+                // Load the post content (markdown)
+                const postResponse = await fetch(`../posts/${slug}.md`);
+                if (!postResponse.ok) {
+                    throw new Error('Failed to load post content');
                 }
                 
-                const posts = await indexResponse.json();
-                const post = posts.find(p => p.slug === slug);
+                const markdown = await postResponse.text();
                 
-                if (!post) {
-                    postContent.innerHTML = '<p>Post not found. The specified post does not exist.</p>';
-                    return;
+                // Extract front matter
+                const frontMatterMatch = markdown.match(/^---\s*([\s\S]*?)\s*---/);
+                if (!frontMatterMatch) {
+                    throw new Error('Invalid post format: missing front matter');
                 }
+                
+                const frontMatter = frontMatterMatch[1];
+                const content = markdown.replace(/^---\s*[\s\S]*?---/, '').trim();
+                
+                // Parse front matter
+                const titleMatch = frontMatter.match(/title:\s*(.*)/);
+                const dateMatch = frontMatter.match(/date:\s*(.*)/);
+                const excerptMatch = frontMatter.match(/excerpt:\s*(.*)/);
+                
+                if (!titleMatch || !dateMatch) {
+                    throw new Error('Invalid post format: missing required front matter fields');
+                }
+                
+                const post = {
+                    title: titleMatch[1].trim(),
+                    date: dateMatch[1].trim(),
+                    excerpt: excerptMatch ? excerptMatch[1].trim() : ''
+                };
                 
                 // Update title and metadata
                 document.title = `${post.title} | My Personal Website`;
@@ -83,12 +101,8 @@
                     metaDescription.setAttribute('content', post.excerpt || '');
                 }
                 
-                // Use the content directly from posts.json
-                if (post.content) {
-                    postContent.innerHTML = convertMarkdownToHTML(post.content);
-                } else {
-                    postContent.innerHTML = '<p>No content available for this post.</p>';
-                }
+                // Convert markdown to HTML
+                postContent.innerHTML = convertMarkdownToHTML(content);
             } catch (error) {
                 console.error('Error loading post:', error);
                 postContent.innerHTML = '<p>Failed to load post. Please try again later.</p>';

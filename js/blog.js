@@ -34,19 +34,55 @@ async function loadBlogPosts() {
     const postsContainer = document.getElementById('posts-container');
     
     try {
-        // Load site configuration
-        const siteConfig = await fetchSiteConfig();
-        
-        // Fetch posts from posts.json
-        const response = await fetch('posts.json');
-        if (!response.ok) {
-            throw new Error('Failed to load posts index');
+        // Get the list of posts by fetching the manifest file
+        const manifestResponse = await fetch('posts/manifest.json');
+        if (!manifestResponse.ok) {
+            throw new Error('Failed to load posts manifest');
         }
         
-        const posts = await response.json();
+        const manifest = await manifestResponse.json();
+        const posts = [];
+        
+        // Load each post's metadata from its markdown file
+        for (const filename of manifest.files) {
+            if (filename.endsWith('.md')) {
+                try {
+                    const postResponse = await fetch(`posts/${filename}`);
+                    if (postResponse.ok) {
+                        const markdown = await postResponse.text();
+                        
+                        // Extract front matter
+                        const frontMatterMatch = markdown.match(/^---\s*([\s\S]*?)\s*---/);
+                        if (frontMatterMatch) {
+                            const frontMatter = frontMatterMatch[1];
+                            
+                            // Parse front matter
+                            const titleMatch = frontMatter.match(/title:\s*(.*)/);
+                            const dateMatch = frontMatter.match(/date:\s*(.*)/);
+                            const excerptMatch = frontMatter.match(/excerpt:\s*(.*)/);
+                            
+                            if (titleMatch && dateMatch) {
+                                const slug = filename.replace('.md', '');
+                                posts.push({
+                                    title: titleMatch[1].trim(),
+                                    date: dateMatch[1].trim(),
+                                    excerpt: excerptMatch ? excerptMatch[1].trim() : '',
+                                    slug: slug
+                                });
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error(`Error loading post ${filename}:`, error);
+                }
+            }
+        }
         
         // Sort posts by date (newest first)
         posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Load site configuration
+        const siteConfig = await fetchSiteConfig();
         
         // Limit posts per page if specified in config
         const postsToShow = siteConfig.blog && siteConfig.blog.postsPerPage ? 
