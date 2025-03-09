@@ -1,5 +1,12 @@
 [
   {
+    "title": "My Third Blog Post",
+    "slug": "third-post",
+    "date": "2025-03-09",
+    "excerpt": "Testing my third blog post",
+    "content": "# My Third Blog Post\n\nThis is my blog post content\n\n**This is blog text.**\n\n*This is italics.*\n\n![This is an image](https://cdn.prod.website-files.com/65130e79c72ae8812db3412e/6718fbb85d1152665bfafec4_Untitled%20design%20(14).jpg)\n\nThis is the end of the blog post."
+  },
+  {
     "title": "My First Blog Post",
     "slug": "first-post",
     "date": "2023-01-01",

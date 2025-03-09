@@ -18,14 +18,4 @@ exclude:
 # Plugins
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
-
-# Default front matter for posts
-defaults:
-  -
-    scope:
-      path: "posts"
-      type: "posts"
-    values:
-      layout: "post"
-      permalink: /blog/:title/ 
+  - jekyll-seo-tag 
