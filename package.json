@@ -1,0 +1,16 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "Personal website with a dynamic blog",
+  "main": "index.js",
+  "scripts": {
+    "build-manifest": "node build-manifest.js"
+  },
+  "keywords": [
+    "blog",
+    "personal-website",
+    "markdown"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+} 

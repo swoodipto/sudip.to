@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load all blog posts for the index page
 async function loadBlogPosts(postsContainer) {
     try {
+        // Determine base URL for GitHub Pages
+        const baseUrl = getBaseUrl();
+        
         // Get the list of posts by fetching the manifest file
-        const baseUrl = window.location.pathname.includes('/sudip.to/') ? '/sudip.to' : '';
         const manifestResponse = await fetch(`${baseUrl}/posts/manifest.json`);
         
         if (!manifestResponse.ok) {
@@ -20,20 +22,42 @@ async function loadBlogPosts(postsContainer) {
         const manifest = await manifestResponse.json();
         const posts = [];
         
-        // Load each post's metadata from its markdown file
-        for (const filename of manifest.files) {
-            if (filename.endsWith('.md')) {
-                try {
-                    const postResponse = await fetch(`${baseUrl}/posts/${filename}`);
-                    if (postResponse.ok) {
-                        const markdown = await postResponse.text();
-                        const postData = extractPostData(markdown, filename);
-                        if (postData) {
-                            posts.push(postData);
+        // For GitHub Pages, we'll use the metadata from manifest directly
+        // since raw markdown files might not be served correctly
+        if (manifest.posts && Array.isArray(manifest.posts)) {
+            // Use the posts array directly if available in manifest
+            posts.push(...manifest.posts);
+        } else {
+            // Try to load each post's metadata from its markdown file
+            for (const filename of manifest.files) {
+                if (filename.endsWith('.md')) {
+                    try {
+                        const postResponse = await fetch(`${baseUrl}/posts/${filename}`);
+                        if (postResponse.ok) {
+                            const markdown = await postResponse.text();
+                            const postData = extractPostData(markdown, filename);
+                            if (postData) {
+                                posts.push(postData);
+                            }
+                        } else {
+                            // If markdown file can't be loaded, create a post entry from the filename
+                            const slug = filename.replace('.md', '');
+                            const title = slug.split('-').map(word => 
+                                word.charAt(0).toUpperCase() + word.slice(1)
+                            ).join(' ');
+                            
+                            posts.push({
+                                title: title,
+                                date: new Date().toISOString().split('T')[0], // Today's date as fallback
+                                excerpt: `Content for ${title}`,
+                                slug: slug
+                            });
+                            
+                            console.warn(`Could not load markdown file: ${filename}. Using fallback metadata.`);
                         }
+                    } catch (error) {
+                        console.error(`Error loading post ${filename}:`, error);
                     }
-                } catch (error) {
-                    console.error(`Error loading post ${filename}:`, error);
                 }
             }
         }
@@ -49,7 +73,7 @@ async function loadBlogPosts(postsContainer) {
         const postsToShow = posts.slice(0, postsPerPage);
         
         if (postsToShow.length === 0) {
-            postsContainer.innerHTML = '<p>No posts found.</p>';
+            postsContainer.innerHTML = '<p>No posts found. Please check your posts/manifest.json file.</p>';
             return;
         }
         
@@ -68,6 +92,19 @@ async function loadBlogPosts(postsContainer) {
         console.error('Error loading blog posts:', error);
         postsContainer.innerHTML = '<p>Failed to load blog posts. Please try again later.</p>';
     }
+}
+
+// Get base URL based on current environment
+function getBaseUrl() {
+    // Check if we're on GitHub Pages
+    if (window.location.hostname.includes('github.io')) {
+        // Extract repository name from path
+        const pathParts = window.location.pathname.split('/');
+        if (pathParts.length > 1 && pathParts[1]) {
+            return '/' + pathParts[1]; // e.g., '/sudip.to'
+        }
+    }
+    return ''; // Local development
 }
 
 // Extract post data from markdown content

@@ -59,19 +59,51 @@
             
             try {
                 // Determine base URL for GitHub Pages
-                const baseUrl = window.location.pathname.includes('/sudip.to/') ? '/sudip.to' : '';
+                const baseUrl = getBaseUrl();
                 
-                // Load the post content (markdown)
-                const postResponse = await fetch(`${baseUrl}/posts/${slug}.md`);
-                if (!postResponse.ok) {
-                    throw new Error('Failed to load post content');
+                // First try to get post content from manifest
+                const manifestResponse = await fetch(`${baseUrl}/posts/manifest.json`);
+                if (!manifestResponse.ok) {
+                    throw new Error('Failed to load posts manifest');
                 }
                 
-                const markdown = await postResponse.text();
-                const postData = extractPostData(markdown);
+                const manifest = await manifestResponse.json();
+                let postData = null;
                 
+                // Check if manifest has posts array with metadata
+                if (manifest.posts && Array.isArray(manifest.posts)) {
+                    postData = manifest.posts.find(p => p.slug === slug);
+                }
+                
+                // If not found in manifest posts array, try to load from markdown file
                 if (!postData) {
-                    throw new Error('Invalid post format');
+                    // Check if the slug is in the files list
+                    const filename = `${slug}.md`;
+                    if (!manifest.files.includes(filename)) {
+                        throw new Error('Post not found in manifest');
+                    }
+                    
+                    // Try to load the markdown file
+                    const postResponse = await fetch(`${baseUrl}/posts/${filename}`);
+                    if (postResponse.ok) {
+                        const markdown = await postResponse.text();
+                        postData = extractPostData(markdown);
+                        
+                        if (!postData) {
+                            throw new Error('Invalid post format');
+                        }
+                    } else {
+                        // If markdown file can't be loaded, create a fallback
+                        postData = {
+                            title: slug.split('-').map(word => 
+                                word.charAt(0).toUpperCase() + word.slice(1)
+                            ).join(' '),
+                            date: new Date().toISOString().split('T')[0],
+                            content: `<p>Content for this post is not available.</p>
+                                     <p>This could be because GitHub Pages doesn't serve raw markdown files directly.</p>
+                                     <p>Please check the repository for the full content.</p>`
+                        };
+                    }
                 }
                 
                 // Update title and metadata
@@ -85,12 +117,35 @@
                     metaDescription.setAttribute('content', postData.excerpt);
                 }
                 
-                // Convert markdown to HTML
-                postContent.innerHTML = convertMarkdownToHTML(postData.content);
+                // Display content
+                if (postData.content) {
+                    // If content is already HTML, use it directly
+                    if (postData.content.includes('<')) {
+                        postContent.innerHTML = postData.content;
+                    } else {
+                        // Otherwise convert markdown to HTML
+                        postContent.innerHTML = convertMarkdownToHTML(postData.content);
+                    }
+                } else {
+                    postContent.innerHTML = '<p>No content available for this post.</p>';
+                }
             } catch (error) {
                 console.error('Error loading post:', error);
                 postContent.innerHTML = '<p>Failed to load post. Please try again later.</p>';
             }
+        }
+        
+        // Get base URL based on current environment
+        function getBaseUrl() {
+            // Check if we're on GitHub Pages
+            if (window.location.hostname.includes('github.io')) {
+                // Extract repository name from path
+                const pathParts = window.location.pathname.split('/');
+                if (pathParts.length > 1 && pathParts[1]) {
+                    return '/' + pathParts[1]; // e.g., '/sudip.to'
+                }
+            }
+            return ''; // Local development
         }
         
         // Extract post data from markdown content
