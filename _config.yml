@@ -1,7 +1,7 @@
 title: My Personal Website
 description: Personal website and blog
 url: https://username.github.io
-baseurl: ""
+baseurl: "/sudip.to"
 author: Your Name
 
 # Build settings

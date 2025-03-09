@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Blog post">
     <title>Blog Post | My Personal Website</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -20,13 +20,13 @@
     <main>
         <article>
             <header class="post-header">
-                <h1 id="post-title"></h1>
+                <h1 id="post-title">Loading post...</h1>
                 <div id="post-date" class="post-date"></div>
             </header>
             
             <div id="post-content" class="post-content">
                 <!-- Post content will be loaded here -->
-                <p>Loading post...</p>
+                <p>Loading post content...</p>
             </div>
             
             <a href="../blog.html" class="back-to-blog">← Back to all posts</a>
@@ -38,6 +38,118 @@
     </footer>
 
     <script src="../js/main.js"></script>
-    <script src="../js/post.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Get the post slug from the URL query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            
+            if (!slug) {
+                document.getElementById('post-content').innerHTML = '<p>Post not found. Please specify a valid post slug.</p>';
+                return;
+            }
+            
+            loadPost(slug);
+        });
+        
+        async function loadPost(slug) {
+            const postTitle = document.getElementById('post-title');
+            const postDate = document.getElementById('post-date');
+            const postContent = document.getElementById('post-content');
+            
+            try {
+                // First, fetch the posts index to get metadata
+                const indexResponse = await fetch('../posts.json');
+                if (!indexResponse.ok) {
+                    throw new Error('Failed to load posts index');
+                }
+                
+                const posts = await indexResponse.json();
+                const post = posts.find(p => p.slug === slug);
+                
+                if (!post) {
+                    postContent.innerHTML = '<p>Post not found. The specified post does not exist.</p>';
+                    return;
+                }
+                
+                // Update title and metadata
+                document.title = `${post.title} | My Personal Website`;
+                postTitle.textContent = post.title;
+                postDate.textContent = formatDate(post.date);
+                
+                // Update meta description
+                const metaDescription = document.querySelector('meta[name="description"]');
+                if (metaDescription) {
+                    metaDescription.setAttribute('content', post.excerpt || '');
+                }
+                
+                // Load the post content (markdown)
+                const postResponse = await fetch(`../posts/${slug}.md`);
+                if (!postResponse.ok) {
+                    throw new Error('Failed to load post content');
+                }
+                
+                const markdown = await postResponse.text();
+                
+                // Extract content (remove front matter)
+                const content = markdown.replace(/---[\s\S]*?---/, '').trim();
+                
+                // Convert markdown to HTML
+                postContent.innerHTML = convertMarkdownToHTML(content);
+            } catch (error) {
+                console.error('Error loading post:', error);
+                postContent.innerHTML = '<p>Failed to load post. Please try again later.</p>';
+            }
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Simple markdown to HTML converter
+        function convertMarkdownToHTML(markdown) {
+            let html = markdown;
+            
+            // Headers
+            html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+            html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+            html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+            
+            // Bold and italic
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Links
+            html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
+            
+            // Lists
+            html = html.replace(/^\s*\*\s(.*$)/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+            
+            // Ordered lists
+            html = html.replace(/^\s*\d+\.\s(.*$)/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*<\/li>)/s, '<ol>$1</ol>');
+            
+            // Code blocks
+            html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+            
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            
+            // Blockquotes
+            html = html.replace(/^>\s(.*$)/gm, '<blockquote>$1</blockquote>');
+            
+            // Paragraphs (must be last)
+            html = html.replace(/^(?!<[a-z])(.*$)/gm, '<p>$1</p>');
+            
+            return html;
+        }
+    </script>
 </body>
 </html> 

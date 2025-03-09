@@ -63,7 +63,7 @@ async function loadBlogPosts() {
                 <h2 class="post-title">${post.title}</h2>
                 <div class="post-date">${formatDate(post.date)}</div>
                 <p class="post-excerpt">${post.excerpt || ''}</p>
-                <a href="blog/${post.slug}" class="read-more">Read more</a>
+                <a href="blog/post.html?slug=${post.slug}" class="read-more">Read more</a>
             </article>
         `).join('');
         
