@@ -35,7 +35,7 @@ And an unordered list:
 
 You can add images like this:
 
-![Alt text for the image](https://via.placeholder.com/600x400)
+![Alt text for the image](https://i.imgur.com/t4dhYIO.jpeg)
 
 ## Tables
 
