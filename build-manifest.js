@@ -62,6 +62,17 @@ async function buildManifest() {
         const postData = extractPostData(content, file);
         
         if (postData) {
+            // Check for image paths and ensure they're properly formatted
+            // This is just a log to help identify potential issues with image paths
+            const imageMatches = postData.content.match(/!\[(.*?)\]\((.*?)\)/g);
+            if (imageMatches) {
+                console.log(`Found ${imageMatches.length} images in ${file}`);
+                imageMatches.forEach(match => {
+                    const imagePath = match.match(/!\[(.*?)\]\((.*?)\)/)[2];
+                    console.log(`  Image path: ${imagePath}`);
+                });
+            }
+            
             posts.push(postData);
         }
     }

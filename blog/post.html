@@ -6,6 +6,15 @@
     <meta name="description" content="Blog post">
     <title>Blog Post | My Personal Website</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Additional styles for blog content */
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -193,6 +202,9 @@
             // Bold and italic
             html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Images - Add this before links
+            html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
             
             // Links
             html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
