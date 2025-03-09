@@ -1,0 +1,14 @@
+[
+  {
+    "title": "My First Blog Post",
+    "slug": "first-post",
+    "date": "2023-01-01",
+    "excerpt": "This is my first blog post on my personal website."
+  },
+  {
+    "title": "My Second Blog Post",
+    "slug": "second-post",
+    "date": "2023-01-15",
+    "excerpt": "Exploring more markdown features in this second post."
+  }
+] 
