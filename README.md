@@ -56,7 +56,18 @@ excerpt: A brief excerpt of the post.
 ```
 
 3. Write your post content in markdown format below the front matter
-4. Add the filename to `posts/manifest.json`
+4. Add the filename to `posts/manifest.json`:
+
+```json
+{
+  "files": [
+    "first-post.md",
+    "second-post.md",
+    "third-post.md",
+    "my-new-post.md"  // Add your new post here
+  ]
+}
+```
 
 ## GitHub Pages Setup
 
@@ -64,7 +75,15 @@ excerpt: A brief excerpt of the post.
 2. Go to your repository settings
 3. Under "GitHub Pages", select the main branch as the source
 4. Your site will be published at `https://username.github.io/repository-name`
-5. Make sure to update the `baseurl` in `_config.yml` to match your repository name
+5. The system automatically handles the repository name in URLs
+
+## Troubleshooting
+
+If you encounter issues with loading blog posts:
+
+1. Make sure all markdown files are listed in `posts/manifest.json`
+2. Check that your markdown files have proper front matter with title, date, and excerpt
+3. Verify that the repository name is correctly set in your GitHub Pages settings
 
 ## Customization
 

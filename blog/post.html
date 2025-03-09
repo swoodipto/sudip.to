@@ -39,7 +39,7 @@
 
     <script src="../js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             // Get the post slug from the URL query parameter
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
@@ -58,55 +58,62 @@
             const postContent = document.getElementById('post-content');
             
             try {
+                // Determine base URL for GitHub Pages
+                const baseUrl = window.location.pathname.includes('/sudip.to/') ? '/sudip.to' : '';
+                
                 // Load the post content (markdown)
-                const postResponse = await fetch(`../posts/${slug}.md`);
+                const postResponse = await fetch(`${baseUrl}/posts/${slug}.md`);
                 if (!postResponse.ok) {
                     throw new Error('Failed to load post content');
                 }
                 
                 const markdown = await postResponse.text();
+                const postData = extractPostData(markdown);
                 
-                // Extract front matter
-                const frontMatterMatch = markdown.match(/^---\s*([\s\S]*?)\s*---/);
-                if (!frontMatterMatch) {
-                    throw new Error('Invalid post format: missing front matter');
+                if (!postData) {
+                    throw new Error('Invalid post format');
                 }
-                
-                const frontMatter = frontMatterMatch[1];
-                const content = markdown.replace(/^---\s*[\s\S]*?---/, '').trim();
-                
-                // Parse front matter
-                const titleMatch = frontMatter.match(/title:\s*(.*)/);
-                const dateMatch = frontMatter.match(/date:\s*(.*)/);
-                const excerptMatch = frontMatter.match(/excerpt:\s*(.*)/);
-                
-                if (!titleMatch || !dateMatch) {
-                    throw new Error('Invalid post format: missing required front matter fields');
-                }
-                
-                const post = {
-                    title: titleMatch[1].trim(),
-                    date: dateMatch[1].trim(),
-                    excerpt: excerptMatch ? excerptMatch[1].trim() : ''
-                };
                 
                 // Update title and metadata
-                document.title = `${post.title} | My Personal Website`;
-                postTitle.textContent = post.title;
-                postDate.textContent = formatDate(post.date);
+                document.title = `${postData.title} | My Personal Website`;
+                postTitle.textContent = postData.title;
+                postDate.textContent = formatDate(postData.date);
                 
                 // Update meta description
                 const metaDescription = document.querySelector('meta[name="description"]');
-                if (metaDescription) {
-                    metaDescription.setAttribute('content', post.excerpt || '');
+                if (metaDescription && postData.excerpt) {
+                    metaDescription.setAttribute('content', postData.excerpt);
                 }
                 
                 // Convert markdown to HTML
-                postContent.innerHTML = convertMarkdownToHTML(content);
+                postContent.innerHTML = convertMarkdownToHTML(postData.content);
             } catch (error) {
                 console.error('Error loading post:', error);
                 postContent.innerHTML = '<p>Failed to load post. Please try again later.</p>';
             }
+        }
+        
+        // Extract post data from markdown content
+        function extractPostData(markdown) {
+            const frontMatterMatch = markdown.match(/^---\s*([\s\S]*?)\s*---/);
+            if (!frontMatterMatch) return null;
+            
+            const frontMatter = frontMatterMatch[1];
+            const content = markdown.replace(/^---\s*[\s\S]*?---/, '').trim();
+            
+            // Parse front matter
+            const titleMatch = frontMatter.match(/title:\s*(.*)/);
+            const dateMatch = frontMatter.match(/date:\s*(.*)/);
+            const excerptMatch = frontMatter.match(/excerpt:\s*(.*)/);
+            
+            if (!titleMatch || !dateMatch) return null;
+            
+            return {
+                title: titleMatch[1].trim(),
+                date: dateMatch[1].trim(),
+                excerpt: excerptMatch ? excerptMatch[1].trim() : '',
+                content: content
+            };
         }
 
         // Format date for display
