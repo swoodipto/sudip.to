@@ -1,6 +1,6 @@
 # Personal Website with Dynamic Blog
 
-A simple personal website with a dynamic blog that uses markdown files, designed for GitHub Pages.
+A simple personal website with a dynamic blog that uses markdown content stored in JSON, designed for GitHub Pages.
 
 ## Project Structure
 
@@ -10,17 +10,14 @@ A simple personal website with a dynamic blog that uses markdown files, designed
 ├── blog.html            # Blog index page
 ├── _config.yml          # Jekyll configuration
 ├── site.json            # Site configuration
-├── posts.json           # Blog posts metadata
+├── posts.json           # Blog posts metadata and content
 ├── css/
 │   └── style.css        # Main styles
 ├── js/
 │   ├── main.js          # Main JavaScript
 │   └── blog.js          # Blog functionality
-├── blog/
-│   └── post.html        # Dynamic post template
-└── posts/
-    ├── first-post.md    # Sample post
-    └── second-post.md   # Another sample post
+└── blog/
+    └── post.html        # Dynamic post template
 ```
 
 ## Features
@@ -35,36 +32,27 @@ A simple personal website with a dynamic blog that uses markdown files, designed
 
 The blog system uses a dynamic approach:
 
-1. `posts.json` contains metadata for all blog posts
-2. `blog.js` loads this metadata and displays a list of posts on the blog page
+1. `posts.json` contains metadata and content for all blog posts
+2. `blog.js` loads this data and displays a list of posts on the blog page
 3. When a user clicks on a post, they're taken to `blog/post.html?slug=post-slug`
-4. The post template loads the corresponding markdown file and renders it as HTML
+4. The post template loads the corresponding post content from `posts.json` and renders it as HTML
 
 ## How to Add a New Blog Post
 
-1. Create a new markdown file in the `posts` directory (e.g., `my-new-post.md`)
-2. Add the front matter at the top of the file:
-
-```yaml
----
-layout: post
-title: Your Post Title
-date: YYYY-MM-DD
-excerpt: A brief excerpt of the post.
----
-```
-
-3. Write your post content in markdown format below the front matter
-4. Add the post metadata to `posts.json`:
+1. Write your post content in markdown format
+2. Add the post metadata and content to `posts.json`:
 
 ```json
 {
   "title": "Your Post Title",
   "slug": "my-new-post",
   "date": "YYYY-MM-DD",
-  "excerpt": "A brief excerpt of the post."
+  "excerpt": "A brief excerpt of the post.",
+  "content": "# Your Post Title\n\nYour markdown content goes here..."
 }
 ```
+
+Note: Make sure to escape newlines with `\n` and other special characters in the JSON content.
 
 ## GitHub Pages Setup
 

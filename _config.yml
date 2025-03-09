@@ -8,9 +8,6 @@ author: Your Name
 markdown: kramdown
 highlighter: rouge
 
-# Permalink structure for blog posts
-permalink: /blog/:title/
-
 # Exclude files from being processed
 exclude:
   - README.md
