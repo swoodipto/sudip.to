@@ -1,39 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="My blog posts">
-    <title>Blog | My Personal Website</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-            </ul>
-        </nav>
-    </header>
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
 
-    <main>
-        <section class="blog-header">
-            <h1>Blog</h1>
-            <p>My thoughts and ideas.</p>
-        </section>
-
-        <section class="blog-posts">
-            <!-- Blog posts will be dynamically loaded here -->
-            <div id="posts-container"></div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; <span id="year"></span></p>
-    </footer>
-
-    <script src="js/main.js"></script>
-    <script src="js/blog.js"></script>
-</body>
-</html> 
+<div class="blog-container">
+  <h1>Blog Posts</h1>
+  
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-preview">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+        {% if post.excerpt %}
+          <div class="post-excerpt">
+            {{ post.excerpt }}
+          </div>
+        {% endif %}
+        <a href="{{ post.url | relative_url }}" class="read-more">Read more &raquo;</a>
+      </article>
+    {% endfor %}
+  </div>
+</div> 

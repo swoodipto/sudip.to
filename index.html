@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website and blog">
-    <title>My Personal Website</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </nav>
-    </header>
+---
+layout: default
+title: Home
+---
 
-    <main>
-        <section class="hero">
-            <h1>Welcome to My Website</h1>
-            <p>This is my personal website and blog.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; <span id="year"></span></p>
-    </footer>
-
-    <script src="js/main.js"></script>
-</body>
-</html> 
+<div class="home-container">
+    <h1>Welcome to My Personal Website</h1>
+    <p>This is my personal website where I share my thoughts, projects, and experiences.</p>
+    
+    <div class="featured-posts">
+        <h2>Latest Blog Posts</h2>
+        <ul>
+            {% for post in site.posts limit:3 %}
+                <li>
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ '/blog/' | relative_url }}" class="view-all">View all posts &raquo;</a>
+    </div>
+</div> 
