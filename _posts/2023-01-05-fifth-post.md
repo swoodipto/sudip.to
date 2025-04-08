@@ -5,16 +5,22 @@ date: 2023-01-01
 excerpt: This is my Fifth blog post on my personal website.
 ---
 
-# Fifth Blog Post {:.headerTest}
+{: .headerTest}
+# Fifth Blog Post
 
 Dolor eiusmod eiusmod nostrud incididunt ipsum occaecat velit dolore duis irure irure ipsum dolor et. Exercitation id laboris nulla elit excepteur pariatur consequat ullamco ullamco sint id. Quis ex labore culpa ea culpa proident aute esse eu tempor. Duis mollit est amet adipisicing ipsum dolore sit mollit incididunt elit sit. Sint quis Lorem id amet. Occaecat voluptate officia elit in sunt.
 
-This paragraph will be centered {:.centered}
+{: .centered}
+This paragraph will be centered
 
-This paragraph will have a highlight effect {:.highlighted}
+{: .highlighted}
+This paragraph will have a highlight effect
 
-This paragraph will have a border {:.bordered}
+{: .bordered}
+This paragraph will have a border
 
-![Large Image](https://i.imgur.com/t4dhYIO.jpeg "large-image")
+{: .large-image}
+![Large Image](https://via.placeholder.com/800x400)
 
-This is an image caption {:.caption}
+{: .caption}
+This is an image caption
