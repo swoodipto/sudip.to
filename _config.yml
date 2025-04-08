@@ -20,10 +20,5 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-permalink: pretty
-defaults:
-  -
-    scope:
-      path: "" # this means all files in the project
-    values:
-      permalink: /:title/ 
+# URL Settings
+permalink: /:categories/:year/:month/:day/:title/ 
