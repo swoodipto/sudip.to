@@ -3,6 +3,12 @@ source "https://rubygems.org"
 # Hello! This is where you manage which Jekyll version is used to run.
 gem "jekyll", "~> 4.3.0"
 
+# Required for Ruby 3.4 and later
+gem "csv"
+gem "logger"
+gem "base64"
+gem "bigdecimal"
+
 # This is the default theme for new Jekyll sites.
 gem "minima", "~> 2.5"
 
