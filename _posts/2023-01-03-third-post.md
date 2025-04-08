@@ -5,8 +5,6 @@ date: 2025-03-09
 excerpt: Testing my third blog post
 ---
 
-# My Third Blog Post
-
 This is my blog post content
 
 **This is blog text.**

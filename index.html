@@ -4,8 +4,11 @@ title: Home
 ---
 
 <div class="home-container">
-    <h1>Welcome to My Personal Website</h1>
-    <p>This is my personal website where I share my thoughts, projects, and experiences.</p>
+    <!-- <h1>Welcome to My Personal Website</h1> -->
+    <div class="hero">
+        <p>Hey there, I’m Sudipto 👋 Welcome to my digital garden 🌱 I like building things, and I’m currently helping build Hygraph.</p>
+        <p>In my free time, I enjoy brewing coffee ☕ tending to my plants and climbing rocks.</p>
+    </div>
     
     <div class="featured-posts">
         <h2>Latest Blog Posts</h2>
@@ -17,6 +20,6 @@ title: Home
                 </li>
             {% endfor %}
         </ul>
-        <a href="{{ '/blog/' | relative_url }}" class="view-all">View all posts &raquo;</a>
+        <a href="{{ '/blog/' | relative_url }}" class="view-all">View all posts &rarr;</a>
     </div>
 </div> 

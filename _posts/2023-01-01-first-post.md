@@ -5,8 +5,6 @@ date: 2023-01-01
 excerpt: This is my first blog post on my personal website.
 ---
 
-# My First Blog Post
-
 Welcome to my blog! This is my first post, and I'm excited to share my thoughts with you.
 
 ## Introduction

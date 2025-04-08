@@ -38,37 +38,22 @@ permalink: /blog/
                     </div>
                 </header>
 
-                <div class="post-excerpt">
-                    {{ post.excerpt }}
+                <div class="post-content">
+                    {{ post.content }}
                 </div>
-
-                <footer>
-                    <a href="{{ post.url | relative_url }}" class="read-more">
-                        Read more &raquo;
-                    </a>
-                </footer>
             </article>
         {% endfor %}
     </div>
 
     {% if paginator.total_pages > 1 %}
-    <div class="pagination">
+    <nav class="pagination">
         {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | relative_url }}" class="previous">
-                &laquo; Previous
-            </a>
+        <a class="previous" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer</a>
         {% endif %}
-
-        <span class="page_number">
-            Page {{ paginator.page }} of {{ paginator.total_pages }}
-        </span>
-
         {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | relative_url }}" class="next">
-                Next &raquo;
-            </a>
+        <a class="next" href="{{ paginator.next_page_path | relative_url }}">Older &raquo;</a>
         {% endif %}
-    </div>
+    </nav>
     {% endif %}
 
     <div class="rss-subscribe">

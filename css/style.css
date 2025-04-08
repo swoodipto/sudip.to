@@ -1,3 +1,6 @@
+/* Import fonts */
+@import url('fonts.css');
+
 /* Reset and Normalize CSS */
 
 /* Box sizing rules */
@@ -7,6 +10,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: 16px;
 }
 
 /* Remove default margin and padding */
@@ -27,11 +34,12 @@ dd {
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: 'DM Mono', serif;
+  font-size: 1rem;
 }
 
 /* Remove list styles on ul, ol elements */
@@ -114,3 +122,39 @@ button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
+
+.hero {
+  font-family: 'EB Garamond', serif;
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* Code blocks and monospace text */
+code, pre, .mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9em;
+}
+
+/* Target all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', serif;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Individual heading sizes */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
