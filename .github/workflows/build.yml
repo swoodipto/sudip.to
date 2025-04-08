@@ -1,23 +1,30 @@
-name: Build Manifest
+name: Build and Deploy Jekyll site
 
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'posts/*.md'
 
 jobs:
-  build:
+  github-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run build-manifest
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build site
+        run: |
+          bundle install
+          bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          message: 'Update manifest.json'
-          add: 'posts/manifest.json' 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
