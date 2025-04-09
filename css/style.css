@@ -39,6 +39,13 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'DM Mono', monospace;
   font-size: 1rem;
+  background-color: #FCFCFA;
+}
+
+body.blog, body.post {
+  background-image: url('../assets/paper.png');
+  background-repeat: repeat;
+  background-size: 600px;
 }
 
 /* Remove list styles on ul, ol elements */
@@ -123,7 +130,7 @@ button:focus {
 }
 
 p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 /* Code blocks and monospace text */
@@ -179,11 +186,6 @@ header .page__header {
   grid-column: span 3;
 }
 
-header .page__header *:is(h1, h2, h3, h4, h5, h6) {
-  font-size: 3rem;
-  margin: 0;
-}
-
 header .logo {
   grid-column: span 1;
   justify-self: end;
@@ -197,12 +199,12 @@ header .logo svg {
   width: auto;
 }
 
-body.home header .page__header .page__title {
-  display: none;
+.page__header * {
+  margin: 0;
 }
 
-body:not(.home) header .page__header .homepage__intro { 
-  display: none;
+.homepage__intro {
+  color: rgba(0, 0, 0, 0.75);
 }
 
 /* Navigation */
@@ -271,7 +273,7 @@ footer h6 {
 
 footer .sign {
   opacity: 0.15;
-  width: 5.5rem;
+  width: 5.3rem;
   height: auto;
   margin: 0 0 0 0.4rem;
 }
@@ -279,6 +281,17 @@ footer .sign {
 footer .sign svg {
   width: 100%;
   height: auto;
+}
+
+body:not(.blog) main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  justify-items: start;
+}
+
+body:not(.blog) main * {
+  grid-column: 2 / -2;
 }
 
 
@@ -298,6 +311,15 @@ footer .sign svg {
 
 .blog .post__details {
   grid-column: span 1;
+}
+
+.blog .post__details::before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 75%;
+  border-bottom: 2px dotted #00000024;
+  margin-bottom: 1rem;
 }
 
 .blog .post__details .post__title {
