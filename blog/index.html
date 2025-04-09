@@ -1,18 +1,19 @@
 ---
 layout: default
-title: Blog
+title: Notes
 permalink: /blog/
+class: blog
 ---
 
-<div class="blog-container">
-    <header class="page-header">
+<div class="blog__container">
+    <!-- <header class="page-header">
         <h1>Blog Posts</h1>
         {% if site.description %}
             <p class="page-description">{{ site.description }}</p>
         {% endif %}
-    </header>
+    </header> -->
 
-    <div class="post-list">
+    <!-- <div class="post-list">
         {% for post in paginator.posts %}
             <article class="post-preview">
                 <header>
@@ -43,9 +44,60 @@ permalink: /blog/
                 </div>
             </article>
         {% endfor %}
+    </div> -->
+
+    <div class="post__list">
+
+        {% for post in paginator.posts %}
+
+        <article class="post post__preview">
+            <div class="post__details">
+                <h2 class="post__title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                </h2>
+                <div class="post__date">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">
+                        {{ post.date | date: "%b %d, %Y" }}
+                    </time>
+                </div>
+            </div>
+            <div class="post__content">
+                {{ post.content }}
+            </div>
+            <div class="post__metainfo">
+
+                {% if post.categories.size > 0 %}
+
+                <div class="categories">
+                    {% for category in post.categories %}
+                        <a href="{{ site.baseurl }}/categories/{{ category | slugify }}/">{{ category }}</a>
+                        {%- unless forloop.last %}, {% endunless -%}
+                    {% endfor %}
+                </div>
+
+                {% endif %}
+
+                <div class="share-buttons">
+                    <h6>Share this post</h3>
+                    <a href="https://twitter.com/intent/tweet?text={{ post.title | url_encode }}&url={{site.url}}{{ post.url }}" 
+                       target="_blank" rel="noopener noreferrer">
+                        Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{ post.url }}&title={{ post.title | url_encode }}" 
+                       target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                </div>
+
+            </div>
+        </article>
+        
+        {% endfor %}
+
     </div>
 
     {% if paginator.total_pages > 1 %}
+
     <nav class="pagination">
         {% if paginator.previous_page %}
         <a class="previous" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer</a>
@@ -54,9 +106,10 @@ permalink: /blog/
         <a class="next" href="{{ paginator.next_page_path | relative_url }}">Older &raquo;</a>
         {% endif %}
     </nav>
+
     {% endif %}
 
-    <div class="rss-subscribe">
+    <!-- <div class="rss-subscribe">
         <p>Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-    </div>
+    </div> -->
 </div> 

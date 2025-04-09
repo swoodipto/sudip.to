@@ -8,13 +8,18 @@
     <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
     {% seo %}
 </head>
-<body>
+<body class="{{ page.class }}">
 
     <div class="container">
 
         <header>
             <div class="page__header">
-                <h1> {{ page.title }} </h1>
+                <h1 class="page__title">
+                    {{page.title}}
+                </h1>
+                <h2 class="homepage__intro">
+                    Hey, I’m Sudipto 👋 This is my digital garden 🌱 I’m a self-taught artist obsessed with turning ideas into visually addictive pixels. Currently wrangling motion design at Hygraph.
+                </h2>
             </div>
             <div class="logo">
                 <svg width="46" height="143" viewBox="0 0 46 143" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,10 +40,10 @@
         <nav>
             <ul>
                 <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
-                <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' %}class="active"{% endif %}>Projects</a></li>
+                <li><a href="#" {% if page.url contains '/projects/' %}class="active"{% endif %}>Projects</a></li>
                 <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' %}class="active"{% endif %}>Notes</a></li>
                 <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}class="active"{% endif %}>Biographie</a></li>
-                <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' %}class="active"{% endif %}>Now</a></li>
+                <li><a href="#" {% if page.url contains '/now/' %}class="active"{% endif %}>Now</a></li>
             </ul>
         </nav>
     

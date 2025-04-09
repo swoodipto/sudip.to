@@ -1,8 +1,9 @@
 ---
 layout: post
-title: My Second Blog Post
+title: the cruel psychological effects of dark design
 date: 2023-01-15
 excerpt: Exploring more markdown features in this second post.
+category: Nice
 ---
 
 This is my second blog post, where I'll explore more markdown features.
@@ -33,7 +34,7 @@ And an unordered list:
 
 You can add images like this:
 
-![Alt text for the image](https://i.imgur.com/t4dhYIO.jpeg)
+![Alt text for the image](https://cdn.prod.website-files.com/66698e4ebea806ea4cadc0ce/67518c962b9c0f0422e9c00f__HXDvO8UNzHdEjoigWti1rpIDT5-7clbI7YPJxZp74M.png)
 
 ## Tables
 

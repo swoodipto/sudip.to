@@ -1,8 +1,9 @@
 ---
 layout: post
-title: My First Blog Post
+title: what on earth is a digital garden?
 date: 2023-01-01
 excerpt: This is my first blog post on my personal website.
+category: Test
 ---
 
 Welcome to my blog! This is my first post, and I'm excited to share my thoughts with you.
@@ -31,7 +32,7 @@ console.log(greet('World'));
 
 ## Links
 
-You can add [links to other websites](https://example.com) or to your own pages.
+You can add [links to other websites](https://google.com) or to your own pages.
 
 ## Blockquote
 
