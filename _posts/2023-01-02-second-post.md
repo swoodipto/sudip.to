@@ -4,6 +4,7 @@ title: the cruel psychological effects of dark design
 date: 2023-01-15
 excerpt: Exploring more markdown features in this second post.
 category: Nice
+class: post
 ---
 
 This is my second blog post, where I'll explore more markdown features.

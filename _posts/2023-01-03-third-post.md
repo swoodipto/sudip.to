@@ -4,6 +4,7 @@ title: how to make infinite money and not go mad
 date: 2025-03-09
 excerpt: how to make infinite money and not go mad
 category: Finance
+class: post
 ---
 
 This is my blog post content

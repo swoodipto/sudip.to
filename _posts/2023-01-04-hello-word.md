@@ -4,6 +4,7 @@ title: thoughts on future of the world
 date: 2025-03-09
 excerpt: thoughts on future of the world
 category: Test
+class: post
 ---
 
 Dolor incididunt laboris commodo pariatur aliqua est dolor enim sint qui excepteur quis. Non adipisicing in quis aliqua qui dolor labore laborum. Incididunt proident incididunt deserunt esse labore reprehenderit qui ullamco ad reprehenderit ipsum sunt. Et nulla ipsum sit excepteur. Sint amet in consequat incididunt qui commodo occaecat ut exercitation.

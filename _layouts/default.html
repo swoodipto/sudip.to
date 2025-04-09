@@ -14,12 +14,15 @@
 
         <header>
             <div class="page__header">
-                <h1 class="page__title">
-                    {{page.title}}
+                {% if page.url == '/' %}
+                <h1 class="homepage__intro">
+                    Hey, I'm Sudipto 👋 This is my digital garden 🌱 I'm a self-taught artist obsessed with turning ideas into visually addictive pixels. Currently wrangling motion design at Hygraph.
                 </h1>
-                <h2 class="homepage__intro">
-                    Hey, I’m Sudipto 👋 This is my digital garden 🌱 I’m a self-taught artist obsessed with turning ideas into visually addictive pixels. Currently wrangling motion design at Hygraph.
-                </h2>
+                {% else %}
+                <h1 class="page__title">
+                    {% if page.layout == 'post' %}notes{% else %}{{ page.title }}{% endif %}
+                </h1>
+                {% endif %}
             </div>
             <div class="logo">
                 <svg width="46" height="143" viewBox="0 0 46 143" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +44,7 @@
             <ul>
                 <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
                 <li><a href="#" {% if page.url contains '/projects/' %}class="active"{% endif %}>Projects</a></li>
-                <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' %}class="active"{% endif %}>Notes</a></li>
+                <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog/' or page.layout == 'post' %}class="active"{% endif %}>Notes</a></li>
                 <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}class="active"{% endif %}>Biographie</a></li>
                 <li><a href="#" {% if page.url contains '/now/' %}class="active"{% endif %}>Now</a></li>
             </ul>
