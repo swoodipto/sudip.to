@@ -1,8 +1,8 @@
 /* Import fonts */
 @import url('fonts.css');
 
+/* ---   DEFAULTS   --- */
 /* Reset and Normalize CSS */
-
 /* Box sizing rules */
 *,
 *::before,
@@ -16,7 +16,6 @@ html {
   font-size: 16px;
 }
 
-/* Remove default margin and padding */
 body,
 h1,
 h2,
@@ -38,7 +37,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: 'DM Mono', serif;
+  font-family: 'DM Mono', monospace;
   font-size: 1rem;
 }
 
@@ -123,15 +122,6 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.hero {
-  font-family: 'EB Garamond', serif;
-  font-weight: 400;
-  font-size: 4rem;
-  line-height: 1.2em;
-  letter-spacing: -0.02em;
-  font-optical-sizing: auto;
-}
-
 p {
   margin-bottom: 1.5rem;
 }
@@ -149,12 +139,96 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin-top: 3rem;
   margin-bottom: 0.75rem;
+  text-transform: lowercase;
 }
 
 /* Individual heading sizes */
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 { font-size: 2.75rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.75rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.25rem; letter-spacing: 0.075em;}
+
+
+/* ---   CUSTOM   --- */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Make the header span full width */
+header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column: 1 / -1;
+}
+
+/* Make the main content span full width */
+nav, main {
+  grid-column: 1 / -1;
+}
+
+/* Make the footer span full width */
+footer {
+  grid-column: 1 / -1;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Header */
+header .page__header {
+  grid-column: span 3;
+}
+
+header .page__header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+header .logo {
+  grid-column: span 1;
+  justify-self: end;
+  height: 100%;
+  display: flex;
+  align-items: top;
+}
+
+header .logo svg {
+  height: 65%;
+  width: auto;
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  line-height: 1em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Footer*/
+footer h6 {
+  margin: 0;
+  opacity: 0.25;
+}
+
+footer .sign {
+  grid-column: span 1;
+  justify-self: start;
+  width: 100%;
+}
+
+footer .sign svg {
+  width: 8%;
+  height: auto;
+  opacity: 0.15;
+}
