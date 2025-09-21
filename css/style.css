@@ -137,7 +137,7 @@ a:not(.btn) {
     border-radius: 0.4vh;
 }
 
-a:not(.btn):hover {
+a:not(.btn):not([class]):hover {
     background-color: var(--primary-alpha-h);
 }
 
@@ -301,7 +301,7 @@ a:not(.btn):hover {
   height: auto;
 }
 
-@media (max-height: 650px) {
+@media (max-height: 1024px) {
     :root {
       --base-size: 16px;
     }
