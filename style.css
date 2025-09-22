@@ -276,7 +276,7 @@ img {
     padding: 0.69375rem;
     display: grid;
     grid-auto-flow: row;
-    grid-gap: 0.69375rem;
+    grid-gap: calc(0.69375rem * 2.5);
 }
 
 .drawer {
@@ -481,6 +481,9 @@ footer .sign svg * {
 @media (max-width: 600px) {
     :root {
         --scale: .85;
+    }
+    .container {
+        grid-gap: 24px;
     }
     .caption {
       flex-direction: column;
