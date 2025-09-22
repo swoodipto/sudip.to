@@ -302,6 +302,7 @@ footer {
   opacity: .4;
   transform-origin: 0 0;
   transform: scale(calc(var(--scale) * 0.65));
+  margin-left: calc(2rem * var(--scale) + 0.69375rem);
 }
 
 footer .sign {
@@ -344,7 +345,7 @@ footer .sign svg * {
 
 .reel__wrapper {
   max-width: 44rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 
 .reel {
@@ -489,5 +490,8 @@ footer .sign svg * {
     }
     .caption__info > div > div {
       display: inline;
+    }
+    footer {
+        margin-left: 0;
     }
 }
