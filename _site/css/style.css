@@ -299,20 +299,17 @@ nav li {
 }
 
 footer {
-  opacity: 1;
-}
-
-footer .sign__from {
-  font-size: .7rem;
+  opacity: .4;
+  transform-origin: 0 0;
+  transform: scale(calc(var(--scale) * 0.65));
 }
 
 footer .sign {
-  max-width: 5rem;
-  margin-top: -0.4rem;
+  max-width: 6rem;
 }
 
 footer .sign svg * {
-  stroke-width: 8;
+  stroke-width: 9;
   stroke: var(--primary);
 }
 
@@ -347,6 +344,7 @@ footer .sign svg * {
 
 .reel__wrapper {
   max-width: 44rem;
+  margin-top: 1rem;
 }
 
 .reel {
