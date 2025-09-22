@@ -289,7 +289,7 @@ img {
 }
 
 .header__logo svg {
-  width: 2rem;
+  width: calc(2rem * var(--scale));
   height: auto;
 }
 
@@ -330,10 +330,6 @@ nav li {
 @media (max-height: 1024px) {
     :root {
       --base-size: 16px;
-    }
-
-    .header__logo svg {
-      width: 32px;
     }
 
     .container {
@@ -446,5 +442,11 @@ nav li {
 @media (max-width: 600px) {
     :root {
         --scale: .8;
+    }
+    .caption {
+      flex-direction: column;
+    }
+    .caption__info {
+      margin: 0;
     }
 }
