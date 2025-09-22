@@ -4,7 +4,7 @@
 
     /* TYPE */
     --system-font: ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    --type: normal normal 400 1rem/1.2rem var(--system-font);
+    --type: normal normal 1rem/1.2rem var(--system-font);
     --brand-ls: -0.015rem;
 
     /* COLORS */
@@ -41,53 +41,6 @@
     --sexy-bounce: cubic-bezier(0.18, 0.89, 0.31, 1.57);
 
     /* NUMS */
-    --num-0: 0;
-    --num-1q: 1;
-    --num-1h: 2;
-    --num-1: 4;
-    --num-2h: 6;
-    --num-2: 8;
-    --num-3h: 10;
-    --num-3: 12;
-    --num-4: 16;
-    --num-5: 20;
-    --num-6: 24;
-    --num-7: 28;
-    --num-8: 32;
-    --num-9: 36;
-    --num-10: 40;
-
-    --num-21: 84;
-
-    --num-25: 100;
-
-    --num-40: 160;
-
-    --num-50: 200;
-
-    --num-60: 240;
-
-    --num-75: 300;
-
-    --num-81: 324;
-    --num-82: 328;
-    --num-83: 332;
-    --num-84: 336;
-    --num-85: 340;
-    --num-86: 344;
-    --num-87: 348;
-    --num-88: 352;
-    --num-89: 356;
-    --num-90: 360;
-
-    --num-300: 1200;
-    
-    --num-350: 1400;
-
-    --num-400: 1600;
-    
-    --num-625: 2500;
-
     --num-full: 999;
 }
 
@@ -124,7 +77,7 @@ html {
 }
 
 body {
-    background-color: var(--slate);
+    background-color: var(--white);
     font: var(--type);
     letter-spacing: var(--brand-ls);
     color: var(--fg-primary);
@@ -343,6 +296,35 @@ img {
 nav li {
   list-style: none;
   margin-bottom: 0.4rem;
+}
+
+.caption {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 200px;
+  gap: 0.69375rem;
+  font-size: .9rem;
+  line-height: 1.15rem;
+}
+
+.caption__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.69375rem;
+  margin-top: 2.2rem;
+}
+
+.caption__btns {
+  display: flex;
+  flex-direction: row;
+  gap: 0.69375rem;
+}
+
+.caption__btns .caption__btn__subtext {
+  margin: calc(0.69375rem * 0.2) 0 0 calc(0.69375rem * 1.7);
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: .4;
 }
 
 @media (max-height: 1024px) {
