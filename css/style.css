@@ -77,7 +77,7 @@ html {
 }
 
 body {
-    background-color: var(--white);
+    background-color: var(--slate);
     font: var(--type);
     letter-spacing: var(--brand-ls);
     color: var(--fg-primary);
