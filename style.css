@@ -479,9 +479,9 @@ footer .sign svg * {
 }
 
 @media (max-width: 600px) {
-    :root {
+    /* :root {
         --scale: .85;
-    }
+    } */
     .container {
         grid-gap: 24px;
     }
