@@ -468,9 +468,9 @@ footer .sign svg * {
 }
 
 @media (max-width: 1200px) {
-    :root {
+    /* :root {
         --scale: .88;
-    }
+    } */
 }
 
 @media (max-width: 900px) {
@@ -479,7 +479,7 @@ footer .sign svg * {
 
 @media (max-width: 600px) {
     :root {
-        --scale: .8;
+        --scale: .85;
     }
     .caption {
       flex-direction: column;
