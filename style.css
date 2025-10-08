@@ -298,15 +298,29 @@ nav li {
   margin-bottom: 0.4rem;
 }
 
+.socials {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  margin-left: -0.25rem;
+}
+
 footer {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 1.6rem;
+  margin-left: calc(2rem * var(--scale) + 1rem);
+}
+
+footer .sign__wrap {
   opacity: .4;
   transform-origin: 0 0;
   transform: scale(calc(var(--scale) * 0.65));
-  margin-left: calc(2rem * var(--scale) + 0.69375rem);
 }
 
 footer .sign {
-  max-width: 6rem;
+  max-width: 5.5rem;
 }
 
 footer .sign svg * {
@@ -496,5 +510,11 @@ footer .sign svg * {
     }
     footer {
         margin-left: 0;
+        grid-gap: 1rem;
+    }
+    .socials {
+      font-size: 0.9rem;
+      flex-direction: column;
+      gap: 0.4rem;
     }
 }
