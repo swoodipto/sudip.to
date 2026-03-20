@@ -347,8 +347,8 @@ footer .sign svg * {
 }
 
 a.blue__Hover:hover {
-  color: #003386;
-  background-color: #4286f437;
+  color: #1d69e4;
+  background-color: #4286f430;
 }
 
 a.black__Hover:hover {
@@ -364,6 +364,21 @@ a.mint__Hover:hover {
 a.deepBlue__Hover:hover {
   color: #4A50FB;
   background-color: #4a50fb23;
+}
+
+a.twitter__Hover:hover {
+  color: #007bc8;
+  background-color: #1da0f22e;
+}
+
+a.insta__Hover:hover {
+  color: #d01e59;
+  background-color: #e1306b21;
+}
+
+a.yt__Hover:hover {
+  color: #dc0000;
+  background-color: #ff00001d;
 }
 
 .caption__btns {
