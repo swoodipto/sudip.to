@@ -5,7 +5,7 @@
     /* TYPE */
     --system-font: ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
     --type: 500 normal 1rem/1.2rem var(--system-font);
-    --brand-ls: 0.02rem;
+    --brand-ls: -0.006rem;
 
     /* COLORS */
     --white: #fff;
