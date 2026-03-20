@@ -4,8 +4,8 @@
 
     /* TYPE */
     --system-font: ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    --type: normal normal 1rem/1.2rem var(--system-font);
-    --brand-ls: -0.015rem;
+    --type: 500 normal 1rem/1.2rem var(--system-font);
+    --brand-ls: 0.02rem;
 
     /* COLORS */
     --white: #fff;
@@ -106,8 +106,9 @@ img {
 
 .btn {
     display: inline-block;
-    font-weight: 500;
+    font-weight: 600;
     background-color: var(--primary);
+    letter-spacing: -0.006rem;
     --switch: calc((var(--primary-l) - var(--contrastThreshold)) * -100);
     color: hsl(0, 0%, var(--switch));
     padding: 0.5rem 1.25rem;
@@ -330,7 +331,7 @@ footer .sign {
 }
 
 footer .sign svg * {
-  stroke-width: 8;
+  stroke-width: 9;
   stroke: var(--primary);
 }
 
