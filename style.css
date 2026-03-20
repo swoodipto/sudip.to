@@ -77,10 +77,14 @@ html {
 }
 
 body {
-    background-color: var(--slate);
+    /* background-color: var(--slate); */
     font: var(--type);
     letter-spacing: var(--brand-ls);
     color: var(--fg-primary);
+
+    background: linear-gradient(to top, var(--slate-gray), var(--slate-gray), var(--slate), var(--slate));
+    background-size: cover;
+    background-size: 100% 0.28rem;
 }
 
 a:not(.btn) {
