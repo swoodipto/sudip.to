@@ -315,17 +315,18 @@ footer {
 }
 
 footer .sign__wrap {
-  opacity: .4;
+  opacity: 1;
   transform-origin: 0 0;
-  transform: scale(calc(var(--scale) * 0.65));
+  transform: scale(calc(var(--scale) * 0.76));
 }
 
 footer .sign {
   max-width: 6rem;
+  margin-top: 0.2rem;
 }
 
 footer .sign svg * {
-  stroke-width: 9;
+  stroke-width: 8;
   stroke: var(--primary);
 }
 
@@ -345,34 +346,24 @@ footer .sign svg * {
   margin-top: 2.2rem;
 }
 
-.logoCloud__wrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.4rem;
+a.blue__Hover:hover {
+  color: #003386;
+  background-color: #4286f437;
 }
 
-.logoCloud {
-  display: inline-flex;
-  margin-top: 0.4rem;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.2rem;
+a.black__Hover:hover {
+  color: #222222;
+  background-color: #2222221f;
 }
 
-.logoCloud a:not(.btn):not([class]):hover {
-  background-color: transparent;
+a.mint__Hover:hover {
+  color: #00531d;
+  background-color: #00d14939;
 }
 
-.caption__info .logoComp {
-  width: calc(1rem * 3.1);
-  height: auto;
-}
-
-.caption__info .logoComp svg {
-  width: 100%;
-  height: auto;
+a.deepBlue__Hover:hover {
+  color: #4A50FB;
+  background-color: #4a50fb23;
 }
 
 .caption__btns {
