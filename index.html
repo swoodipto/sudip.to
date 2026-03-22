@@ -1209,7 +1209,7 @@ a.yt__Hover:hover {
         </div><!-- /reel__wrapper.window -->
 
         <!-- playlist lives OUTSIDE .window so overflow:hidden doesn't clip it -->
-        <div class="playlist" id="playlist">
+        <div class="playlist open" id="playlist">
 
           <div class="playlist__header">
             <span class="playlist__title">Playlist</span>
@@ -1473,9 +1473,23 @@ a.yt__Hover:hover {
   (function() {
     var panel = document.getElementById('playlist');
     var btn   = document.getElementById('playlist-toggle');
-    var open  = true;
-    panel.classList.add('open');
+    var open  = true; // starts open (class already in HTML)
     btn.classList.add('is-open');
+
+    // Auto-close 2s after DOM is ready
+    function scheduleClose() {
+      setTimeout(function() {
+        open = false;
+        panel.classList.remove('open');
+        btn.classList.remove('is-open');
+      }, 2000);
+    }
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', scheduleClose);
+    } else {
+      scheduleClose();
+    }
+
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
       open = !open;
