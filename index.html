@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,6 @@
     <title>Sudipto — Designer + Artist</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="icon" type="image/x-icon" href="fav.png">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
 :root {
     --base-size: 1.6vh;
@@ -64,6 +64,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-variant-emoji: text;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -1011,7 +1012,7 @@ a.yt__Hover:hover {
               <div class="reel__controls">
                 <div class="reel__transport">
                   <button class="reel__btn reel__btn--icon" id="reel-prev" title="Restart"><span class="material-icons">fast_rewind</span></button>
-                  <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play"><span class="material-icons">play_arrow</span></button>
+                  <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play">▶︎</button>
                   <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end"><span class="material-icons">fast_forward</span></button>
                 </div>
                 <span class="reel__footer-label">10 Year Motion Reel / 2014—24</span>
@@ -1106,7 +1107,7 @@ a.yt__Hover:hover {
         },
         onStateChange: function(e) {
           reelPlaying = (e.data === YT.PlayerState.PLAYING);
-          document.getElementById('reel-playpause').textContent = reelPlaying ? '⏸' : '▶';
+          document.getElementById('reel-playpause').textContent = reelPlaying ? '⏸' : '▶︎';
           if (reelPlaying) {
             // hide thumbnail
             var cover = document.getElementById('reel-thumb-cover');
