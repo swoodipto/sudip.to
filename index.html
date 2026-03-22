@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1011,9 +1009,15 @@ a.yt__Hover:hover {
               <!-- row 1: transport + title + time -->
               <div class="reel__controls">
                 <div class="reel__transport">
-                  <button class="reel__btn reel__btn--icon" id="reel-prev" title="Restart" style="font-variant-emoji: text;">&#x23EA;</button>
-                  <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play" style="font-variant-emoji: text;">▶︎</button>
-                  <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end" style="font-variant-emoji: text;">▶▶</button>
+                  <button class="reel__btn reel__btn--icon" id="reel-prev" title="Restart">
+                    <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="5,0 0,4.5 5,9"/><polygon points="11,0 6,4.5 11,9"/></svg>
+                  </button>
+                  <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play">
+                    <svg id="icon-playpause" width="10" height="11" viewBox="0 0 10 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 10,5.5 0,11"/></svg>
+                  </button>
+                  <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end">
+                    <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 5,4.5 0,9"/><polygon points="6,0 11,4.5 6,9"/></svg>
+                  </button>
                 </div>
                 <span class="reel__footer-label">10 Year Motion Reel / 2014—24</span>
                 <span class="reel__footer-duration"><span id="reel-cur">0:00</span> / <span id="reel-dur">--:--</span></span>
@@ -1107,7 +1111,10 @@ a.yt__Hover:hover {
         },
         onStateChange: function(e) {
           reelPlaying = (e.data === YT.PlayerState.PLAYING);
-          document.getElementById('reel-playpause').textContent = reelPlaying ? '⏸' : '▶︎';
+          var iconSvg = document.getElementById('icon-playpause');
+          reelPlaying
+            ? iconSvg.innerHTML = '<rect x="1" y="0" width="3" height="11"/><rect x="6" y="0" width="3" height="11"/>'
+            : iconSvg.innerHTML = '<polygon points="0,0 10,5.5 0,11"/>';
           if (reelPlaying) {
             // hide thumbnail
             var cover = document.getElementById('reel-thumb-cover');
