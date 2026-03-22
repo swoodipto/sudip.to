@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -324,12 +325,10 @@ nav li {
 }
 
 footer {
-    position: relative;
   display: grid;
   grid-template-rows: auto;
   grid-gap: 1.6rem;
   margin-left: calc(2rem * var(--scale) + 1rem);
-  z-index: 0;
 }
 
 footer .sign__wrap {
@@ -422,7 +421,7 @@ a.yt__Hover:hover {
     0 20px 60px -8px rgba(0,0,0,.5),
     inset 0 1px 0 rgba(255,255,255,.35);
   user-select: none;
-  margin-left: 20px;
+  z-index: 9999;
 }
 
   /* ── Title bar — brushed aluminium ── */
@@ -568,6 +567,11 @@ a.yt__Hover:hover {
   .expand-btn::before { top: 0; right: 0; width: 8px; height: 8px; border-radius: 1px; }
   .expand-btn::after  { bottom: 0; left: 0; width: 8px; height: 8px; border-radius: 1px; }
 
+.reel__wrapper {
+  max-width: 44rem;
+  /* margin-top: 1rem; */
+  will-change: transform;
+}
 
 /* ── Thumbnail cover (shown before first play) ── */
 .reel__thumb-cover {
@@ -589,13 +593,11 @@ a.yt__Hover:hover {
   pointer-events: none;
 }
 
-/* iframe injected inside .reel viewport
-   Oversized slightly so YouTube's bottom control bar is clipped off */
+/* iframe injected inside .reel viewport */
 #reel-iframe {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
-  height: calc(100%); /* push YouTube's controls bar below the clip edge */
+  width: 100%; height: 100%;
   border: none;
 }
 
@@ -927,7 +929,6 @@ a.yt__Hover:hover {
     }
     .socials {
       font-size: 0.9rem;
-      flex-direction: column;
       gap: 0.4rem;
     }
     .title {
@@ -935,177 +936,6 @@ a.yt__Hover:hover {
       overflow: hidden;
       text-overflow: ellipsis;
   }
-}
-/* ══════════════════════════════════════════
-   PLAYLIST — slides out from behind the window
-══════════════════════════════════════════ */
-
-/* Shell: positioning root, no overflow clip — lets playlist escape */
-.player__shell {
-  position: relative;
-  max-width: 44rem;
-  will-change: transform; /* spring drag applied here */
-  z-index: 99;
-}
-
-.reel__wrapper {
-  position: relative;
-  z-index: 2; /* window sits on top of playlist */
-}
-
-/* ── Playlist ──
-   Absolute to .player__shell, top-right corner.
-   Closed: translateX(0) — hidden behind the window (same right edge, z-index 1).
-   Open:   translateX(100%) — fully revealed to the right of the window. */
-.playlist {
-  position: absolute;
-  top: 0;
-  right: -10px;
-  width: 250px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0 10px 10px 0;
-  border: 1px solid rgba(0,0,0,.52);
-  border-left: 1px solid #7a7a7a;
-  z-index: 1; /* behind .reel__wrapper */
-  overflow: hidden;
-  transform: translateX(0);
-  box-shadow: none;
-  transition: transform .4s cubic-bezier(.4,0,.2,1),
-              opacity   .28s ease,
-              box-shadow .3s ease;
-  opacity: 1;
-  pointer-events: none;
-  
-}
-
-.playlist.open {
-  transform: translateX(100%);
-  opacity: 1;
-  pointer-events: all;
-  box-shadow: 0 20px 60px -10px rgba(0,0,0,.3);
-}
-
-/* ── Playlist header — aluminium titlebar style ── */
-.playlist__header {
-  height: 28px;
-  flex-shrink: 0;
-  background:
-    repeating-linear-gradient(
-      180deg,
-      rgba(255,255,255,.20) 0px, rgba(255,255,255,.20) 1px,
-      rgba(0,0,0,.045)      1px, rgba(0,0,0,.045)      2px,
-      transparent           2px, transparent            3px
-    ),
-    linear-gradient(180deg,
-      #f2f2f2 0%, #e0e0e0 15%, #d2d2d2 35%,
-      #c6c6c6 52%, #bcbcbc 68%, #c4c4c4 84%, #cecece 100%
-    );
-  border-bottom: 1px solid #7e7e7e;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8px 0 20px;
-  white-space: nowrap;
-}
-
-.playlist__title {
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
-  font-size: 11.5px; font-weight: 700;
-  color: #222;
-  text-shadow: 0 1px 0 rgba(255,255,255,.65);
-  letter-spacing: .01em;
-}
-
-/* Toggle button in window titlebar */
-.playlist__toggle-btn {
-  height: 18px; padding: 0 7px;
-  border: 1px solid #7a7a7a; border-radius: 4px;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,.15) 0px, rgba(255,255,255,.15) 1px, transparent 1px, transparent 3px),
-    linear-gradient(180deg, #e6e6e6 0%, #d0d0d0 45%, #c0c0c0 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 1px rgba(0,0,0,.2);
-  cursor: pointer;
-  display: flex; align-items: center; gap: 4px;
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
-  font-size: 9px; font-weight: 700; color: #333;
-  text-shadow: 0 1px 0 rgba(255,255,255,.6);
-  white-space: nowrap; letter-spacing: .03em; flex-shrink: 0;
-}
-.playlist__toggle-btn:hover  { background: linear-gradient(180deg, #eee, #d4d4d4); }
-.playlist__toggle-btn:active { background: linear-gradient(180deg, #bbb, #ccc); }
-.playlist__toggle-btn svg {
-  transition: transform .36s cubic-bezier(.4,0,.2,1);
-  flex-shrink: 0;
-}
-.playlist__toggle-btn.is-open svg { transform: rotate(180deg); }
-
-/* Scrollable list */
-.playlist__list {
-  list-style: none; overflow-y: auto; flex: 1; padding: 0 0 3px 10px;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,.09) 0px, rgba(255,255,255,.09) 1px, transparent 1px, transparent 3px),
-    linear-gradient(180deg, #f7f7f7 0%, #e7e7e7 100%);
-}
-.playlist__list::-webkit-scrollbar { width: 4px; }
-.playlist__list::-webkit-scrollbar-track { background: rgba(0,0,0,.05); }
-.playlist__list::-webkit-scrollbar-thumb { background: #aaa; border-radius: 2px; }
-
-/* Individual item */
-.playlist__item {
-  display: flex; align-items: center; gap: 7px;
-  padding: 6px 8px; cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.07); transition: background .1s;
-}
-.playlist__item:last-child { border-bottom: none; }
-.playlist__item:hover { background: rgba(0,0,255,.07); }
-.playlist__item.active {
-  background: linear-gradient(90deg, #0000ff1a, #0000ff09);
-  border-left: 3px solid #0000ff; padding-left: 5px;
-}
-
-.playlist__thumb {
-  width: 60px; height: auto; border-radius: 2px;
-  object-fit: cover; flex-shrink: 0; background: #bbb;
-  box-shadow: 0 1px 3px rgba(0,0,0,.22);
-}
-
-.playlist__info { flex: 1; min-width: 0; }
-.playlist__name {
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
-  font-size: 10px; font-weight: 600; color: #1a1a2e;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;
-}
-.playlist__meta { font-family: 'Courier New', monospace; font-size: 8.5px; color: #777; margin-top: 1px; }
-.playlist__item.active .playlist__name { color: #1a3a6a; }
-
-/* Animated now-playing bars */
-.playlist__now-playing { display: none; align-items: flex-end; gap: 1.5px; height: 11px; flex-shrink: 0; }
-.playlist__item.active .playlist__now-playing { display: flex; }
-.playlist__now-playing span {
-  display: block; width: 2.5px; background: #0000ff; border-radius: 1px;
-  animation: plbars .9s ease-in-out infinite alternate;
-}
-.playlist__now-playing span:nth-child(1) { height: 4px;  animation-delay: 0s; }
-.playlist__now-playing span:nth-child(2) { height: 9px;  animation-delay: .2s; }
-.playlist__now-playing span:nth-child(3) { height: 6px;  animation-delay: .4s; }
-@keyframes plbars { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
-
-/* Mobile: collapse below the window */
-@media (max-width: 600px) {
-  .playlist {
-    top: 100%; left: 0; right: auto;
-    width: 100%; height: auto;
-    border-radius: 0 0 10px 10px;
-    border: 1px solid rgba(0,0,0,.52);
-    border-top: 1px solid #7a7a7a;
-    transform: translateY(-20px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.3);
-  }
-  .playlist.open { transform: translateY(0); }
 }
     </style>
 </head>
@@ -1149,66 +979,55 @@ a.yt__Hover:hover {
             
         </div>
 
-        <!-- shell: positions playlist relative to the window, no overflow clipping -->
-        <div class="player__shell">
-
         <div class="reel__wrapper window">
 
-          <div class="titlebar">
-            <div class="traffic-lights">
-              <div class="dot dot-close"></div>
-              <div class="dot dot-min"></div>
-              <div class="dot dot-max"></div>
-            </div>
-            <div class="title" id="reel-title-bar">Sudipto's 10-Year Motion Reel.mp4</div>
-            <button class="playlist__toggle-btn" id="playlist-toggle" title="Toggle playlist" style="position:absolute;right:10px;">
-              <svg width="7" height="10" viewBox="0 0 7 10" fill="none">
-                <path d="M5 1L1 5l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Playlist
-            </button>
-          </div>
-
-          <div class="reel viewport" id="reel-viewport">
-            <div class="reel__thumb-cover" id="reel-thumb-cover">
-              <img id="reel-thumb-img" src="" alt="Video thumbnail" />
-            </div>
-          </div>
-
-          <div class="reel__footer">
-            <div class="reel__controls">
-              <div class="reel__transport">
-                <button class="reel__btn reel__btn--icon" id="reel-prev" title="Restart">◀◀</button>
-                <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play">▶</button>
-                <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end">▶▶</button>
+            <div class="titlebar">
+                <div class="traffic-lights">
+                  <div class="dot dot-close"></div>
+                  <div class="dot dot-min"></div>
+                  <div class="dot dot-max"></div>
+                </div>
+                <div class="title">Sudipto's 10-Year Motion Reel.mp4</div>
+                <!-- <div class="expand-btn"></div> -->
               </div>
-              <span class="reel__footer-label" id="reel-footer-label">10 Year Motion Reel / 2014—24</span>
-              <span class="reel__footer-duration"><span id="reel-cur">0:00</span> / <span id="reel-dur">--:--</span></span>
+
+            <div class="reel viewport" id="reel-viewport">
+                <!-- Thumbnail shown until first play -->
+                <div class="reel__thumb-cover" id="reel-thumb-cover">
+                  <img
+                    src="https://i.ytimg.com/vi/DvQmSE5fzUo/maxresdefault.jpg"
+                    alt="10 Year Motion Reel thumbnail"
+                    onerror="this.src='https://i.ytimg.com/vi/DvQmSE5fzUo/hqdefault.jpg'"
+                  />
+                </div>
+                <!-- iframe injected here by JS on first play -->
             </div>
-            <div class="reel__progress-wrap">
-              <div class="reel__progress-track" id="reel-track">
-                <div class="reel__progress-fill"  id="reel-fill"></div>
-                <div class="reel__progress-thumb" id="reel-thumb"></div>
+
+            <!-- macOS-style controls bar -->
+            <div class="reel__footer">
+
+              <!-- row 1: transport + title + time -->
+              <div class="reel__controls">
+                <div class="reel__transport">
+                  <button class="reel__btn reel__btn--icon" id="reel-prev" title="Restart">◀◀</button>
+                  <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play">▶</button>
+                  <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end">▶▶</button>
+                </div>
+                <span class="reel__footer-label">10 Year Motion Reel / 2014—24</span>
+                <span class="reel__footer-duration"><span id="reel-cur">0:00</span> / <span id="reel-dur">--:--</span></span>
               </div>
+
+              <!-- row 2: progress bar -->
+              <div class="reel__progress-wrap">
+                <div class="reel__progress-track" id="reel-track">
+                  <div class="reel__progress-fill"  id="reel-fill"></div>
+                  <div class="reel__progress-thumb" id="reel-thumb"></div>
+                </div>
+              </div>
+
             </div>
-          </div>
-
-        </div><!-- /reel__wrapper.window -->
-
-        <!-- playlist lives OUTSIDE .window so overflow:hidden doesn't clip it -->
-        <div class="playlist" id="playlist">
-
-          <div class="playlist__header">
-            <span class="playlist__title">Playlist</span>
-            <span style="font-family:'Courier New',monospace;font-size:9px;color:#888;">5 videos</span>
-          </div>
-
-          <ul class="playlist__list" id="playlist-list">
-            <!-- Items rendered by JS from VIDEOS array below — just edit that array -->
-          </ul>
-        </div><!-- /playlist -->
-
-        </div><!-- /player__shell -->
+            
+        </div>
     
         <footer>
 
@@ -1235,74 +1054,30 @@ a.yt__Hover:hover {
     </div>
 
 <script>
-  // ════════════════════════════════════════
-  // ✏️  EDIT YOUR PLAYLIST HERE
-  //     Just add/remove objects. Everything
-  //     else is automatic.
-  // ════════════════════════════════════════
-  var VIDEOS = [
-    { id: 'DvQmSE5fzUo', name: '10-Year Motion Reel', meta: '2014—24' },
-    { id: 'pK5WgUBakBA', name: 'Showreel 2020',       meta: 'Motion + Brand' },
-    { id: 'cIVha_MNIso', name: 'K-391 Collab',        meta: 'Music Video' },
-    { id: 'nFuMiTxvmEg', name: 'Brand Work',           meta: 'Identity + Motion' },
-  ];
-  // ════════════════════════════════════════
-
-  // Thumbnail helper — always uses the video's own ID
-  function thumb(id, size) {
-    // size: 'mqdefault' (320×180) or 'maxresdefault' (1280×720, falls back)
-    return 'https://i.ytimg.com/vi/' + id + '/' + (size || 'mqdefault') + '.jpg';
-  }
-
-  // ── Build playlist items from VIDEOS array ──
-  var currentIndex = 0;
-  var listEl = document.getElementById('playlist-list');
-  listEl.innerHTML = '';
-  VIDEOS.forEach(function(v, i) {
-    var li = document.createElement('li');
-    li.className = 'playlist__item' + (i === 0 ? ' active' : '');
-    li.setAttribute('data-index', i);
-    li.innerHTML =
-      '<img class="playlist__thumb" src="' + thumb(v.id) + '" alt="">' +
-      '<div class="playlist__info">' +
-        '<div class="playlist__name">' + v.name + '</div>' +
-        '<div class="playlist__meta">' + v.meta + '</div>' +
-      '</div>' +
-      '<div class="playlist__now-playing"><span></span><span></span><span></span></div>';
-    listEl.appendChild(li);
-  });
-
-  // Set initial main thumbnail from first video
-  var mainImg = document.getElementById('reel-thumb-img');
-  mainImg.src = thumb(VIDEOS[0].id, 'maxresdefault');
-  mainImg.onerror = function(){ this.src = thumb(VIDEOS[0].id, 'hqdefault'); this.onerror = null; };
-
-  // Update video count in header
-  var countEl = document.querySelector('.playlist__header span:last-child');
-  if (countEl) countEl.textContent = VIDEOS.length + ' video' + (VIDEOS.length !== 1 ? 's' : '');
-
   // ── Aluminium noise grain ──
   (function() {
-    var sz = 128, c = document.createElement('canvas');
+    const sz = 128, c = document.createElement('canvas');
     c.width = c.height = sz;
-    var ctx = c.getContext('2d'), img = ctx.createImageData(sz, sz);
-    for (var i = 0; i < img.data.length; i += 4) {
-      var row = Math.floor(i / 4 / sz);
-      var v = 128 + (Math.random() * 80 - 40) + Math.sin(row * 0.7) * 12;
+    const ctx = c.getContext('2d'), img = ctx.createImageData(sz, sz);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const row = Math.floor(i / 4 / sz);
+      const v = 128 + (Math.random() * 80 - 40) + Math.sin(row * 0.7) * 12;
       img.data[i] = img.data[i+1] = img.data[i+2] = v; img.data[i+3] = 255;
     }
     ctx.putImageData(img, 0, 0);
-    var f = document.querySelector('.reel__footer');
-    if (f) f.style.setProperty('--reel-noise', 'url(' + c.toDataURL() + ')');
+    const f = document.querySelector('.reel__footer');
+    if (f) f.style.setProperty('--reel-noise', `url(${c.toDataURL()})`);
   })();
 
   // ── YouTube IFrame API ──
+  var VIDEO_ID  = 'DvQmSE5fzUo';
   var reelPlayer  = null;
   var reelPlaying = false;
   var reelRafId   = null;
   var playerReady = false;
-  var pendingVideoId = null;
+  var pendingPlay = false;
 
+  // Inject YT API script (loaded once)
   (function(){
     var s = document.createElement('script');
     s.src = 'https://www.youtube.com/iframe_api';
@@ -1310,13 +1085,14 @@ a.yt__Hover:hover {
   })();
 
   window.onYouTubeIframeAPIReady = function() {
+    // Build the iframe inside the viewport div
     var viewport = document.getElementById('reel-viewport');
     var iframe   = document.createElement('iframe');
     iframe.id    = 'reel-iframe';
-    iframe.src   = 'https://www.youtube.com/embed/' + VIDEOS[0].id +
-      '?enablejsapi=1&controls=0&modestbranding=1' +
-      '&rel=0&iv_load_policy=3&playsinline=1&autoplay=0';
-    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.src   = 'https://www.youtube.com/embed/' + VIDEO_ID +
+      '?enablejsapi=1&controls=0&disablekb=1&modestbranding=1' +
+      '&rel=0&iv_load_policy=3&fs=0&playsinline=1&autoplay=0';
+    iframe.allow = 'autoplay';
     viewport.appendChild(iframe);
 
     reelPlayer = new YT.Player('reel-iframe', {
@@ -1325,15 +1101,13 @@ a.yt__Hover:hover {
           playerReady = true;
           var dur = e.target.getDuration();
           if (dur) document.getElementById('reel-dur').textContent = fmtTime(dur);
-          if (pendingVideoId) {
-            reelPlayer.loadVideoById(pendingVideoId);
-            pendingVideoId = null;
-          }
+          if (pendingPlay) { pendingPlay = false; reelPlayer.playVideo(); }
         },
         onStateChange: function(e) {
           reelPlaying = (e.data === YT.PlayerState.PLAYING);
           document.getElementById('reel-playpause').textContent = reelPlaying ? '⏸' : '▶';
           if (reelPlaying) {
+            // hide thumbnail
             var cover = document.getElementById('reel-thumb-cover');
             if (cover) cover.classList.add('hidden');
             tickProgress();
@@ -1364,64 +1138,27 @@ a.yt__Hover:hover {
   }
 
   function doPlay() {
-    if (!playerReady) return;
+    if (!playerReady) { pendingPlay = true; return; }
     reelPlaying ? reelPlayer.pauseVideo() : reelPlayer.playVideo();
   }
 
-  // Thumbnail click → start playing, hide cover
+  // Thumbnail click → play
   document.getElementById('reel-thumb-cover').addEventListener('click', function() {
-    if (playerReady) {
-      reelPlayer.playVideo();
-    }
+    if (!playerReady) { pendingPlay = true; return; }
+    reelPlayer.playVideo();
   });
 
-  // ── Load a video by index ──
-  function loadVideoByIndex(idx) {
-    var v = VIDEOS[idx];
-    if (!v) return;
-    currentIndex = idx;
-
-    // Update title bar + footer label
-    var tb = document.getElementById('reel-title-bar');
-    var fl = document.getElementById('reel-footer-label');
-    if (tb) tb.textContent = v.name;
-    if (fl) fl.textContent = v.name + ' / ' + v.meta;
-
-    // Reset progress
-    document.getElementById('reel-fill').style.width = '0%';
-    document.getElementById('reel-thumb').style.left = '0%';
-    document.getElementById('reel-cur').textContent  = '0:00';
-    document.getElementById('reel-dur').textContent  = '--:--';
-    cancelAnimationFrame(reelRafId);
-    reelPlaying = false;
-    document.getElementById('reel-playpause').textContent = '▶';
-
-    // Swap main thumbnail
-    var cover = document.getElementById('reel-thumb-cover');
-    var img   = document.getElementById('reel-thumb-img');
-    img.src   = thumb(v.id, 'maxresdefault');
-    img.onerror = function(){ this.src = thumb(v.id, 'hqdefault'); this.onerror = null; };
-    cover.classList.remove('hidden');
-
-    // Load into player
-    if (playerReady) {
-      reelPlayer.loadVideoById(v.id);
-    } else {
-      pendingVideoId = v.id;
-    }
-
-    // Update active state in list
-    document.querySelectorAll('.playlist__item').forEach(function(el, i) {
-      el.classList.toggle('active', i === idx);
-    });
-  }
-
+  // Play/pause button
   document.getElementById('reel-playpause').addEventListener('click', doPlay);
+
+  // Restart
   document.getElementById('reel-prev').addEventListener('click', function() {
     if (!playerReady) return;
     reelPlayer.seekTo(0);
     if (!reelPlaying) reelPlayer.playVideo();
   });
+
+  // Skip near end
   document.getElementById('reel-next').addEventListener('click', function() {
     if (!playerReady) return;
     var dur = reelPlayer.getDuration();
@@ -1444,32 +1181,9 @@ a.yt__Hover:hover {
   document.addEventListener('mousemove', function(e) { if (scrubbing) scrubTo(e); });
   document.addEventListener('mouseup',   function()  { scrubbing = false; });
 
-  // Playlist item clicks
-  document.getElementById('playlist-list').addEventListener('click', function(e) {
-    var item = e.target.closest('.playlist__item');
-    if (!item) return;
-    var idx = parseInt(item.getAttribute('data-index'), 10);
-    loadVideoByIndex(idx);
-  });
-
-  // ── Playlist: collapse toggle ──
-  (function() {
-    var panel = document.getElementById('playlist');
-    var btn   = document.getElementById('playlist-toggle');
-    var open  = true;
-    panel.classList.add('open');
-    btn.classList.add('is-open');
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      open = !open;
-      panel.classList.toggle('open', open);
-      btn.classList.toggle('is-open', open);
-    });
-  })();
-
   // ── Spring-drag ──
   (function() {
-    var win      = document.querySelector('.player__shell');
+    var win      = document.querySelector('.reel__wrapper');
     var titlebar = win.querySelector('.titlebar');
     var cx=0,cy=0,vx=0,vy=0,dragging=false,dragStartX=0,dragStartY=0,baseX=0,baseY=0,rafId=null;
     var STIFFNESS=0.16, DAMPING=0.70, REST=0.1;
@@ -1489,7 +1203,7 @@ a.yt__Hover:hover {
     }
     function moveDrag(px,py){ if(!dragging)return; cx=baseX+(px-dragStartX); cy=baseY+(py-dragStartY); applyTransform(); }
     function endDrag(){ if(!dragging)return; dragging=false; titlebar.classList.remove('dragging'); vx=cx*0.07; vy=cy*0.07; rafId=requestAnimationFrame(springStep); }
-    titlebar.addEventListener('mousedown',function(e){ if(e.target.classList.contains('dot')||e.target.closest('.playlist__toggle-btn'))return; startDrag(e.clientX,e.clientY); e.preventDefault(); });
+    titlebar.addEventListener('mousedown',function(e){ if(e.target.classList.contains('dot'))return; startDrag(e.clientX,e.clientY); e.preventDefault(); });
     document.addEventListener('mousemove',function(e){ moveDrag(e.clientX,e.clientY); });
     document.addEventListener('mouseup',function(){ endDrag(); });
     titlebar.addEventListener('touchstart',function(e){ if(e.target.classList.contains('dot'))return; var t=e.touches[0]; startDrag(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
