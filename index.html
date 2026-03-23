@@ -97,6 +97,10 @@ body {
     background: linear-gradient(to top, var(--slate-gray), var(--slate-gray), var(--slate), var(--slate));
     background-size: cover;
     background-size: 100% 0.28rem;
+
+    display: flex;
+    height: 100vh;
+    align-items: center;
 }
 
 a:not(.btn) {
@@ -294,6 +298,8 @@ img {
     display: grid;
     grid-auto-flow: row;
     grid-gap: calc(0.69375rem * 2);
+    max-width: 32rem;
+    margin: 0 auto;
 }
 
 .drawer {
@@ -940,11 +946,17 @@ a.yt__Hover:hover {
 ══════════════════════════════════════════ */
 
 /* Shell: positioning root, no overflow clip — lets playlist escape */
+/* Centering wrapper — CSS transition for playlist open/close shift */
+.player__center {
+  width: calc(32rem * 1.2);
+  margin-left: calc(32rem - 50%);
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  z-index: 99;
+}
+
 .player__shell {
   position: relative;
-  max-width: 44rem;
-  will-change: transform; /* spring drag applied here */
-  z-index: 99;
+  will-change: transform;
 }
 
 .reel__wrapper {
@@ -1159,6 +1171,8 @@ a.yt__Hover:hover {
             
         </div>
 
+        <!-- centering wrapper: CSS transition only, no spring -->
+        <div class="player__center">
         <!-- shell: positions playlist relative to the window, no overflow clipping -->
         <div class="player__shell">
 
@@ -1225,6 +1239,7 @@ a.yt__Hover:hover {
         </div><!-- /playlist -->
 
         </div><!-- /player__shell -->
+        </div><!-- /player__center -->
     
         <footer>
 
@@ -1472,20 +1487,51 @@ a.yt__Hover:hover {
     loadVideoByIndex(idx);
   });
 
-  // ── Playlist: collapse toggle ──
+  // ── Playlist centering (CSS transition on outer wrapper) ──
+  var PLAYLIST_SIDE_W = 250;
+  var centerEl = document.querySelector('.player__center');
+
+  function computeOffset(isOpen) {
+    if (!isOpen) return { x: 0, y: 0 };
+    if (window.innerWidth <= 1024) {
+      var panel = document.getElementById('playlist');
+      var h = panel ? panel.offsetHeight : 220;
+      return { x: 0, y: -Math.round(h / 2) };
+    }
+    return { x: -Math.round(PLAYLIST_SIDE_W / 2), y: 0 };
+  }
+
+  function setCenterOffset(isOpen) {
+    var o = computeOffset(isOpen);
+    centerEl.style.transform = o.x === 0 && o.y === 0
+      ? '' : 'translate(' + o.x + 'px,' + o.y + 'px)';
+  }
+
+  // Apply immediately (no transition on first paint)
+  centerEl.style.transition = 'none';
+  setCenterOffset(true);
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      centerEl.style.transition = '';
+    });
+  });
+
+  // ── Playlist toggle ──
   (function() {
     var panel = document.getElementById('playlist');
     var btn   = document.getElementById('playlist-toggle');
-    var open  = true; // starts open (class already in HTML)
+    var open  = true;
     btn.classList.add('is-open');
 
-    // Auto-close 2s after DOM is ready
+    function setOpen(val) {
+      open = val;
+      panel.classList.toggle('open', open);
+      btn.classList.toggle('is-open', open);
+      setCenterOffset(open);
+    }
+
     function scheduleClose() {
-      setTimeout(function() {
-        open = false;
-        panel.classList.remove('open');
-        btn.classList.remove('is-open');
-      }, 1000);
+      setTimeout(function() { setOpen(false); }, 1000);
     }
     if (document.readyState === 'loading') {
       window.addEventListener('DOMContentLoaded', scheduleClose);
@@ -1493,20 +1539,16 @@ a.yt__Hover:hover {
       scheduleClose();
     }
 
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      open = !open;
-      panel.classList.toggle('open', open);
-      btn.classList.toggle('is-open', open);
-    });
+    btn.addEventListener('click', function(e) { e.stopPropagation(); setOpen(!open); });
+    window.addEventListener('resize', function() { setCenterOffset(open); });
   })();
 
-  // ── Spring-drag ──
+  // ── Spring-drag (writes only to player__shell) ──
   (function() {
     var win      = document.querySelector('.player__shell');
     var titlebar = win.querySelector('.titlebar');
     var cx=0,cy=0,vx=0,vy=0,dragging=false,dragStartX=0,dragStartY=0,baseX=0,baseY=0,rafId=null;
-    var STIFFNESS=0.12, DAMPING=0.70, REST=0.1;
+    var STIFFNESS=0.14, DAMPING=0.65, REST=0.15;
     function applyTransform(){ win.style.transform='translate('+cx+'px,'+cy+'px)'; }
     function springStep(){
       if(dragging)return;
@@ -1529,15 +1571,8 @@ a.yt__Hover:hover {
     titlebar.addEventListener('touchstart',function(e){ if(e.target.classList.contains('dot')||e.target.closest('.playlist__toggle-btn'))return; var t=e.touches[0]; startDrag(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
     document.addEventListener('touchmove',function(e){ var t=e.touches[0]; moveDrag(t.clientX,t.clientY); },{passive:false});
     document.addEventListener('touchend',function(){ endDrag(); });
-
-    // Explicit touch handler for the toggle button so drag preventDefault can't swallow it
-    var toggleBtn = document.getElementById('playlist-toggle');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        toggleBtn.click();
-      });
-    }
+    var toggleBtn=document.getElementById('playlist-toggle');
+    if(toggleBtn){ toggleBtn.addEventListener('touchend',function(e){ e.preventDefault(); toggleBtn.click(); }); }
   })();
 </script>
 </body>
