@@ -287,6 +287,7 @@ img {
   top: -1px;
   z-index: 1;
   transition: all .26s var(--sexy-bounce);
+  text-shadow: 0 0.3rem 0.2rem rgba(50, 50, 50, 0.4);
 }
 
 .slate span {
@@ -756,6 +757,7 @@ a.yt__Hover:hover {
 /* ── Progress bar ── */
 .reel__progress-wrap {
   position: relative;
+  width: 100%;
   z-index: 1;
   padding: 2px 0 1px;
 }
@@ -1093,6 +1095,9 @@ a.yt__Hover:hover {
     /* :root {
         --scale: .85;
     } */
+    :root {
+        --master-gap: 1rem;
+    }
     body {
       height: auto;
       min-height: auto;
@@ -1132,7 +1137,7 @@ a.yt__Hover:hover {
 @media (max-width: 1024px) {
   .playlist {
     top: 100%; left: 0; right: auto;
-    width: 100%; height: auto;
+    width: 100%; height: auto; max-height: 220px;
     border-radius: 0 0 10px 10px;
     border: 1px solid rgba(0,0,0,.52);
     border-top: 1px solid #7a7a7a;
@@ -1224,23 +1229,24 @@ a.yt__Hover:hover {
             <div class="reel__controls">
               <div class="reel__transport">
                 <button class="reel__btn reel__btn--icon" id="reel-prev" title="Restart">
-                  <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="5,0 0,4.5 5,9"/><polygon points="11,0 6,4.5 11,9"/></svg>
+                  <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="5,0 0,4.5 5,9"></polygon><polygon points="11,0 6,4.5 11,9"></polygon></svg>
                 </button>
                 <button class="reel__btn reel__btn--icon" id="reel-playpause" title="Play">
-                  <svg id="icon-playpause" width="10" height="11" viewBox="0 0 10 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 10,5.5 0,11"/></svg>
+                  <svg id="icon-playpause" width="10" height="11" viewBox="0 0 10 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 10,5.5 0,11"></polygon></svg>
                 </button>
                 <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end">
-                  <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 5,4.5 0,9"/><polygon points="6,0 11,4.5 6,9"/></svg>
+                  <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 5,4.5 0,9"></polygon><polygon points="6,0 11,4.5 6,9"></polygon></svg>
                 </button>
               </div>
-              <span class="reel__footer-label" id="reel-footer-label">10 Year Motion Reel / 2014—24</span>
-              <span class="reel__footer-duration"><span id="reel-cur">0:00</span> / <span id="reel-dur">--:--</span></span>
-            </div>
-            <div class="reel__progress-wrap">
+
+<div class="reel__progress-wrap">
               <div class="reel__progress-track" id="reel-track">
-                <div class="reel__progress-fill"  id="reel-fill"></div>
-                <div class="reel__progress-thumb" id="reel-thumb"></div>
+                <div class="reel__progress-fill" id="reel-fill" style="width: 99.3066%;"></div>
+                <div class="reel__progress-thumb" id="reel-thumb" style="left: 99.3066%;"></div>
               </div>
+            </div>
+              
+              <span class="reel__footer-duration"><span id="reel-cur">1:00</span> / <span id="reel-dur">1:01</span></span>
             </div>
           </div>
 
