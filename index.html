@@ -7,15 +7,18 @@
     <title>Sudipto — Designer + Artist</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="icon" type="image/x-icon" href="fav.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <style>
 :root {
     --base-size: 1.6vh;
     --scale: 1;
 
     /* TYPE */
-    --system-font: ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    --type: 500 normal 1rem/1.2rem var(--system-font);
-    --brand-ls: -0.006rem;
+    --system-font: "DM Sans",ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    --type: 500 normal .83rem/1.2rem var(--system-font);
+    --brand-ls: -0.007rem;
 
     /* COLORS */
     --white: #fff;
@@ -54,6 +57,10 @@
 
     /* NUMS */
     --num-full: 999;
+
+    --master-gap: 1.4rem;
+    --gap-1: calc(var(--master-gap) * 0.6);
+    --gap-2: calc(var(--gap-1) * 0.6);
 }
 
 *,
@@ -100,6 +107,7 @@ body {
 
     display: flex;
     height: 100vh;
+    min-height: 740px;
     align-items: center;
 }
 
@@ -297,14 +305,14 @@ img {
     padding: 0.69375rem;
     display: grid;
     grid-auto-flow: row;
-    grid-gap: calc(0.69375rem * 2);
-    max-width: 32rem;
+    grid-gap: var(--master-gap);
+    /* max-width: 32rem; */
     margin: 0 auto;
 }
 
 .drawer {
   display: grid;
-  grid-gap: 0.69375rem;
+  grid-gap: var(--master-gap);
 }
 
 .d-6 {
@@ -312,7 +320,7 @@ img {
 }
 
 .header__logo svg {
-  width: calc(2rem * var(--scale));
+  width: calc(2.08rem * var(--scale));
   height: auto;
 }
 
@@ -322,31 +330,36 @@ nav li {
 }
 
 .socials {
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
   display: flex;
   flex-direction: row;
-  gap: 0.2rem;
+  gap: var(--gap-2);
   margin-left: -0.25rem;
 }
 
+.footer__wrapper {
+  width: 30rem;
+  margin: 0 auto;
+}
+
 footer {
-    position: relative;
+  position: relative;
   display: grid;
   grid-template-rows: auto;
-  grid-gap: 1rem;
-  margin-left: calc(2rem * var(--scale) + 1rem);
+  grid-gap: var(--gap-1);
+  margin-left: calc((2.08rem * var(--scale)) + var(--master-gap));
   z-index: 0;
 }
 
 footer .sign__wrap {
   opacity: 1;
   transform-origin: 0 0;
-  transform: scale(calc(var(--scale) * 0.76));
+  /* transform: scale(calc(var(--scale) * 0.76)); */
 }
 
 footer .sign {
-  max-width: 6rem;
-  margin-top: 0.2rem;
+  max-width: 4rem;
+  /* margin-top: 0.2rem; */
 }
 
 footer .sign svg * {
@@ -358,16 +371,19 @@ footer .sign svg * {
   display: flex;
   flex-direction: row;
   flex: 1 1 200px;
-  gap: 0.69375rem;
-  font-size: .9rem;
+  gap: var(--master-gap);
+  /* font-size: .9rem; */
   line-height: 1.2rem;
   text-shadow: 0 1px 0 rgba(255,255,255,.7);
+
+  width: 30rem;
+  margin: 0 auto;
 }
 
 .caption__info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--gap-1);
   margin-top: 2.2rem;
 }
 
@@ -409,14 +425,14 @@ a.yt__Hover:hover {
 .caption__btns {
   display: flex;
   flex-direction: row;
-  gap: 0.69375rem;
+  gap: var(--gap-2);
 }
 
 .caption__btns .caption__btn__subtext {
   margin: calc(0.69375rem * 0.2) 0 0 calc(0.69375rem * 1.7);
   font-size: 0.75rem;
-  font-weight: 500;
-  opacity: .4;
+  font-weight: 600;
+  opacity: .5;
 }
 
 .window {
@@ -678,7 +694,6 @@ a.yt__Hover:hover {
   border-radius: 5px;
   border: 1px solid #7a7a7a;
   cursor: pointer;
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
   font-size: 9px;
   font-weight: 700;
   display: flex;
@@ -716,7 +731,6 @@ a.yt__Hover:hover {
 }
 
 .reel__footer-label {
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
   font-size: 11px;
   font-weight: 600;
   color: #3a3a3a;
@@ -797,6 +811,171 @@ a.yt__Hover:hover {
   height: 100%;
   border-radius: 0;
 }
+
+/* ══════════════════════════════════════════
+   PLAYLIST — slides out from behind the window
+══════════════════════════════════════════ */
+
+/* Shell: positioning root, no overflow clip — lets playlist escape */
+/* Centering wrapper — CSS transition for playlist open/close shift */
+.player__center {
+  /* width: calc(32rem * 1.2);
+  margin-left: calc(32rem - 50%); */
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  z-index: 99;
+  
+  width: calc(30rem * 1.2);
+}
+
+.player__shell {
+  position: relative;
+  will-change: transform;
+}
+
+.reel__wrapper {
+  position: relative;
+  z-index: 2; /* window sits on top of playlist */
+}
+
+/* ── Playlist ──
+   Absolute to .player__shell, top-right corner.
+   Closed: translateX(0) — hidden behind the window (same right edge, z-index 1).
+   Open:   translateX(100%) — fully revealed to the right of the window. */
+.playlist {
+  position: absolute;
+  top: 0;
+  right: -16px;
+  width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 10px 10px 0;
+  border: 1px solid rgba(0,0,0,.52);
+  border-left: 1px solid #7a7a7a;
+  z-index: 1; /* behind .reel__wrapper */
+  overflow: hidden;
+  transform: translateX(0) scale(0.98);
+  box-shadow: none;
+  transition: transform .4s cubic-bezier(.4,0,.2,1),
+              opacity   .28s ease,
+              box-shadow .3s ease,
+              right .3s ease;
+  opacity: 1;
+  pointer-events: none;
+  
+}
+
+.playlist.open {
+  transform: translateX(100%);
+  right: 10px;
+  opacity: 1;
+  pointer-events: all;
+  box-shadow: 0 20px 60px -10px rgba(0,0,0,.3);
+}
+
+/* ── Playlist header — aluminium titlebar style ── */
+.playlist__header {
+  height: 28px;
+  flex-shrink: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,.20) 0px, rgba(255,255,255,.20) 1px,
+      rgba(0,0,0,.045)      1px, rgba(0,0,0,.045)      2px,
+      transparent           2px, transparent            3px
+    ),
+    linear-gradient(180deg,
+      #f2f2f2 0%, #e0e0e0 15%, #d2d2d2 35%,
+      #c6c6c6 52%, #bcbcbc 68%, #c4c4c4 84%, #cecece 100%
+    );
+  border-bottom: 1px solid #7e7e7e;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 20px;
+  white-space: nowrap;
+}
+
+.playlist__title {
+  font-size: 11.5px; font-weight: 700;
+  color: #222;
+  text-shadow: 0 1px 0 rgba(255,255,255,.65);
+  letter-spacing: .01em;
+}
+
+/* Toggle button in window titlebar */
+.playlist__toggle-btn {
+  height: 18px; padding: 0 7px;
+  border: 1px solid #7a7a7a; border-radius: 4px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.15) 0px, rgba(255,255,255,.15) 1px, transparent 1px, transparent 3px),
+    linear-gradient(180deg, #e6e6e6 0%, #d0d0d0 45%, #c0c0c0 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 1px rgba(0,0,0,.2);
+  cursor: pointer;
+  display: flex; align-items: center; gap: 4px;
+  font-size: 9px; font-weight: 700; color: #333;
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  white-space: nowrap; letter-spacing: .03em; flex-shrink: 0;
+}
+.playlist__toggle-btn:hover  { background: linear-gradient(180deg, #eee, #d4d4d4); }
+.playlist__toggle-btn:active { background: linear-gradient(180deg, #bbb, #ccc); }
+.playlist__toggle-btn svg {
+  transition: transform .36s cubic-bezier(.4,0,.2,1);
+  flex-shrink: 0;
+}
+.playlist__toggle-btn.is-open svg { transform: rotate(180deg); }
+
+/* Scrollable list */
+.playlist__list {
+  list-style: none; overflow-y: auto; flex: 1; padding: 0 0 3px 10px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.09) 0px, rgba(255,255,255,.09) 1px, transparent 1px, transparent 3px),
+    linear-gradient(180deg, #f7f7f7 0%, #e7e7e7 100%);
+}
+.playlist__list::-webkit-scrollbar { width: 4px; }
+.playlist__list::-webkit-scrollbar-track { background: rgba(0,0,0,.05); }
+.playlist__list::-webkit-scrollbar-thumb { background: #aaa; border-radius: 2px; }
+
+/* Individual item */
+.playlist__item {
+  display: flex; align-items: center; gap: 7px;
+  padding: 6px 8px; cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,.07); transition: background .1s;
+}
+.playlist__item:last-child { border-bottom: none; }
+.playlist__item:hover { background: rgba(0,0,255,.07); }
+.playlist__item.active {
+  background: linear-gradient(90deg, #0000ff1a, #0000ff09);
+  border-left: 3px solid #0000ff; padding-left: 5px;
+}
+
+.playlist__thumb {
+  width: 60px; height: auto; border-radius: 2px;
+  object-fit: cover; flex-shrink: 0; background: #bbb;
+  box-shadow: 0 1px 3px rgba(0,0,0,.22);
+}
+
+.playlist__info { flex: 1; min-width: 0; }
+.playlist__name {
+  font-size: 10px; font-weight: 600; color: #1a1a2e;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;
+}
+.playlist__meta { font-family: 'Courier New', monospace; font-size: 8.5px; color: #777; margin-top: 1px; }
+.playlist__item.active .playlist__name { color: #1a3a6a; }
+
+/* Animated now-playing bars */
+.playlist__now-playing { display: none; align-items: flex-end; gap: 1.5px; height: 11px; flex-shrink: 0; }
+.playlist__item.active .playlist__now-playing { display: flex; }
+.playlist__now-playing span {
+  display: none; width: 2.5px; background: #0000ff; border-radius: 1px;
+  animation: plbars .9s ease-in-out infinite alternate;
+}
+.playlist__now-playing span:nth-child(1) { height: 4px;  animation-delay: 0s; }
+.playlist__now-playing span:nth-child(2) { height: 9px;  animation-delay: .2s; }
+.playlist__now-playing span:nth-child(3) { height: 6px;  animation-delay: .4s; }
+@keyframes plbars { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
 
 @media (max-height: 1024px) {
     :root {
@@ -914,24 +1093,31 @@ a.yt__Hover:hover {
     /* :root {
         --scale: .85;
     } */
-    .container {
-        grid-gap: 24px;
+    body {
+      height: auto;
+      min-height: auto;
     }
     .caption {
       flex-direction: column;
+      width: 100%;
     }
     .caption__info {
       margin: 0;
     }
     .caption__info > div > div {
-      display: inline;
+      /* display: inline; */
+    }
+    .player__center {
+      width: 100%;
+    }
+    .footer__wrapper {
+        width: 100%;
     }
     footer {
-        margin-left: 0;
-        grid-gap: 1rem;
+      margin-left: 0;
     }
     .socials {
-      font-size: 0.9rem;
+      /* font-size: 0.9rem; */
       flex-direction: row;
       gap: 0.4rem;
     }
@@ -941,171 +1127,6 @@ a.yt__Hover:hover {
       text-overflow: ellipsis;
   }
 }
-/* ══════════════════════════════════════════
-   PLAYLIST — slides out from behind the window
-══════════════════════════════════════════ */
-
-/* Shell: positioning root, no overflow clip — lets playlist escape */
-/* Centering wrapper — CSS transition for playlist open/close shift */
-.player__center {
-  width: calc(32rem * 1.2);
-  margin-left: calc(32rem - 50%);
-  transition: transform .38s cubic-bezier(.4,0,.2,1);
-  z-index: 99;
-}
-
-.player__shell {
-  position: relative;
-  will-change: transform;
-}
-
-.reel__wrapper {
-  position: relative;
-  z-index: 2; /* window sits on top of playlist */
-}
-
-/* ── Playlist ──
-   Absolute to .player__shell, top-right corner.
-   Closed: translateX(0) — hidden behind the window (same right edge, z-index 1).
-   Open:   translateX(100%) — fully revealed to the right of the window. */
-.playlist {
-  position: absolute;
-  top: 0;
-  right: -16px;
-  width: 250px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0 10px 10px 0;
-  border: 1px solid rgba(0,0,0,.52);
-  border-left: 1px solid #7a7a7a;
-  z-index: 1; /* behind .reel__wrapper */
-  overflow: hidden;
-  transform: translateX(0) scale(0.98);
-  box-shadow: none;
-  transition: transform .4s cubic-bezier(.4,0,.2,1),
-              opacity   .28s ease,
-              box-shadow .3s ease,
-              right .3s ease;
-  opacity: 1;
-  pointer-events: none;
-  
-}
-
-.playlist.open {
-  transform: translateX(100%);
-  right: 10px;
-  opacity: 1;
-  pointer-events: all;
-  box-shadow: 0 20px 60px -10px rgba(0,0,0,.3);
-}
-
-/* ── Playlist header — aluminium titlebar style ── */
-.playlist__header {
-  height: 28px;
-  flex-shrink: 0;
-  background:
-    repeating-linear-gradient(
-      180deg,
-      rgba(255,255,255,.20) 0px, rgba(255,255,255,.20) 1px,
-      rgba(0,0,0,.045)      1px, rgba(0,0,0,.045)      2px,
-      transparent           2px, transparent            3px
-    ),
-    linear-gradient(180deg,
-      #f2f2f2 0%, #e0e0e0 15%, #d2d2d2 35%,
-      #c6c6c6 52%, #bcbcbc 68%, #c4c4c4 84%, #cecece 100%
-    );
-  border-bottom: 1px solid #7e7e7e;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.95);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8px 0 20px;
-  white-space: nowrap;
-}
-
-.playlist__title {
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
-  font-size: 11.5px; font-weight: 700;
-  color: #222;
-  text-shadow: 0 1px 0 rgba(255,255,255,.65);
-  letter-spacing: .01em;
-}
-
-/* Toggle button in window titlebar */
-.playlist__toggle-btn {
-  height: 18px; padding: 0 7px;
-  border: 1px solid #7a7a7a; border-radius: 4px;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,.15) 0px, rgba(255,255,255,.15) 1px, transparent 1px, transparent 3px),
-    linear-gradient(180deg, #e6e6e6 0%, #d0d0d0 45%, #c0c0c0 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 1px rgba(0,0,0,.2);
-  cursor: pointer;
-  display: flex; align-items: center; gap: 4px;
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
-  font-size: 9px; font-weight: 700; color: #333;
-  text-shadow: 0 1px 0 rgba(255,255,255,.6);
-  white-space: nowrap; letter-spacing: .03em; flex-shrink: 0;
-}
-.playlist__toggle-btn:hover  { background: linear-gradient(180deg, #eee, #d4d4d4); }
-.playlist__toggle-btn:active { background: linear-gradient(180deg, #bbb, #ccc); }
-.playlist__toggle-btn svg {
-  transition: transform .36s cubic-bezier(.4,0,.2,1);
-  flex-shrink: 0;
-}
-.playlist__toggle-btn.is-open svg { transform: rotate(180deg); }
-
-/* Scrollable list */
-.playlist__list {
-  list-style: none; overflow-y: auto; flex: 1; padding: 0 0 3px 10px;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,.09) 0px, rgba(255,255,255,.09) 1px, transparent 1px, transparent 3px),
-    linear-gradient(180deg, #f7f7f7 0%, #e7e7e7 100%);
-}
-.playlist__list::-webkit-scrollbar { width: 4px; }
-.playlist__list::-webkit-scrollbar-track { background: rgba(0,0,0,.05); }
-.playlist__list::-webkit-scrollbar-thumb { background: #aaa; border-radius: 2px; }
-
-/* Individual item */
-.playlist__item {
-  display: flex; align-items: center; gap: 7px;
-  padding: 6px 8px; cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.07); transition: background .1s;
-}
-.playlist__item:last-child { border-bottom: none; }
-.playlist__item:hover { background: rgba(0,0,255,.07); }
-.playlist__item.active {
-  background: linear-gradient(90deg, #0000ff1a, #0000ff09);
-  border-left: 3px solid #0000ff; padding-left: 5px;
-}
-
-.playlist__thumb {
-  width: 60px; height: auto; border-radius: 2px;
-  object-fit: cover; flex-shrink: 0; background: #bbb;
-  box-shadow: 0 1px 3px rgba(0,0,0,.22);
-}
-
-.playlist__info { flex: 1; min-width: 0; }
-.playlist__name {
-  font-family: 'Lucida Grande', Geneva, Tahoma, sans-serif;
-  font-size: 10px; font-weight: 600; color: #1a1a2e;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;
-}
-.playlist__meta { font-family: 'Courier New', monospace; font-size: 8.5px; color: #777; margin-top: 1px; }
-.playlist__item.active .playlist__name { color: #1a3a6a; }
-
-/* Animated now-playing bars */
-.playlist__now-playing { display: none; align-items: flex-end; gap: 1.5px; height: 11px; flex-shrink: 0; }
-.playlist__item.active .playlist__now-playing { display: flex; }
-.playlist__now-playing span {
-  display: block; width: 2.5px; background: #0000ff; border-radius: 1px;
-  animation: plbars .9s ease-in-out infinite alternate;
-}
-.playlist__now-playing span:nth-child(1) { height: 4px;  animation-delay: 0s; }
-.playlist__now-playing span:nth-child(2) { height: 9px;  animation-delay: .2s; }
-.playlist__now-playing span:nth-child(3) { height: 6px;  animation-delay: .4s; }
-@keyframes plbars { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
 
 /* Mobile: collapse below the window */
 @media (max-width: 1024px) {
@@ -1153,9 +1174,9 @@ a.yt__Hover:hover {
 
             <div class="caption__info">
                 <div>
-                    <div>Brand, Visual, Motion Designer, Video Producer. Part-time Coder.</div>
-                    <div>Worked with <a href="https://www.playbook.com/s/sudipto/folio/rSq4FRzsmobmwRAwrvU9MHKH" target="_blank" class="blue__Hover">Google</a> <a href="https://www.youtube.com/channel/UC1XoTfl_ctHKoEbe64yUC_g" target="_blank" class="black__Hover">K-391</a> <a href="https://www.youtube.com/velosofy" target="_blank" class="mint__Hover">Velosofy</a> <a href="https://play.google.com/store/apps/details?id=com.freeit.java&hl=en" target="_blank" class="deepBlue__Hover">Prog. Hub</a></div>
-                    <div>Currently, Brand + Creative @<a href="https://hygraph.com" target="_blank">Hygraph</a>— Checkout my<a href="https://www.playbook.com/s/sudipto/folio/" target="_blank">Folio ↗</a></div>
+                    <div>Brand — Visual — Motion Designer, Video Producer<br/>Explorer of <a href="https://github.com/swoodipto?tab=repositories" target="_blank"">Side Quests ↗</a></div>
+                    <div>Worked with <a href="https://hygraph.com" target="_blank">Hygraph</a> <a href="https://www.playbook.com/s/sudipto/folio/rSq4FRzsmobmwRAwrvU9MHKH" target="_blank" class="blue__Hover">Google</a> <a href="https://www.youtube.com/channel/UC1XoTfl_ctHKoEbe64yUC_g" target="_blank" class="black__Hover">K-391</a> <a href="https://www.youtube.com/velosofy" target="_blank" class="mint__Hover">Velosofy</a> <a href="https://play.google.com/store/apps/details?id=com.freeit.java&hl=en" target="_blank" class="deepBlue__Hover">Prog. Hub</a></div>
+                    <!--<div>Checkout my<a href="https://www.playbook.com/s/sudipto/folio/" target="_blank">Folio ↗</a></div>-->
 
                 </div>
                 <div class="caption__btns no-sel">
@@ -1230,7 +1251,7 @@ a.yt__Hover:hover {
 
           <div class="playlist__header">
             <span class="playlist__title">Playlist</span>
-            <span style="font-family:'Courier New',monospace;font-size:9px;color:#888;">5 videos</span>
+            <span style="font-size:9px;color:#5c5c5c;">5 videos</span>
           </div>
 
           <ul class="playlist__list" id="playlist-list">
@@ -1241,28 +1262,30 @@ a.yt__Hover:hover {
         </div><!-- /player__shell -->
         </div><!-- /player__center -->
     
-        <footer>
+        <div class="footer__wrapper">
+            <footer>
 
-        <div class="socials">
-            <a href="https://x.com/swoodipto" target="_blank" class="twitter__Hover">Twitter ↗</a> 
-            <a href="https://instagram.com/swoodipto" target="_blank" class="insta__Hover">Instagram ↗</a> 
-            <a href="https://youtube.com/@swoodipto" target="_blank" class="yt__Hover">YouTube ↗</a>
-        </div>
-
-        <div class="sign__wrap">
-            <div class="sign__from">From 🐻 Berlin. With 💖 Love,</div>
-            <div class="sign">
-                <svg viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M45.9736 247.152L48.4805 251.494C57.2678 266.714 76.7297 271.929 91.9498 263.142L92.9166 262.584C107.603 254.104 112.635 235.325 104.156 220.639V220.639C98.6065 211.028 88.3028 205.159 77.2053 205.289L36.0714 205.769C26.7795 205.878 18.1521 200.964 13.5058 192.916V192.916C6.40624 180.619 10.6194 164.896 22.9162 157.796L28.0565 154.828C41.5902 147.015 58.8956 151.652 66.7092 165.185L71.0604 172.722C76.471 182.093 88.4541 185.304 97.8255 179.893V179.893C107.197 174.483 110.408 162.5 104.997 153.128L95.9029 137.377C90.7087 128.38 93.7912 116.876 102.788 111.682V111.682C111.784 106.488 123.288 109.57 128.482 118.567L169.547 189.693C176.398 201.56 172.125 216.852 160.259 223.703V223.703C148.619 230.424 133.532 226.553 126.812 214.913V214.913C120.092 203.273 124.08 188.389 135.72 181.669L148.686 174.182C167.487 163.328 173.929 139.287 163.074 120.486L159.473 114.249" stroke="black" stroke-width="10" stroke-linecap="round"/>
-                    <path d="M186.768 120.771L205.457 109.981C217.11 103.253 221.102 88.3531 214.374 76.7003L213.678 75.4949C207.335 64.5079 193.286 60.7434 182.299 67.0868V67.0868C171.312 73.4302 167.547 87.4793 173.891 98.4663L205.071 152.473C214.404 168.637 235.072 174.175 251.236 164.843V164.843C267.4 155.511 272.938 134.842 263.606 118.678L220.94 44.7776" stroke="black" stroke-width="10" stroke-linecap="round"/>
-                    <path d="M234.392 67.3749L293.441 33.2824" stroke="black" stroke-width="10" stroke-linecap="round"/>
-                    <circle cx="304.569" cy="98.6618" r="28.6063" transform="rotate(-30 304.569 98.6618)" stroke="black" stroke-width="10"/>
-                    <circle cx="147.13" cy="92.8688" r="5.87799" transform="rotate(-30 147.13 92.8688)" fill="black"/>
-                </svg>                     
+            <div class="socials">
+                <a href="https://x.com/swoodipto" target="_blank" class="twitter__Hover">Twitter ↗</a> 
+                <a href="https://instagram.com/swoodipto" target="_blank" class="insta__Hover">Instagram ↗</a> 
+                <a href="https://youtube.com/@swoodipto" target="_blank" class="yt__Hover">YouTube ↗</a>
             </div>
+
+            <div class="sign__wrap">
+                <div class="sign__from">From 🐻 Berlin. With 💖 Love,</div>
+                <div class="sign">
+                    <svg viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M45.9736 247.152L48.4805 251.494C57.2678 266.714 76.7297 271.929 91.9498 263.142L92.9166 262.584C107.603 254.104 112.635 235.325 104.156 220.639V220.639C98.6065 211.028 88.3028 205.159 77.2053 205.289L36.0714 205.769C26.7795 205.878 18.1521 200.964 13.5058 192.916V192.916C6.40624 180.619 10.6194 164.896 22.9162 157.796L28.0565 154.828C41.5902 147.015 58.8956 151.652 66.7092 165.185L71.0604 172.722C76.471 182.093 88.4541 185.304 97.8255 179.893V179.893C107.197 174.483 110.408 162.5 104.997 153.128L95.9029 137.377C90.7087 128.38 93.7912 116.876 102.788 111.682V111.682C111.784 106.488 123.288 109.57 128.482 118.567L169.547 189.693C176.398 201.56 172.125 216.852 160.259 223.703V223.703C148.619 230.424 133.532 226.553 126.812 214.913V214.913C120.092 203.273 124.08 188.389 135.72 181.669L148.686 174.182C167.487 163.328 173.929 139.287 163.074 120.486L159.473 114.249" stroke="black" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M186.768 120.771L205.457 109.981C217.11 103.253 221.102 88.3531 214.374 76.7003L213.678 75.4949C207.335 64.5079 193.286 60.7434 182.299 67.0868V67.0868C171.312 73.4302 167.547 87.4793 173.891 98.4663L205.071 152.473C214.404 168.637 235.072 174.175 251.236 164.843V164.843C267.4 155.511 272.938 134.842 263.606 118.678L220.94 44.7776" stroke="black" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M234.392 67.3749L293.441 33.2824" stroke="black" stroke-width="10" stroke-linecap="round"/>
+                        <circle cx="304.569" cy="98.6618" r="28.6063" transform="rotate(-30 304.569 98.6618)" stroke="black" stroke-width="10"/>
+                        <circle cx="147.13" cy="92.8688" r="5.87799" transform="rotate(-30 147.13 92.8688)" fill="black"/>
+                    </svg>                     
+                </div>
+            </div>
+        
+            </footer>
         </div>
-    
-    </footer>
     </div>
 
 <script>
@@ -1531,7 +1554,7 @@ a.yt__Hover:hover {
     }
 
     function scheduleClose() {
-      setTimeout(function() { setOpen(false); }, 1000);
+      setTimeout(function() { setOpen(false); }, 1600);
     }
     if (document.readyState === 'loading') {
       window.addEventListener('DOMContentLoaded', scheduleClose);
@@ -1548,7 +1571,7 @@ a.yt__Hover:hover {
     var win      = document.querySelector('.player__shell');
     var titlebar = win.querySelector('.titlebar');
     var cx=0,cy=0,vx=0,vy=0,dragging=false,dragStartX=0,dragStartY=0,baseX=0,baseY=0,rafId=null;
-    var STIFFNESS=0.14, DAMPING=0.65, REST=0.15;
+    var STIFFNESS=0.13, DAMPING=0.65, REST=0.15;
     function applyTransform(){ win.style.transform='translate('+cx+'px,'+cy+'px)'; }
     function springStep(){
       if(dragging)return;
