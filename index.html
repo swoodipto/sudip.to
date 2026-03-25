@@ -1182,6 +1182,29 @@ a.yt__Hover:hover {
   list-style: none; overflow-y: auto; flex: 1; padding: 0 0 3px 0;
 }
 }
+/* ── iMessage drag hint bubble ── */
+.drag-bubble {
+  position: absolute;
+  top: -0.8rem;
+  right: 6rem;
+  background: transparent;
+  pointer-events: none;
+  z-index: 999;
+  animation: bubble-in .3s var(--sexy-bounce) forwards;
+  transform-origin: bottom right;
+}
+.drag-bubble svg {
+    width: 5rem;
+    height: auto;
+}
+@keyframes bubble-in {
+  0%   { opacity: 0; transform: translateY(10px) scale(.88); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes bubble-out {
+  0%   { opacity: 1; transform: translateY(0)   scale(1); }
+  100% { opacity: 0; transform: translateY(6px) scale(.9); }
+}
     </style>
 </head>
 <body>
@@ -1229,13 +1252,62 @@ a.yt__Hover:hover {
         <!-- shell: positions playlist relative to the window, no overflow clipping -->
         <div class="player__shell">
 
+          <!-- iMessage-style hint bubble -->
+            <div class="drag-bubble" id="drag-bubble">
+              <svg viewBox="0 0 121 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_ddi_3_11)">
+<path d="M109.12 23.8V19.72C109.2 19.16 109.2 18.56 109.2 18C109.2 9.39999 102.2 2.39999 93.6 2.39999H18.8C10.2 2.39999 3.19995 9.39999 3.19995 18C3.19995 26.6 10.2 33.6 18.8 33.6H93.6C97.72 33.6 101.48 32 104.28 29.36C106.52 31.24 109.44 32.4 112.64 32.4C114.24 32.4 115.8 32.12 117.2 31.56C112.72 31.56 109.12 28.16 109.12 23.8Z" fill="url(#paint0_linear_3_11)"/>
+<path d="M18.7996 2.6998H93.6003C102.034 2.70001 108.9 9.5656 108.9 17.9996C108.9 18.5637 108.899 19.1422 108.823 19.6773L108.82 19.6988V23.8004C108.82 27.8327 111.779 31.0592 115.688 31.7291C114.715 31.9734 113.688 32.1002 112.64 32.1002C109.514 32.1002 106.661 30.9671 104.472 29.1305L104.268 28.9586L104.074 29.1422C101.328 31.7313 97.6408 33.3003 93.6003 33.3004H18.7996C10.3654 33.3002 3.49976 26.4338 3.49976 17.9996C3.49997 9.5656 10.3656 2.70001 18.7996 2.6998Z" stroke="#1B2D5E" stroke-width="0.6"/>
+</g>
+<path d="M10 11.2C10 7.22355 13.2235 4 17.2 4H92.8C96.7765 4 100 7.22355 100 11.2C100 15.1764 96.7765 18.4 92.8 18.4H17.2C13.2235 18.4 10 15.1764 10 11.2Z" fill="#D6E7FD"/>
+<g filter="url(#filter1_d_3_11)">
+<path d="M23.1499 23.2063C23.7812 23.2063 24.2999 23.1406 24.7062 23.0094C25.4312 22.7656 26.0249 22.2969 26.4874 21.6031C26.8562 21.0469 27.1218 20.3344 27.2843 19.4656C27.378 18.9469 27.4249 18.4656 27.4249 18.0219C27.4249 16.3156 27.0843 14.9906 26.403 14.0469C25.728 13.1031 24.6374 12.6313 23.1312 12.6313H19.8218V23.2063H23.1499ZM17.9468 11.0281H23.5249C25.4187 11.0281 26.8874 11.7 27.9312 13.0438C28.8624 14.2563 29.328 15.8094 29.328 17.7031C29.328 19.1656 29.053 20.4875 28.503 21.6688C27.5343 23.7563 25.8687 24.8 23.5062 24.8H17.9468V11.0281ZM31.5593 14.7594H33.1624V16.4938C33.2937 16.1563 33.6155 15.7469 34.128 15.2656C34.6405 14.7781 35.2312 14.5344 35.8999 14.5344C35.9312 14.5344 35.9843 14.5375 36.0593 14.5438C36.1343 14.55 36.2624 14.5625 36.4437 14.5813V16.3625C36.3437 16.3438 36.2499 16.3313 36.1624 16.325C36.0812 16.3188 35.9905 16.3156 35.8905 16.3156C35.0405 16.3156 34.3874 16.5906 33.9312 17.1406C33.4749 17.6844 33.2468 18.3125 33.2468 19.025V24.8H31.5593V14.7594ZM39.1999 22.1281C39.1999 22.6156 39.378 23 39.7343 23.2813C40.0905 23.5625 40.5124 23.7031 40.9999 23.7031C41.5937 23.7031 42.1687 23.5656 42.7249 23.2906C43.6624 22.8344 44.1312 22.0875 44.1312 21.05V19.6906C43.9249 19.8219 43.6593 19.9313 43.3343 20.0188C43.0093 20.1063 42.6905 20.1688 42.378 20.2063L41.3562 20.3375C40.7437 20.4188 40.2843 20.5469 39.978 20.7219C39.4593 21.0156 39.1999 21.4844 39.1999 22.1281ZM43.2874 18.7156C43.6749 18.6656 43.9343 18.5031 44.0655 18.2281C44.1405 18.0781 44.178 17.8625 44.178 17.5813C44.178 17.0063 43.9718 16.5906 43.5593 16.3344C43.153 16.0719 42.5687 15.9406 41.8062 15.9406C40.9249 15.9406 40.2999 16.1781 39.9312 16.6531C39.7249 16.9156 39.5905 17.3063 39.528 17.825H37.953C37.9843 16.5875 38.3843 15.7281 39.153 15.2469C39.928 14.7594 40.8249 14.5156 41.8437 14.5156C43.0249 14.5156 43.9843 14.7406 44.7218 15.1906C45.453 15.6406 45.8187 16.3406 45.8187 17.2906V23.075C45.8187 23.25 45.853 23.3906 45.9218 23.4969C45.9968 23.6031 46.1499 23.6563 46.3812 23.6563C46.4562 23.6563 46.5405 23.6531 46.6343 23.6469C46.728 23.6344 46.828 23.6188 46.9343 23.6V24.8469C46.6718 24.9219 46.4718 24.9688 46.3343 24.9875C46.1968 25.0063 46.0093 25.0156 45.7718 25.0156C45.1905 25.0156 44.7687 24.8094 44.5062 24.3969C44.3687 24.1781 44.2718 23.8688 44.2155 23.4688C43.8718 23.9188 43.378 24.3094 42.7343 24.6406C42.0905 24.9719 41.3812 25.1375 40.6062 25.1375C39.6749 25.1375 38.9124 24.8563 38.3187 24.2938C37.7312 23.725 37.4374 23.0156 37.4374 22.1656C37.4374 21.2344 37.728 20.5125 38.3093 20C38.8905 19.4875 39.653 19.1719 40.5968 19.0531L43.2874 18.7156ZM52.1374 14.5813C52.9249 14.5813 53.6124 14.775 54.1999 15.1625C54.5187 15.3813 54.8437 15.7 55.1749 16.1188V14.8531H56.7312V23.9844C56.7312 25.2594 56.5437 26.2656 56.1687 27.0031C55.4687 28.3656 54.1468 29.0469 52.203 29.0469C51.1218 29.0469 50.2124 28.8031 49.4749 28.3156C48.7374 27.8344 48.3249 27.0781 48.2374 26.0469H49.953C50.0343 26.4969 50.1968 26.8438 50.4405 27.0875C50.8218 27.4625 51.4218 27.65 52.2405 27.65C53.5343 27.65 54.3812 27.1938 54.7812 26.2813C55.0187 25.7438 55.128 24.7844 55.1093 23.4031C54.7718 23.9156 54.3655 24.2969 53.8905 24.5469C53.4155 24.7969 52.7874 24.9219 52.0062 24.9219C50.9187 24.9219 49.9655 24.5375 49.1468 23.7688C48.3343 22.9938 47.928 21.7156 47.928 19.9344C47.928 18.2531 48.3374 16.9406 49.1562 15.9969C49.9812 15.0531 50.9749 14.5813 52.1374 14.5813ZM55.1749 19.7375C55.1749 18.4938 54.9187 17.5719 54.4062 16.9719C53.8937 16.3719 53.2405 16.0719 52.4468 16.0719C51.2593 16.0719 50.4468 16.6281 50.0093 17.7406C49.778 18.3344 49.6624 19.1125 49.6624 20.075C49.6624 21.2063 49.8905 22.0688 50.3468 22.6625C50.8093 23.25 51.428 23.5438 52.203 23.5438C53.4155 23.5438 54.2687 22.9969 54.7624 21.9031C55.0374 21.2844 55.1749 20.5625 55.1749 19.7375ZM64.803 11.0281H67.4749L71.4312 22.6719L75.3593 11.0281H78.003V24.8H76.2312V16.6719C76.2312 16.3906 76.2374 15.925 76.2499 15.275C76.2624 14.625 76.2687 13.9281 76.2687 13.1844L72.3405 24.8H70.4937L66.5374 13.1844V13.6063C66.5374 13.9438 66.5437 14.4594 66.5562 15.1531C66.5749 15.8406 66.5843 16.3469 66.5843 16.6719V24.8H64.803V11.0281ZM84.7999 14.5344C85.5124 14.5344 86.203 14.7031 86.8718 15.0406C87.5405 15.3719 88.0499 15.8031 88.3999 16.3344C88.7374 16.8406 88.9624 17.4313 89.0749 18.1063C89.1749 18.5688 89.2249 19.3063 89.2249 20.3188H81.8655C81.8968 21.3375 82.1374 22.1563 82.5874 22.775C83.0374 23.3875 83.7343 23.6938 84.678 23.6938C85.5593 23.6938 86.2624 23.4031 86.7874 22.8219C87.0874 22.4844 87.2999 22.0938 87.4249 21.65H89.0843C89.0405 22.0188 88.8937 22.4313 88.6437 22.8875C88.3999 23.3375 88.1249 23.7063 87.8187 23.9938C87.3062 24.4938 86.6718 24.8313 85.9155 25.0063C85.5093 25.1063 85.0499 25.1563 84.5374 25.1563C83.2874 25.1563 82.228 24.7031 81.3593 23.7969C80.4905 22.8844 80.0562 21.6094 80.0562 19.9719C80.0562 18.3594 80.4937 17.05 81.3687 16.0438C82.2437 15.0375 83.3874 14.5344 84.7999 14.5344ZM87.4905 18.9781C87.4218 18.2469 87.2624 17.6625 87.0124 17.225C86.5499 16.4125 85.778 16.0063 84.6968 16.0063C83.9218 16.0063 83.2718 16.2875 82.7468 16.85C82.2218 17.4063 81.9437 18.1156 81.9124 18.9781H87.4905ZM92.2905 11.0281H94.1937V15.5563L93.7343 21.5188H92.778L92.2905 15.5563V11.0281ZM92.2905 22.85H94.1562V24.8H92.2905V22.85Z" fill="black"/>
+</g>
+<defs>
+<filter id="filter0_ddi_3_11" x="-4.88758e-05" y="-6.13928e-06" width="120.4" height="37.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.8"/>
+<feGaussianBlur stdDeviation="1.6"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_11"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.4"/>
+<feGaussianBlur stdDeviation="0.4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_3_11" result="effect2_dropShadow_3_11"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_3_11" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-1.6"/>
+<feGaussianBlur stdDeviation="3.2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.48 0"/>
+<feBlend mode="normal" in2="shape" result="effect3_innerShadow_3_11"/>
+</filter>
+<filter id="filter1_d_3_11" x="17.9468" y="11.0281" width="76.2468" height="18.8188" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="0.8"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.32 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_11"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_11" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_3_11" x1="37" y1="2.39999" x2="37" y2="33.6" gradientUnits="userSpaceOnUse">
+<stop stop-color="#AFCEF4"/>
+<stop offset="1" stop-color="#C2E2FA"/>
+</linearGradient>
+</defs>
+</svg>
+
+            </div>
+
         <div class="reel__wrapper window">
 
           <div class="titlebar">
             <div class="traffic-lights">
               <div class="dot dot-close"></div>
               <div class="dot dot-min"></div>
-              <div class="dot dot-max"></div>
+              <div class="dot dot-max" id="dot-reel-fullscreen"></div>
             </div>
             <div class="title" id="reel-title-bar">10-Year Motion Reel.mp4</div>
             <button class="playlist__toggle-btn" id="playlist-toggle" title="Toggle playlist" style="position:absolute;right:10px;">
@@ -1263,6 +1335,9 @@ a.yt__Hover:hover {
                 </button>
                 <button class="reel__btn reel__btn--icon" id="reel-next" title="Skip to end">
                   <svg width="11" height="9" viewBox="0 0 11 9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 5,4.5 0,9"></polygon><polygon points="6,0 11,4.5 6,9"></polygon></svg>
+                </button>
+                <button class="reel__btn reel__btn--icon" id="reel-fullscreen" title="Fullscreen">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 4V1h3M7 1h3v3M10 7v3H7M4 10H1V7"></path></svg>
                 </button>
               </div>
 
@@ -1404,8 +1479,9 @@ a.yt__Hover:hover {
     iframe.id    = 'reel-iframe';
     iframe.src   = 'https://www.youtube.com/embed/' + VIDEOS[0].id +
       '?enablejsapi=1&controls=0&modestbranding=1' +
-      '&rel=0&iv_load_policy=3&playsinline=1&autoplay=0';
-    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      '&rel=0&iv_load_policy=3&playsinline=1&autoplay=0&fs=1';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen = true;
     viewport.appendChild(iframe);
 
     reelPlayer = new YT.Player('reel-iframe', {
@@ -1520,6 +1596,18 @@ a.yt__Hover:hover {
     var dur = reelPlayer.getDuration();
     if (dur) { reelPlayer.seekTo(dur - 5); if (!reelPlaying) reelPlayer.playVideo(); }
   });
+  document.getElementById('reel-fullscreen').addEventListener('click', function() {
+    var iframe = document.getElementById('reel-iframe');
+    if (!iframe) return;
+    var req = iframe.requestFullscreen || iframe.webkitRequestFullscreen || iframe.mozRequestFullScreen || iframe.msRequestFullscreen;
+    if (req) req.call(iframe);
+  });
+  document.getElementById('dot-reel-fullscreen').addEventListener('click', function() {
+    var iframe = document.getElementById('reel-iframe');
+    if (!iframe) return;
+    var req = iframe.requestFullscreen || iframe.webkitRequestFullscreen || iframe.mozRequestFullScreen || iframe.msRequestFullscreen;
+    if (req) req.call(iframe);
+  });
 
   // Progress bar scrub
   var scrubbing = false;
@@ -1601,6 +1689,18 @@ a.yt__Hover:hover {
     window.addEventListener('resize', function() { setCenterOffset(open); });
   })();
 
+  // ── Drag-me bubble ──
+var bubble = document.getElementById('drag-bubble');
+var bubbleDismissed = false;
+bubble.style.display = 'none';
+setTimeout(function() { bubble.style.display = ''; }, 1400);
+function dismissBubble() {
+  if (bubbleDismissed || !bubble || bubble.style.display === 'none') return;
+  bubbleDismissed = true;
+  bubble.classList.add('bubble-out');
+  setTimeout(function() { bubble.style.display = 'none'; }, 300);
+}
+
   // ── Spring-drag (writes only to player__shell) ──
   (function() {
     var win      = document.querySelector('.player__shell');
@@ -1620,6 +1720,7 @@ a.yt__Hover:hover {
       if(rafId)cancelAnimationFrame(rafId);
       dragging=true; dragStartX=px; dragStartY=py; baseX=cx; baseY=cy; vx=vy=0;
       titlebar.classList.add('dragging');
+      dismissBubble();
     }
     function moveDrag(px,py){ if(!dragging)return; cx=baseX+(px-dragStartX); cy=baseY+(py-dragStartY); applyTransform(); }
     function endDrag(){ if(!dragging)return; dragging=false; titlebar.classList.remove('dragging'); vx=cx*0.07; vy=cy*0.07; rafId=requestAnimationFrame(springStep); }
