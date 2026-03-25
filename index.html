@@ -130,7 +130,7 @@ img {
 
 .btn {
     display: inline-block;
-    font-weight: 600;
+    font-weight: 500;
     background-color: var(--primary);
     letter-spacing: -0.006rem;
     --switch: calc((var(--primary-l) - var(--contrastThreshold)) * -100);
@@ -350,7 +350,7 @@ footer {
   grid-template-rows: auto;
   grid-gap: var(--gap-1);
   margin-left: calc((2.08rem * var(--scale)) + var(--master-gap));
-  z-index: 0;
+  z-index: 1;
 }
 
 footer .sign__wrap {
@@ -377,7 +377,7 @@ footer .sign svg * {
   /* font-size: .9rem; */
   line-height: 1.2rem;
   text-shadow: 0 1px 0 rgba(255,255,255,.7);
-
+  z-index: 1;
   width: 30rem;
   margin: 0 auto;
 }
@@ -1012,7 +1012,7 @@ a.yt__Hover:hover {
     top: 8rem;
     bottom: 8rem;
     width: 100%;
-    z-index: 1;
+    z-index: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1186,7 +1186,7 @@ a.yt__Hover:hover {
   .pikabu {
         top: 20%;
         bottom: 0;
-        z-index: 1;
+        z-index: 0;
         align-items: center;
         justify-content: center;
     }
