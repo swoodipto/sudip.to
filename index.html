@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sudipto Mondal — Designer, Artist.">
-    <title>Sudipto — Designer + Artist</title>
+    <title>Sudipto — Designer + Maker</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="icon" type="image/x-icon" href="fav.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
 
     /* TYPE */
     --system-font: "DM Sans",ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    --type: 500 normal .83rem/1.2rem var(--system-font);
+    --type: 500 normal .9rem/1.2rem var(--system-font);
     --brand-ls: -0.007rem;
 
     /* COLORS */
@@ -1210,7 +1210,7 @@ a.yt__Hover:hover {
               <div class="dot dot-min"></div>
               <div class="dot dot-max"></div>
             </div>
-            <div class="title" id="reel-title-bar">Sudipto's 10-Year Motion Reel.mp4</div>
+            <div class="title" id="reel-title-bar">10-Year Motion Reel.mp4</div>
             <button class="playlist__toggle-btn" id="playlist-toggle" title="Toggle playlist" style="position:absolute;right:10px;">
               <svg width="7" height="10" viewBox="0 0 7 10" fill="none">
                 <path d="M5 1L1 5l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1301,10 +1301,13 @@ a.yt__Hover:hover {
   //     else is automatic.
   // ════════════════════════════════════════
   var VIDEOS = [
-    { id: 'DvQmSE5fzUo', name: '10-Year Motion Reel', meta: '2014—24' },
-    { id: 'pK5WgUBakBA', name: 'Showreel 2020',       meta: 'Motion + Brand' },
-    { id: 'cIVha_MNIso', name: 'K-391 Collab',        meta: 'Music Video' },
-    { id: 'nFuMiTxvmEg', name: 'Brand Work',           meta: 'Identity + Motion' },
+    { id: 'DvQmSE5fzUo', name: '10-Year Motion Reel.mp4', meta: '2014—24' },
+    { id: 'HE5LyLU0Br0', name: 'Hygraph (2026).mp4', meta: 'Motion + Brand' },
+    { id: 'LxdpN6oTSGk', name: 'Live Preview Promo (2024).mp4', meta: 'Motion, Visuals, Sound Design' },
+    { id: 'BiyEMDINb50', name: 'Rebooting (2020).mp4', meta: 'Motion, Visuals, Sound Design' },
+    { id: 'CZO_hbHp3Zc', name: 'Comeback Teaser (2013-2020).mp4', meta: 'Motion, Visuals' },
+    { id: 'mZBSUtCIRC8', name: 'ProBackMusic / K-391.mp4', meta: 'Motion, Visuals' },
+    { id: '8Xi4yuiBdAY', name: 'Stranger Things (2017).mp4', meta: 'Motion, Visuals, Sound Design' },
   ];
   // ════════════════════════════════════════
 
@@ -1560,7 +1563,7 @@ a.yt__Hover:hover {
     }
 
     function scheduleClose() {
-      setTimeout(function() { setOpen(false); }, 1600);
+      setTimeout(function() { setOpen(false); }, 1000);
     }
     if (document.readyState === 'loading') {
       window.addEventListener('DOMContentLoaded', scheduleClose);
@@ -1577,7 +1580,7 @@ a.yt__Hover:hover {
     var win      = document.querySelector('.player__shell');
     var titlebar = win.querySelector('.titlebar');
     var cx=0,cy=0,vx=0,vy=0,dragging=false,dragStartX=0,dragStartY=0,baseX=0,baseY=0,rafId=null;
-    var STIFFNESS=0.13, DAMPING=0.65, REST=0.15;
+    var STIFFNESS=0.2, DAMPING=0.7, REST=0.15;
     function applyTransform(){ win.style.transform='translate('+cx+'px,'+cy+'px)'; }
     function springStep(){
       if(dragging)return;
