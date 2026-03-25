@@ -1793,13 +1793,21 @@ if (isSafari) {
     var win      = document.querySelector('.player__shell');
     var titlebar = win.querySelector('.titlebar');
     var cx=0,cy=0,vx=0,vy=0,dragging=false,dragStartX=0,dragStartY=0,baseX=0,baseY=0,rafId=null;
-    var STIFFNESS=0.2, DAMPING=0.7, REST=0.15;
-    function applyTransform(){
-      if (window.innerWidth <= 600) {
-        if (cx > 0) { cx = 0; vx = 0; }
-      }
-      win.style.transform='translate('+cx+'px,'+cy+'px)';
-    }
+    var STIFFNESS=0.14, DAMPING=0.65, REST=0.15;
+
+    function applyTransform() {
+  if (window.innerWidth <= 600) {
+    // Lock X entirely on mobile
+    cx = 0; 
+    vx = 0;
+
+    // No limit downward or upward: 
+    // We simply remove the maxCy calculation and the 'if' check.
+  }
+  
+  win.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+}
+
     function springStep(){
       if(dragging)return;
       vx=(vx-STIFFNESS*cx)*DAMPING; vy=(vy-STIFFNESS*cy)*DAMPING;
