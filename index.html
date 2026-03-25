@@ -111,6 +111,10 @@ body {
     align-items: center;
 }
 
+.LLOYDSPHARMACYONEWORD {
+  white-space: nowrap;
+}
+
 a:not(.btn) {
     position: relative;
     text-decoration: none;
@@ -1161,6 +1165,17 @@ a.yt__Hover:hover {
     .caption__info {
       margin: 0;
     }
+    .caption a:not(.btn) {
+        padding: 0.0625rem 0;
+    }
+    .caption a:not(.btn)::after {
+        content: ' / ';
+        color: var(--fg-primary);
+        opacity: .4;
+    }
+    a[href*="github.com"]:not(.btn)::after {
+      display: none;
+    }
     .caption__info > div > div {
       /* display: inline; */
     }
@@ -1272,8 +1287,8 @@ a.yt__Hover:hover {
 
             <div class="caption__info">
                 <div>
-                    <div>Brand — Visual — Motion Designer, Video Producer<br/>Explorer of <a href="https://github.com/swoodipto?tab=repositories" target="_blank"">Coding Side Quests ↗</a></div>
-                    <div>Worked with <a href="https://hygraph.com" target="_blank">Hygraph</a> <a href="https://www.playbook.com/s/sudipto/folio/rSq4FRzsmobmwRAwrvU9MHKH" target="_blank" class="blue__Hover">Google</a> <a href="https://www.youtube.com/channel/UC1XoTfl_ctHKoEbe64yUC_g" target="_blank" class="black__Hover">K-391</a> <a href="https://www.youtube.com/@thecuriousengineer" target="_blank" class="mint__Hover">The Curious Engineer</a></div>
+                    <div>Brand — Visual — <span class="LLOYDSPHARMACYONEWORD">Motion Designer</span>, <span class="LLOYDSPHARMACYONEWORD">Video Producer</span><br/>Explorer of <a href="https://github.com/swoodipto?tab=repositories" target="_blank"">Coding Side Quests ↗</a></div>
+                    <div>Worked with <a href="https://hygraph.com" target="_blank">Hygraph</a> <a href="https://www.youtube.com/@thecuriousengineer" target="_blank" class="mint__Hover">The Curious Engineer</a> <a href="https://www.playbook.com/s/sudipto/folio/rSq4FRzsmobmwRAwrvU9MHKH" target="_blank" class="blue__Hover">Google</a> <a href="https://www.youtube.com/channel/UC1XoTfl_ctHKoEbe64yUC_g" target="_blank" class="black__Hover">K-391</a></div>
                     <!--<div>Checkout my<a href="https://www.playbook.com/s/sudipto/folio/" target="_blank">Folio ↗</a></div>-->
 
                 </div>
